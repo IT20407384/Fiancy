@@ -1,172 +1,284 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PostAdActivity"
+    android:background="@color/white"
     android:orientation="vertical">
-    <include layout="@layout/toolbar"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/fill_in_the_details"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:paddingLeft="10dp"
-            android:paddingTop="16dp"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/Horizontal_grey"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        <include layout="@layout/toolbar"/>
 
-        <TextView
-            android:id="@+id/tvFullname"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/full_name"
-            android:textSize="16sp"
-            android:paddingTop="25dp"
-            android:layout_marginLeft="34dp"/>
-
-        <EditText
-            android:id="@+id/etFullName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:gravity="left"
-            android:textSize="14dp" />
-
-        <TextView
-            android:id="@+id/tvAge"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/age"
-            android:textSize="16sp"
-            android:paddingTop="25dp"
-            android:layout_marginLeft="34dp"/>
-        <EditText
-            android:id="@+id/etAge"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="14dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:gravity="left"/>
-
-        <TextView
-            android:id="@+id/tvGender"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/gender"
-            android:textSize="16sp"
-            android:paddingTop="25dp"
-            android:layout_marginLeft="34dp"/>
-        <RadioGroup
-            android:id="@+id/radioGroupGender"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="left">
-
-            <RadioButton
-                android:id="@+id/radioMale"
-                android:layout_width="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/male"
-                android:textSize="14sp"
-                android:layout_marginLeft="65dp"
-                android:layout_marginRight="15dp"/>
-            <RadioButton
-                android:id="@+id/radioFemale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/female"
-                android:textSize="14sp"/>
-        </RadioGroup>
-        <TextView
-            android:id="@+id/tvDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/description"
-            android:textSize="16sp"
-            android:paddingTop="25dp"
-            android:layout_marginLeft="34dp"/>
-        <EditText
-            android:id="@+id/etDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="14dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:gravity="left"/>
-        <TextView
-            android:id="@+id/tvStatus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/status"
-            android:textSize="16sp"
-            android:paddingTop="25dp"
-            android:layout_marginLeft="34dp"/>
-        <RadioGroup
-            android:id="@+id/radioGroupStatus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <RadioButton
-                android:id="@+id/radioUnmarried"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/unmarried"
-                android:textSize="14sp"
+                android:text="@string/fill_in_the_details"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:paddingLeft="10dp"
+                android:paddingTop="16dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/Horizontal_grey"
+                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"/>
-            <RadioButton
-                android:id="@+id/radioDivorced"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/married"
-                android:textSize="14sp"
-                android:layout_marginRight="10dp"/>
-            <RadioButton
-                android:id="@+id/radioWidow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/widow"
-                android:textSize="14sp"/>
-        </RadioGroup>
-        <TextView
-            android:id="@+id/tvAddress"
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/address"
-            android:textSize="16sp"
-            android:paddingTop="25dp"
-            android:layout_marginLeft="34dp"/>
-        <EditText
-            android:id="@+id/etAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPostalAddress"
-            android:textSize="14dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"/>
-    </LinearLayout>
+            android:orientation="vertical">
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/tvFullname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/full_name"
+                android:textSize="16sp"
+                android:paddingTop="25dp"
+                android:layout_marginLeft="34dp"/>
+
+            <EditText
+                android:id="@+id/etFullName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="left"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/tvAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/age"
+                android:textSize="16sp"
+                android:paddingTop="25dp"
+                android:layout_marginLeft="34dp"/>
+            <EditText
+                android:id="@+id/etAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="left"/>
+
+            <TextView
+                android:id="@+id/tvGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/gender"
+                android:textSize="16sp"
+                android:paddingTop="25dp"
+                android:layout_marginLeft="34dp"/>
+            <RadioGroup
+                android:id="@+id/radioGroupGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="left">
+
+                <RadioButton
+                    android:id="@+id/radioMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/male"
+                    android:textSize="14sp"
+                    android:layout_marginLeft="65dp"
+                    android:layout_marginRight="15dp"/>
+                <RadioButton
+                    android:id="@+id/radioFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/female"
+                    android:textSize="14sp"/>
+            </RadioGroup>
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/description"
+                android:textSize="16sp"
+                android:paddingTop="25dp"
+                android:layout_marginLeft="34dp"/>
+            <EditText
+                android:id="@+id/etDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="left"/>
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/status"
+                android:textSize="16sp"
+                android:paddingTop="25dp"
+                android:layout_marginLeft="34dp"/>
+            <RadioGroup
+                android:id="@+id/radioGroupStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <RadioButton
+                    android:id="@+id/radioUnmarried"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unmarried"
+                    android:textSize="14sp"
+                    android:layout_marginRight="10dp"/>
+                <RadioButton
+                    android:id="@+id/radioDivorced"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/married"
+                    android:textSize="14sp"
+                    android:layout_marginRight="10dp"/>
+                <RadioButton
+                    android:id="@+id/radioWidow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/widow"
+                    android:textSize="14sp"/>
+            </RadioGroup>
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/address"
+                android:textSize="16sp"
+                android:paddingTop="25dp"
+                android:layout_marginLeft="34dp"/>
+            <EditText
+                android:id="@+id/etAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:textSize="14dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"/>
+            <TextView
+                android:id="@+id/tvContact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/contact_details"
+                android:textSize="16sp"
+                android:paddingTop="25dp"
+                android:layout_marginLeft="34dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="left"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:paddingTop="25dp">
+
+                <ImageView
+                    android:id="@+id/ico_Phone"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_phone" />
+                <EditText
+                    android:id="@+id/etPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:textSize="14sp"
+                    android:paddingLeft="25dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="left"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:paddingTop="15dp">
+
+                <ImageView
+                    android:id="@+id/ico_Mail"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_mail" />
+                <EditText
+                    android:id="@+id/etMail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textSize="14dp"
+                    android:paddingLeft="25dp"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tvPhotos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_photos"
+                android:textSize="16sp"
+                android:paddingTop="25dp"
+                android:layout_marginLeft="34dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                
+                <ImageView
+                    android:id="@+id/insertImg1"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_photo"/>
+                <ImageView
+                    android:id="@+id/insertImg2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_photo"
+                    android:layout_marginLeft="12dp"/>
+                <ImageView
+                    android:id="@+id/insertImg3"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_photo"
+                    android:layout_marginLeft="12dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <Button
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cancel"/>
+                <Button
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/next"
+                    android:layout_marginLeft="25dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

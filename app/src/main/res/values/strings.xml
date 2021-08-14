@@ -3,9 +3,9 @@
     <string name="SignIn">Sign In</string>
     <string name="welcomemsg">Hi There! Let Us Find Your Soul-Mate...</string>
     <string name="email1st">Email</string>
-    <string name="emailplaceholder">Your Email Address</string>
+    <string name="emailplaceholder">Enter Your Email Here</string>
     <string name="password1st">Password</string>
-    <string name="placeholderpwd">Your Password</string>
+    <string name="placeholderpwd">Enter Your Password Here</string>
     <string name="donthaveacc">Don\'t Have an Account? Sign Up</string>
     <string name="signup">Sign Up</string>
     <string name="fill_in_the_details">Fill in the details</string>
@@ -24,6 +24,8 @@
     <string name="add_photos">Add Photos</string>
     <string name="cancel">cancel</string>
     <string name="next">next</string>
+    <string name="agree_state">I have read and agree to the terms of services.</string>
+    <string name="word_limit_warn">Fee calculated according to words limit.</string>
     <string name="phonenumber">Phone Number</string>
     <string name="nameplaceholder">Your Name</string>
     <string name="phoneplceholder">Your Phone Number</string>

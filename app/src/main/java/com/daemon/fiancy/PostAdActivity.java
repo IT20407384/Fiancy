@@ -18,4 +18,9 @@ public class PostAdActivity extends AppCompatActivity {
 
         back_img = findViewById(R.id.back);
     }
+
+    public void adConfirmation(View view) {
+        Intent intent = new Intent(this, AdConfirmActivity.class);
+        startActivity(intent);
+    }
 }

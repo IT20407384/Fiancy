@@ -12,6 +12,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,7 +22,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="15dp">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -49,6 +51,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/full_name"
                 android:textSize="16sp"
+                android:textColor="@color/red_pink"
                 android:paddingTop="25dp"
                 android:layout_marginLeft="34dp"/>
 
@@ -67,6 +70,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/age"
                 android:textSize="16sp"
+                android:textColor="@color/red_pink"
                 android:paddingTop="25dp"
                 android:layout_marginLeft="34dp"/>
             <EditText
@@ -84,6 +88,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/gender"
                 android:textSize="16sp"
+                android:textColor="@color/red_pink"
                 android:paddingTop="25dp"
                 android:layout_marginLeft="34dp"/>
             <RadioGroup
@@ -114,6 +119,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/description"
                 android:textSize="16sp"
+                android:textColor="@color/red_pink"
                 android:paddingTop="25dp"
                 android:layout_marginLeft="34dp"/>
             <EditText
@@ -130,6 +136,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/status"
                 android:textSize="16sp"
+                android:textColor="@color/red_pink"
                 android:paddingTop="25dp"
                 android:layout_marginLeft="34dp"/>
             <RadioGroup
@@ -166,6 +173,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/address"
                 android:textSize="16sp"
+                android:textColor="@color/red_pink"
                 android:paddingTop="25dp"
                 android:layout_marginLeft="34dp"/>
             <EditText
@@ -183,6 +191,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/contact_details"
                 android:textSize="16sp"
+                android:textColor="@color/red_pink"
                 android:paddingTop="25dp"
                 android:layout_marginLeft="34dp"/>
 
@@ -236,6 +245,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/add_photos"
                 android:textSize="16sp"
+                android:textColor="@color/red_pink"
                 android:paddingTop="25dp"
                 android:layout_marginLeft="34dp"/>
 
@@ -268,7 +278,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:layout_marginBottom="25dp">
 
                 <Button
                     android:layout_width="150dp"
@@ -278,7 +289,8 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="@string/next"
-                    android:layout_marginLeft="25dp"/>
+                    android:layout_marginLeft="25dp"
+                    android:onClick="adConfirmation"/>
 
             </LinearLayout>
 

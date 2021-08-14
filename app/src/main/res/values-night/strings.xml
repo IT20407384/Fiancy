@@ -24,4 +24,6 @@
     <string name="add_photos">Add Photos</string>
     <string name="cancel">cancel</string>
     <string name="next">next</string>
+    <string name="agree_state">I have read and agree to the terms of services.</string>
+    <string name="word_limit_warn">Fee calculated according to words limit.</string>
 </resources>

@@ -29,7 +29,7 @@
         <activity android:name=".ReportAd" />
         <activity android:name=".profile" />
         <activity android:name=".Home" />
-        <activity android:name=".PaypalUI">
+        <activity android:name=".PaypalUI"></activity>
         <activity android:name=".PendingAds" />
     </application>
 

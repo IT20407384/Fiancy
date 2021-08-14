@@ -33,4 +33,10 @@
     <string name="updateprofile">Update Profile</string>
     <string name="updtprofilepwd">Current Password</string>
     <string name="newpwd">New Password</string>
+    <string name="Login_paypal">Login</string>
+    <string name="Description"><![CDATA[I come from an upper middle class family. The most important thing in my life is religious believes, moral values & respect for elders. I am modern thinker but also believe in good values given by our ancestors.]]></string>
+    <string name="worng_Ad">Is there something wrong this ad?</string>
+    <string name="reason">Is there something wrong with this ad ?</string>
+    <string name="report_ad">Report this ad</string>
+    <string name="Reject_Ad">Reject</string>
 </resources>

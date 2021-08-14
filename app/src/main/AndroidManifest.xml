@@ -9,23 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FIANCY">
-        <activity android:name=".PremiumLog">
+        <activity android:name=".PremiumLog"></activity>
         <activity android:name=".deleteAdvertisementActivity"></activity>
-        <activity android:name=".ManageAdvertisementActiviy">
+        <activity android:name=".ManageAdvertisementActiviy"></activity>
+        <activity android:name=".AdConfirmActivity"></activity>
+        <activity android:name=".PostAdActivity"></activity>
+        <activity android:name=".UpdateProfile"></activity>
+        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AdConfirmActivity"></activity>
-        <activity android:name=".PostAdActivity"></activity>
-        <activity android:name=".UpdateProfile"> </activity>
-        <activity android:name=".SignUpActivity"> </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".AdConfirmActivity" />
-        <activity android:name=".PostAdActivity"></activity>
-        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

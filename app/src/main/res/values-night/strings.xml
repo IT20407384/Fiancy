@@ -26,4 +26,9 @@
     <string name="next">next</string>
     <string name="agree_state">I have read and agree to the terms of services.</string>
     <string name="word_limit_warn">Fee calculated according to words limit.</string>
+    <string name="update">update</string>
+    <string name="delete">delete</string>
+    <string name="update_advertisement">Update Advertisement</string>
+    <string name="delete_advertisement">Delete Advertisement</string>
+    <string name="confirm_advertisement">Confirm advertisement</string>
 </resources>

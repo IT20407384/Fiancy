@@ -75,15 +75,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
-        android:layout_width="330dp"
+        android:id="@+id/signinfname"
+        android:layout_width="300dp"
         android:layout_height="40dp"
         android:ems="10"
         android:hint="@string/emailplaceholder"
         android:inputType="textEmailAddress"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -98,18 +97,17 @@
         android:textColor="@color/red_pink"
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/signinfname" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
-        android:layout_width="330dp"
+        android:id="@+id/siigninphone"
+        android:layout_width="300dp"
         android:layout_height="40dp"
         android:ems="10"
         android:hint="@string/placeholderpwd"
         android:inputType="textPassword"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -123,8 +121,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
-        android:onClick="show"/>
+        app:layout_constraintTop_toBottomOf="@+id/siigninphone" />
 
     <TextView
         android:id="@+id/textView6"

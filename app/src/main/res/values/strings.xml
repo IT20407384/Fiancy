@@ -26,4 +26,13 @@
     <string name="next">next</string>
     <string name="agree_state">I have read and agree to the terms of services.</string>
     <string name="word_limit_warn">Fee calculated according to words limit.</string>
+    <string name="phonenumber">Phone Number</string>
+    <string name="nameplaceholder">Your Name</string>
+    <string name="phoneplceholder">Your Phone Number</string>
+    <string name="termsofservices">I agree to the Terms of Services and Privacy Policy.</string>
+    <string name="updateprofile">Update Profile</string>
+    <string name="updtprofilepwd">Current Password</string>
+    <string name="newpwd">New Password</string>
+    <string name="yourcurrentpwd">Your Current Password</string>
+    <string name="urnewpswd">Your New Password</string>
 </resources>

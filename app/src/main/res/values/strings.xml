@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">F I A N C Y</string>
+    <string name="SignIn">Sign In</string>
+    <string name="welcomemsg">Hi There! Let Us Find Your Soul-Mate...</string>
+    <string name="email1st">Email</string>
+    <string name="emailplaceholder">Enter Your Email Here</string>
+    <string name="password1st">Password</string>
+    <string name="placeholderpwd">Enter Your Password Here</string>
+    <string name="donthaveacc">Don\'t Have an Account? Sign Up</string>
+    <string name="signup">Sign Up</string>
     <string name="fill_in_the_details">Fill in the details</string>
     <string name="full_name">Full Name</string>
     <string name="gender">Gender</string>

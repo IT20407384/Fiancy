@@ -10,6 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FIANCY">
         <activity android:name=".Filter">
+        <activity android:name=".PremiumLog"></activity>
+        <activity android:name=".deleteAdvertisementActivity"></activity>
+        <activity android:name=".ManageAdvertisementActiviy"></activity>
+        <activity android:name=".AdConfirmActivity"></activity>
+        <activity android:name=".PostAdActivity"></activity>
+        <activity android:name=".UpdateProfile"></activity>
+        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,10 +27,7 @@
         <activity android:name=".Search" />
         <activity android:name=".ReportAd" />
         <activity android:name=".profile" />
-        <activity android:name=".Home">
-
-        </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".Home"></activity>
     </application>
 
 </manifest>

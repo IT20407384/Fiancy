@@ -9,14 +9,22 @@ import android.widget.ImageView;
 
 public class PostAdActivity extends AppCompatActivity {
 
-    ImageView back_img;
+    ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_ad);
 
-        back_img = findViewById(R.id.back);
+        // back button in toolbar
+        back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PostAdActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void adConfirmation(View view) {

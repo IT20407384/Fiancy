@@ -1,13 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">F I A N C Y</string>
     <string name="Description"><![CDATA[I come from an upper middle class family. The most important thing in my life is religious believes, moral values & respect for elders. I am modern thinker but also believe in good values given by our ancestors.]]></string>
-    <string name="select_reason">Select Reason</string>
-    <string name="your_email">Your Email</string>
-    <string name="wrong_ad">report</string>
+    <string name="worng_Ad">Is there something wrong this ad?</string>
     <string name="reason">Is there something wrong with this ad ?</string>
-    <string name="report_reason">Select reason</string>
-    <string name="email">Your Emali</string>
-    <string name="button">SENT</string>
-    <string name="post_ad">Post your ad</string>
     <string name="report_ad">Report this ad</string>
 </resources>

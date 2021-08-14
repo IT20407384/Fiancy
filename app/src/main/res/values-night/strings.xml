@@ -8,4 +8,20 @@
     <string name="placeholderpwd">Enter Your Password Here</string>
     <string name="donthaveacc">Don\'t Have an Account? Sign Up</string>
     <string name="signup">Sign Up</string>
+    <string name="app_name">F I A N C Y</string>
+    <string name="fill_in_the_details">Fill in the details</string>
+    <string name="full_name">Full Name</string>
+    <string name="gender">Gender</string>
+    <string name="age">Age</string>
+    <string name="status">Status</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="unmarried">Unmarried</string>
+    <string name="married">Married</string>
+    <string name="widow">Widow</string>
+    <string name="address">Address</string>
+    <string name="contact_details">Contact details</string>
+    <string name="add_photos">Add Photos</string>
+    <string name="cancel">cancel</string>
+    <string name="next">next</string>
 </resources>

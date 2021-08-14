@@ -35,4 +35,9 @@
     <string name="newpwd">New Password</string>
     <string name="yourcurrentpwd">Your Current Password</string>
     <string name="urnewpswd">Your New Password</string>
+    <string name="update">update</string>
+    <string name="delete">delete</string>
+    <string name="update_advertisement">Update Advertisement</string>
+    <string name="delete_advertisement">Delete Advertisement</string>
+    <string name="confirm_advertisement">Confirm advertisement</string>
 </resources>

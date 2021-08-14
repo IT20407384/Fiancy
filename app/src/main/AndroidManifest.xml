@@ -23,6 +23,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Reject_Reason"></activity>
+        <activity android:name=".ProfileReview" />
+        <activity android:name=".Search" />
+        <activity android:name=".ReportAd" />
+        <activity android:name=".profile" />
+        <activity android:name=".Home" />
+        <activity android:name=".PaypalUI">
+        <activity android:name=".PendingAds" />
     </application>
 
 </manifest>

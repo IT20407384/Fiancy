@@ -40,4 +40,17 @@
     <string name="update_advertisement">Update Advertisement</string>
     <string name="delete_advertisement">Delete Advertisement</string>
     <string name="confirm_advertisement">Confirm advertisement</string>
+    <string name="Login_paypal">Login</string>
+    <string name="Description"><![CDATA[I come from an upper middle class family. The most important thing in my life is religious believes, moral values & respect for elders. I am modern thinker but also believe in good values given by our ancestors.]]></string>
+    <string name="select_reason">Select Reason</string>
+    <string name="your_email">Your Email</string>
+    <string name="wrong_ad">report</string>
+    <string name="reason">Is there something wrong with this ad ?</string>
+    <string name="report_reason">Select reason</string>
+    <string name="email">Your Emali</string>
+    <string name="button">SENT</string>
+    <string name="post_ad">Post your ad</string>
+    <string name="report_ad">Report this ad</string>
+    <string name="Accept_Ad">Accept</string>
+    <string name="Reject_Ad">Reject</string>
 </resources>

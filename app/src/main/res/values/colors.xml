@@ -11,4 +11,6 @@
     <color name="Horizontal_grey">#B8B8B8</color>
     <color name="PayPal_Blue">#0070BA</color>
     <color name="Paypal_gray">#E1E7EB</color>
+    <color name="ad_view_grey">#FAEBEBE9</color>
+    <color name="boxgrey">#C2BFBF</color>
 </resources>

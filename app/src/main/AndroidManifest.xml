@@ -22,6 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AdConfirmActivity"></activity>
+        <activity android:name=".PostAdActivity"></activity>
+        <activity android:name=".UpdateProfile"> </activity>
+        <activity android:name=".SignUpActivity"> </activity>
         <activity android:name=".PendingAds" />
         <activity android:name=".PremiumLog" />
         <activity android:name=".SignUpActivity" />

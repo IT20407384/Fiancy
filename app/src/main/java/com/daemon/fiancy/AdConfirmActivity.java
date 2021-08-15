@@ -7,28 +7,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-public class PostAdActivity extends AppCompatActivity {
-
+public class AdConfirmActivity extends AppCompatActivity {
     ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post_ad);
+        setContentView(R.layout.activity_ad_confirm);
 
         // back button in toolbar
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PostAdActivity.this, MainActivity.class);
+                Intent intent = new Intent(AdConfirmActivity.this, PostAdActivity.class);
                 startActivity(intent);
             }
         });
-    }
-
-    public void adConfirmation(View view) {
-        Intent intent = new Intent(this, AdConfirmActivity.class);
-        startActivity(intent);
     }
 }

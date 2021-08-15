@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PostAdActivity"
-    android:background="@color/white"
+    tools:context=".ManageAdvertisementActiviy"
     android:orientation="vertical">
-
     <include layout="@layout/toolbar"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -26,7 +25,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/fill_in_the_details"
+                    android:text="@string/update_advertisement"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
@@ -63,55 +62,7 @@
                     android:gravity="left"
                     android:textSize="14dp" />
 
-                <TextView
-                    android:id="@+id/tvAge"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/age"
-                    android:textSize="16sp"
-                    android:textColor="@color/red_pink"
-                    android:paddingTop="25dp"
-                    android:layout_marginLeft="34dp"/>
-                <EditText
-                    android:id="@+id/etAge"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:gravity="left"/>
 
-                <TextView
-                    android:id="@+id/tvGender"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/gender"
-                    android:textSize="16sp"
-                    android:textColor="@color/red_pink"
-                    android:paddingTop="25dp"
-                    android:layout_marginLeft="34dp"/>
-                <RadioGroup
-                    android:id="@+id/radioGroupGender"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="left">
-
-                    <RadioButton
-                        android:id="@+id/radioMale"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/male"
-                        android:textSize="14sp"
-                        android:layout_marginLeft="65dp"
-                        android:layout_marginRight="15dp"/>
-                    <RadioButton
-                        android:id="@+id/radioFemale"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/female"
-                        android:textSize="14sp"/>
-                </RadioGroup>
                 <TextView
                     android:id="@+id/tvDescription"
                     android:layout_width="match_parent"
@@ -283,14 +234,13 @@
                     <Button
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/cancel"/>
+                        android:text="@string/update"/>
                     <Button
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/next"
+                        android:text="@string/delete"
                         android:layout_marginLeft="25dp"
-                        android:onClick="adConfirmation"/>
-
+                        android:onClick="deleteAd"/>
                 </LinearLayout>
 
             </LinearLayout>

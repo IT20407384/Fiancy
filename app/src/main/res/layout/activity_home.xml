@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Home">
-    <include layout="@layout/toolbar"/>
+    <include layout="@layout/toolbar_home"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -34,7 +34,7 @@
                 android:gravity="right">
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/imageView50"
                     android:layout_width="44dp"
                     android:layout_height="44dp"
                     android:layout_marginRight="10dp"
@@ -80,7 +80,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingLeft="15dp"
-                            android:text="Jane Doe"
+                            android:text="@string/name_1"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
@@ -98,7 +98,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Galle, Sri Lanka"
+                                android:text="@string/loc"
                                 android:textSize="15sp" />
                         </LinearLayout>
 
@@ -113,14 +113,14 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="28 Years"
+                                android:text="@string/age_1"
                                 android:textSize="15sp" />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="right"
-                                android:text="Male"
+                                android:text="@string/male"
                                 android:textSize="15sp" />
                         </LinearLayout>
 
@@ -135,14 +135,14 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Buddhist"
+                                android:text="@string/reli"
                                 android:textSize="15sp" />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="right"
-                                android:text="IT Professional"
+                                android:text="@string/prof"
                                 android:textSize="15sp" />
                         </LinearLayout>
 
@@ -200,7 +200,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingLeft="15dp"
-                        android:text="Kalhari R"
+                        android:text="@string/name_2"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -218,7 +218,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Gampaha, Sri Lanka"
+                            android:text="@string/locati"
                             android:textSize="15sp" />
                     </LinearLayout>
 
@@ -233,14 +233,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="30 Years"
+                            android:text="@string/age_2"
                             android:textSize="15sp" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="right"
-                            android:text="Female"
+                            android:text="@string/gende"
                             android:textSize="15sp" />
                     </LinearLayout>
 
@@ -255,14 +255,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Buddhist"
+                            android:text="@string/religi"
                             android:textSize="15sp" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="right"
-                            android:text=" Goverment Service"
+                            android:text="@string/professti"
                             android:textSize="15sp" />
                     </LinearLayout>
 
@@ -308,7 +308,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingLeft="15dp"
-                        android:text=" Dijani A"
+                        android:text="@string/name_3"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -326,7 +326,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Horana, Sri Lanka"
+                            android:text="@string/loca"
                             android:textSize="15sp" />
                     </LinearLayout>
 
@@ -341,14 +341,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="32 Years"
+                            android:text="@string/age_3"
                             android:textSize="15sp" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="right"
-                            android:text="Female"
+                            android:text="@string/gen"
                             android:textSize="15sp" />
                     </LinearLayout>
 
@@ -363,14 +363,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Buddhist"
+                            android:text="@string/relig"
                             android:textSize="15sp" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="right"
-                            android:text="Teacher"
+                            android:text="@string/pro"
                             android:textSize="15sp" />
                     </LinearLayout>
 
@@ -416,7 +416,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingLeft="15dp"
-                        android:text=" Nishan G"
+                        android:text="@string/name"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -434,7 +434,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Nittanbuwa, Sri Lanka"
+                            android:text="@string/location"
                             android:textSize="15sp" />
                     </LinearLayout>
 
@@ -449,14 +449,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="39 Years"
+                            android:text="@string/age_39"
                             android:textSize="15sp" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="right"
-                            android:text="Male"
+                            android:text="@string/male"
                             android:textSize="15sp" />
                     </LinearLayout>
 
@@ -471,14 +471,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Buddhist"
+                            android:text="@string/Religion"
                             android:textSize="15sp" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="right"
-                            android:text="Manager HR"
+                            android:text="@string/profe"
                             android:textSize="15sp" />
                     </LinearLayout>
 

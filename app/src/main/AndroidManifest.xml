@@ -14,6 +14,17 @@
         <activity android:name=".AdminPanel"></activity>
         <activity android:name=".Reject_Reason">
 
+        <activity android:name=".Reject_Reason"></activity>
+        <activity android:name=".ProfileReview" />
+        <activity android:name=".Search" />
+        <activity android:name=".ReportAd" />
+        <activity android:name=".profile" />
+        <activity android:name=".Home" />
+        <activity android:name=".PaypalUI"/>
+        <activity android:name=".AdConfirmActivity"/>
+        <activity android:name=".PostAdActivity"/>
+        <activity android:name=".deleteAdvertisementActivity"/>
+        <activity android:name=".ManageAdvertisementActiviy">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,6 +50,16 @@
         <activity android:name=".UpdateProfile" />
         <activity android:name=".PostAdActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".UpdateProfile"/>
+        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".PremiumLog"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MyAdCollection"/>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+
     </application>
 
 </manifest>

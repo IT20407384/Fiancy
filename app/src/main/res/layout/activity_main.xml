@@ -44,12 +44,17 @@
         android:text="@string/SignIn"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" /><![CDATA[
     tools:context=".MainActivity"
     android:background="@color/white"
     android:orientation="vertical">
 
-    <include layout="@layout/toolbar"></include>
+    ]]>
+
+    <include
+        layout="@layout/toolbar"
+        tools:layout_editor_absoluteX="141dp"
+        tools:layout_editor_absoluteY="-7dp"></include>
 
     <TextView
         android:id="@+id/textView3"

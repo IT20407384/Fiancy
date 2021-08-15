@@ -106,4 +106,14 @@
     <string name="reli_7">Buddhist</string>
     <string name="Accept_Ad">Accept</string>
     <string name="Reject_Ad">Reject</string>
+    <string name="primeDesc1">10% discount on the advertisement.</string>
+    <string name="primeDesc2">Unlock Match Finder.</string>
+    <string name="primeDesc3">Cost : Rs.5000/=</string>
+    <string name="buyprime">Buy Fiancy Premium</string>
+    <string name="ADLive">Status : Advertisement is Now Live</string>
+    <string name="primeaccount">Premium Account</string>
+    <string name="successPayment">Advertisement Payment Successful</string>
+    <string name="matchFinder">Match Finder</string>
+    <string name="payForAd">Pay for Ad</string>
+    <string name="editAd">Edit Ad</string>
 </resources>

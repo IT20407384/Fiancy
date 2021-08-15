@@ -9,33 +9,35 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FIANCY">
-        <activity android:name=".Reject_Reason"></activity>
+        <activity android:name=".MatchFinder">
+
+        </activity>
+        <activity android:name=".Reject_Reason" />
         <activity android:name=".ProfileReview" />
         <activity android:name=".Search" />
         <activity android:name=".ReportAd" />
         <activity android:name=".profile" />
-        <activity android:name=".Home" />
-        <activity android:name=".PaypalUI"/>
-        <activity android:name=".AdConfirmActivity"/>
-        <activity android:name=".PostAdActivity"/>
-        <activity android:name=".deleteAdvertisementActivity"/>
-        <activity android:name=".ManageAdvertisementActiviy">
+        <activity android:name=".Home" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UpdateProfile"/>
-        <activity android:name=".SignUpActivity"></activity>
-        <activity android:name=".PremiumLog"></activity>
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".MyAdCollection"/>
+        <activity android:name=".PaypalUI" />
+        <activity android:name=".AdConfirmActivity" />
+        <activity android:name=".PostAdActivity" />
+        <activity android:name=".deleteAdvertisementActivity" />
+        <activity android:name=".ManageAdvertisementActiviy" />
+        <activity android:name=".UpdateProfile" />
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".PremiumLog" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".MyAdCollection"></activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
-
     </application>
 
 </manifest>

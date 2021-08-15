@@ -112,4 +112,7 @@
     <string name="matchFinder">Match Finder</string>
     <string name="payForAd">Pay for Ad</string>
     <string name="editAd">Edit Ad</string>
+    <string name="foundedMatches">Possible Matches</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -23,10 +23,12 @@
 
             <SearchView
                 android:id="@+id/Search"
-                android:layout_width="220dp"
-                android:layout_height="40dp"
+                android:layout_width="219dp"
+                android:layout_height="match_parent"
                 tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="102dp" />
+                tools:layout_editor_absoluteY="102dp">
+
+            </SearchView>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -502,4 +504,5 @@
       </LinearLayout>
 
         </LinearLayout>
+
 </LinearLayout>

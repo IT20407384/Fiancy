@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Home">
-    <include layout="@layout/toolbar"/>
+    <include layout="@layout/toolbar_home"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -120,7 +120,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="right"
-                                android:text="@string/gend"
+                                android:text="@string/male"
                                 android:textSize="15sp" />
                         </LinearLayout>
 
@@ -449,14 +449,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/age"
+                            android:text="@string/age_39"
                             android:textSize="15sp" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="right"
-                            android:text="@string/gender"
+                            android:text="@string/male"
                             android:textSize="15sp" />
                     </LinearLayout>
 

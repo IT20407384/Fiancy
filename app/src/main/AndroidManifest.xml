@@ -9,20 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FIANCY">
-        <activity android:name=".Reject_Reason"></activity>
-        <activity android:name=".ProfileReview" />
-        <activity android:name=".Search" />
-        <activity android:name=".ReportAd" />
-        <activity android:name=".profile" />
-        <activity android:name=".Home" />
-        <activity android:name=".PaypalUI">
+        <activity android:name=".Report_Ad_Check"></activity>
+
+        <activity android:name=".AdminPanel"></activity>
+        <activity android:name=".Reject_Reason">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".PendingAds" />
+
+        <activity android:name=".ProfileReview"></activity>
+
+        <activity android:name=".Search" />
+        <activity android:name=".ReportAd" />
+        <activity android:name=".profile" />
+        <activity android:name=".Home" />
+        <activity android:name=".PaypalUI"></activity>
         <activity android:name=".PremiumLog" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".UpdateProfile" />

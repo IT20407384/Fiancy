@@ -6,29 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".ProfileReview">
 
-    <include layout="@layout/toolbar"></include>
+    <include
+        android:id="@+id/include6"
+        layout="@layout/toolbar"></include>
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="32dp"
         android:src="@drawable/ic_adprofile"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="85dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include6" />
 
     <TextView
         android:id="@+id/textView24"
         android:layout_width="304dp"
         android:layout_height="63dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
         android:paddingLeft="20dp"
         android:text="Jone Doe"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.273"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
@@ -74,18 +79,24 @@
         android:id="@+id/button5"
         android:layout_width="112dp"
         android:layout_height="45dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
         android:text="@string/Accept_Ad"
+        android:textAllCaps="false"
         app:layout_constraintBaseline_toBaselineOf="@+id/button8"
-        tools:layout_editor_absoluteX="38dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button8"
         android:layout_width="112dp"
         android:layout_height="45dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
         android:text="@string/Reject_Ad"
-        app:layout_constraintTop_toBottomOf="@+id/textView23"
-        tools:layout_editor_absoluteX="235dp" />
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

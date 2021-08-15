@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class AdminUiActivity extends AppCompatActivity {
+public class ProfileReview extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.admin_ui);
+        setContentView(R.layout.activity_profile_review);
     }
 }

@@ -44,4 +44,6 @@
     <string name="button">SENT</string>
     <string name="post_ad">Post your ad</string>
     <string name="report_ad">Report this ad</string>
+    <string name="Accept_Ad">Accept</string>
+    <string name="Reject_Ad">Reject</string>
 </resources>

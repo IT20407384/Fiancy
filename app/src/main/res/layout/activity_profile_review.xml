@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileReview">
+
+    <include layout="@layout/toolbar"></include>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_adprofile"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="85dp" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="304dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="20dp"
+        android:text="Jone Doe"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.273"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="295dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="16dp"
+        android:text="28 Years"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView22"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView24" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="295dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Galle,Sri Lanka"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView23"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="295dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:text="Sinhala"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="112dp"
+        android:layout_height="45dp"
+        android:text="@string/Accept_Ad"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button8"
+        tools:layout_editor_absoluteX="38dp" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="112dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/Reject_Ad"
+        app:layout_constraintTop_toBottomOf="@+id/textView23"
+        tools:layout_editor_absoluteX="235dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

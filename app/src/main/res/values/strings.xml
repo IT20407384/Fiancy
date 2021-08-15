@@ -33,4 +33,5 @@
     <string name="newpwd">New Password</string>
     <string name="yourcurrentpwd">Your Current Password</string>
     <string name="urnewpswd">Your New Password</string>
+    <string name="Login_paypal">Login</string>
 </resources>

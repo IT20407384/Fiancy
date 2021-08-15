@@ -31,4 +31,5 @@
     <string name="updateprofile">Update Profile</string>
     <string name="updtprofilepwd">Current Password</string>
     <string name="newpwd">New Password</string>
+    <string name="Login_paypal">Login</string>
 </resources>

@@ -15,7 +15,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp">
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="360dp"
             android:layout_height="600dp"
             android:orientation="vertical"
             android:background="@drawable/box"
@@ -31,12 +31,13 @@
                 android:textStyle="bold" />
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/drop_down"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_marginRight="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -62,23 +63,23 @@
                 android:layout_width="283dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:layout_marginRight="30dp"
                 android:text="@string/email"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"/>
 
         <EditText
-            android:layout_width="match_parent"
+            android:layout_width="340dp"
             android:layout_height="30dp"
-            android:hint="email"
+            android:hint="@string/pr_email"
             android:layout_marginTop="10dp"
             android:background="@drawable/et_box"
             android:layout_gravity="center"/>
 
         <EditText
-            android:layout_width="350dp"
+            android:layout_width="340dp"
             android:layout_height="230dp"
-            android:hint="Message"
+            android:hint="@string/message"
             android:layout_marginTop="30dp"
             android:background="@drawable/et_box"
             android:gravity="top"

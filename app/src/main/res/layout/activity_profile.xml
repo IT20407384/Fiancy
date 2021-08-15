@@ -53,29 +53,31 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Galle, Sri Lanka"
+                android:text="@string/locatio"
                 android:textSize="20sp"
                 android:gravity="center_vertical"/>
 
         </LinearLayout>
     </LinearLayout>
     </LinearLayout>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:paddingLeft="20dp"
-            android:text= "Jone Doe"
+            android:text="@string/name_4"
             android:textSize="36sp"
-            android:textStyle="bold"
-            android:layout_marginTop="5dp"/>
-       <LinearLayout
+            android:textStyle="bold" />
+
+        <LinearLayout
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:orientation="vertical">
            <TextView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:text="28 Years"
+               android:text="@string/_28_years"
                android:textSize="20sp"
                android:layout_marginTop="20dp"/>
 
@@ -83,21 +85,21 @@
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_marginTop="20dp"
-               android:text=" IT Professional"
+               android:text="@string/profess"
                android:textSize="20sp" />
 
            <TextView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_marginTop="20dp"
-               android:text=" Sinhala "
+               android:text="@string/national"
                android:textSize="20sp" />
 
            <TextView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_marginTop="20dp"
-               android:text=" Master's Degree or Equivalent "
+               android:text="@string/professio"
                android:textSize="20sp" />
 
            <TextView

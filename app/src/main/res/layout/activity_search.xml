@@ -101,7 +101,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Galle, Sri Lanka"
+                        android:text="@string/loca1"
                         android:textSize="15sp" />
                 </LinearLayout>
 
@@ -123,7 +123,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="right"
-                        android:text="Male"
+                        android:text="@string/male_5"
                         android:textSize="15sp" />
                 </LinearLayout>
 
@@ -138,14 +138,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Buddhist"
+                        android:text="@string/rel_5"
                         android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="right"
-                        android:text="IT Professional"
+                        android:text="@string/pro_3"
                         android:textSize="15sp" />
                 </LinearLayout>
 
@@ -202,7 +202,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="15dp"
-                    android:text="Kalhari R"
+                    android:text="@string/name_7"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -220,7 +220,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Gampaha, Sri Lanka"
+                        android:text="@string/loca_3"
                         android:textSize="15sp" />
                 </LinearLayout>
 
@@ -235,14 +235,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="30 Years"
+                        android:text="@string/age_6"
                         android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="right"
-                        android:text="Female"
+                        android:text="@string/gen_4"
                         android:textSize="15sp" />
                 </LinearLayout>
 
@@ -257,7 +257,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Buddhist"
+                        android:text="@string/reli_7"
                         android:textSize="15sp" />
 
                     <TextView
@@ -306,7 +306,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="15dp"
-                    android:text=" Kalhara M"
+                    android:text="@string/name_5"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 

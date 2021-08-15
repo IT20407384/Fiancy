@@ -40,10 +40,11 @@
                     android:orientation="vertical">
 
                     <androidx.fragment.app.FragmentContainerView
-                        android:id="@+id/fragmentContainerView"
+                        android:id="@+id/fragmentContainerView112"
                         android:name="com.daemon.fiancy.BuyPremium"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        tools:layout="@layout/fragment_buy_premium" />
                 </LinearLayout>
 
             </FrameLayout>

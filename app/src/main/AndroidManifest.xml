@@ -15,23 +15,24 @@
         <activity android:name=".ReportAd" />
         <activity android:name=".profile" />
         <activity android:name=".Home" />
-        <activity android:name=".PaypalUI">
+        <activity android:name=".PaypalUI"></activity>
+        <activity android:name=".AdConfirmActivity"></activity>
+        <activity android:name=".PostAdActivity"></activity>
+        <activity android:name=".UpdateProfile"></activity>
+        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".PremiumLog"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MyAdCollection">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AdConfirmActivity"></activity>
-        <activity android:name=".PostAdActivity"></activity>
-        <activity android:name=".UpdateProfile"> </activity>
-        <activity android:name=".SignUpActivity"> </activity>
-        <activity android:name=".PendingAds" />
-        <activity android:name=".PremiumLog" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".UpdateProfile" />
-        <activity android:name=".PostAdActivity" />
-        <activity android:name=".MainActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

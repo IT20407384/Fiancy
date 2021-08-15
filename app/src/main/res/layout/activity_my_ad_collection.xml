@@ -39,10 +39,11 @@
                     android:orientation="vertical">
 
                     <androidx.fragment.app.FragmentContainerView
-                        android:id="@+id/fragmentContainerView3"
-                        android:name="com.daemon.fiancy.MyAdvertisements"
+                        android:id="@+id/fragmentContainerView300"
+                        android:name="com.daemon.fiancy.MyAdvertisement"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        tools:layout="@layout/fragment_my_advertisement" />
 
 
                 </LinearLayout>
@@ -54,10 +55,11 @@
                     android:orientation="vertical">
 
                     <androidx.fragment.app.FragmentContainerView
-                        android:id="@+id/fragmentContainerView4"
+                        android:id="@+id/fragmentContainerView400"
                         android:name="com.daemon.fiancy.MyFavorites"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        tools:layout="@layout/fragment_my_favorites" />
                 </LinearLayout>
 
             </FrameLayout>

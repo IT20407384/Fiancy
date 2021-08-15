@@ -39,4 +39,7 @@
     <string name="reason">Is there something wrong with this ad ?</string>
     <string name="report_ad">Report this ad</string>
     <string name="Reject_Ad">Reject</string>
+    <string name="Reject_Reason">Reason to Reject</string>
+    <string name="Reason">Reason</string>
+    <string name="Submit">Submit</string>
 </resources>

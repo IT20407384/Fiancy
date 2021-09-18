@@ -102,7 +102,6 @@
     <string name="reli_7">Buddhist</string>
     <string name="Accept_Ad">Accept</string>
     <string name="Reject_Ad">Reject</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Reject_Reason">Reason to Reject</string>
     <string name="Reason">Reason</string>
@@ -120,6 +119,4 @@
     <string name="payForAd">Pay for Ad</string>
     <string name="editAd">Edit Ad</string>
     <string name="foundedMatches">Possible Matches</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

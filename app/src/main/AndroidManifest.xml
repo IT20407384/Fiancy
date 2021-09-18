@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FIANCY">
-        <activity android:name=".NavDrawer"/>
         <activity android:name=".Reject_Reason" />
         <activity android:name=".ProfileReview" />
         <activity android:name=".Search" />

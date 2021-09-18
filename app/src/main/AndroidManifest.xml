@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.daemon.fiancy">
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,15 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FIANCY">
-        <activity android:name=".MatchFinder">
-
-        </activity>
         <activity android:name=".Reject_Reason" />
         <activity android:name=".ProfileReview" />
         <activity android:name=".Search" />
         <activity android:name=".ReportAd" />
         <activity android:name=".profile" />
-        <activity android:name=".Home" >
+        <activity android:name=".Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,13 +24,13 @@
         <activity android:name=".PaypalUI" />
         <activity android:name=".AdConfirmActivity" />
         <activity android:name=".PostAdActivity" />
-        <activity android:name=".deleteAdvertisementActivity" />
-        <activity android:name=".ManageAdvertisementActiviy" />
         <activity android:name=".UpdateProfile" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".PremiumLog" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".MyAdCollection"></activity>
+        <activity android:name=".MainActivity">
+
+        </activity>
+        <activity android:name=".MyAdCollection" />
 
         <meta-data
             android:name="preloaded_fonts"

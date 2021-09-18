@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "886753559295",
+    "project_id": "fiancy-e3361",
+    "storage_bucket": "fiancy-e3361.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886753559295:android:77971caff87f76ea4482ca",
+        "android_client_info": {
+          "package_name": "com.daemon.fiancy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "886753559295-j50li3e90fs591o4brd2sk0iju88gdjn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDufqZZNpTPqCLMs_UiIvS-WhCQzEAAnO8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "886753559295-j50li3e90fs591o4brd2sk0iju88gdjn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

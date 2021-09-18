@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--Linear layout as the root layout-->
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
-
-    <include layout="@layout/toolbar" />
+    android:orientation="vertical"
+    tools:context=".Home">
+    <include layout="@layout/toolbar"></include>
 
     <TabHost
-        android:id="@+id/tabhost"
+        android:id="@+id/tabhost10"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -34,17 +32,17 @@
 
                 <!--for tab 1-->
                 <LinearLayout
-                    android:id="@+id/premium"
+                    android:id="@+id/match_fnd"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
                     <androidx.fragment.app.FragmentContainerView
-                        android:id="@+id/fragmentContainerView112"
-                        android:name="com.daemon.fiancy.BuyPremium"
+                        android:id="@+id/fragmentContainerView"
+                        android:name="com.daemon.fiancy.MatchFragment"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        tools:layout="@layout/fragment_buy_premium" />
+                        tools:layout="@layout/fragment_match" />
                 </LinearLayout>
 
             </FrameLayout>

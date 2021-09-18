@@ -4,21 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
-public class Home extends AppCompatActivity {
-   LinearLayout profile;
-
+public class NavDrawer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_nav_drawer);
 
-        profile = findViewById(R.id.p1);
         DrawerLayout drawerLayout;
         ImageView profile, proPic;
 
@@ -59,14 +56,6 @@ public class Home extends AppCompatActivity {
             // when drawer is open
             // close Drawer
             drawerLayout.closeDrawer(GravityCompat.START);
-        }
-    }
-
-
-    public void clicked(View view) {
-        if (view == profile) {
-            Intent intent = new Intent(this, profile.class);
-            startActivity(intent);
         }
     }
 }

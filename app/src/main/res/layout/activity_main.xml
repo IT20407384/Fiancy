@@ -72,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
-        android:id="@+id/SMloginemail"
+        android:id="@+id/SMupdatename"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:ems="10"
@@ -94,10 +94,10 @@
         android:textColor="@color/red_pink"
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SMloginemail" />
+        app:layout_constraintTop_toBottomOf="@+id/SMupdatename" />
 
     <EditText
-        android:id="@+id/SMloginpassword"
+        android:id="@+id/SMupdatephone"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:ems="10"
@@ -118,7 +118,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SMloginpassword" />
+        app:layout_constraintTop_toBottomOf="@+id/SMupdatephone" />
 
     <TextView
         android:id="@+id/textView6"

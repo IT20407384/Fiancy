@@ -43,6 +43,7 @@
 
                 </LinearLayout>
 
+
                 <LinearLayout
                     android:id="@+id/reported"
                     android:layout_width="match_parent"
@@ -56,10 +57,19 @@
 
                 </LinearLayout>
 
-
             </FrameLayout>
+
         </LinearLayout>
     </TabHost>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:layout_editor_absoluteX="0dp">
+    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

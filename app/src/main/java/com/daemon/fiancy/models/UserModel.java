@@ -6,6 +6,7 @@ public class UserModel {
     private String phoneNumber;
     private String email;
     private String password;
+    private boolean uPremium = false;
 
     public UserModel() {
     }
@@ -40,5 +41,13 @@ public class UserModel {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isuPremium() {
+        return uPremium;
+    }
+
+    public void setuPremium(boolean uPremium) {
+        this.uPremium = uPremium;
     }
 }

@@ -29,13 +29,13 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        fullName = findViewById(R.id.SMloginemail);
-        phone = findViewById(R.id.SMloginpassword);
-        email = findViewById(R.id.SMsigninemail);
+        fullName = findViewById(R.id.SMupdatename);
+        phone = findViewById(R.id.SMupdatephone);
+        email = findViewById(R.id.SMupdateemail);
         password = findViewById(R.id.SMsigninpassword);
 
         agreeCheck = findViewById(R.id.SMagreeCheckSign);
-        signIn = findViewById(R.id.SMsigninButton);
+        signIn = findViewById(R.id.SMupdateprofilebtn);
 
         userModel = new UserModel();
 

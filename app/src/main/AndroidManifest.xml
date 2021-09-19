@@ -15,20 +15,21 @@
         <activity android:name=".ReportAd" />
         <activity android:name=".profile" />
         <activity android:name=".Home">
-
-        </activity>
-        <activity android:name=".PaypalUI" />
-        <activity android:name=".AdConfirmActivity" />
-        <activity android:name=".PostAdActivity" />
-        <activity android:name=".UpdateProfile" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".PremiumLog" />
-        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".PaypalUI" />
+        <activity android:name=".AdConfirmActivity" />
+        <activity android:name=".AdminPanel">
+        </activity>
+        <activity android:name=".PostAdActivity" />
+        <activity android:name=".UpdateProfile" />
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".PremiumLog" />
+        <activity android:name=".MainActivity">
         </activity>
         <activity android:name=".MyAdCollection" />
 

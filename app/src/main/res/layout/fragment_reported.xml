@@ -16,7 +16,6 @@
 
         <LinearLayout
             android:id="@+id/p1"
-            android:onClick="clicked"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/ad_view_background"
@@ -137,7 +136,6 @@
 
         <LinearLayout
             android:id="@+id/p2"
-            android:onClick="clicked"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/ad_view_background"
@@ -244,7 +242,6 @@
 
         <LinearLayout
             android:id="@+id/p3"
-            android:onClick="clicked"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/ad_view_background"
@@ -352,7 +349,6 @@
 
         <LinearLayout
             android:id="@+id/p4"
-            android:onClick="clicked"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/ad_view_background"

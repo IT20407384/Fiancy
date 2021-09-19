@@ -24,7 +24,7 @@
         app:layout_constraintTop_toBottomOf="@+id/include3" />
 
     <EditText
-        android:id="@+id/SMloginemail"
+        android:id="@+id/SMupdatename"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:ems="10"
@@ -37,7 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <EditText
-        android:id="@+id/SMloginpassword"
+        android:id="@+id/SMupdatephone"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:ems="10"
@@ -60,10 +60,10 @@
         android:textColor="@color/red_pink"
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SMloginemail" />
+        app:layout_constraintTop_toBottomOf="@+id/SMupdatename" />
 
     <EditText
-        android:id="@+id/SMsigninemail"
+        android:id="@+id/SMupdateemail"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:ems="10"
@@ -86,10 +86,10 @@
         android:textColor="@color/red_pink"
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SMloginpassword" />
+        app:layout_constraintTop_toBottomOf="@+id/SMupdatephone" />
 
     <Button
-        android:id="@+id/SMsigninButton"
+        android:id="@+id/SMupdateprofilebtn"
         android:layout_width="200dp"
         android:layout_height="45dp"
         android:layout_marginTop="40dp"
@@ -98,7 +98,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword3" />
+        app:layout_constraintTop_toBottomOf="@+id/SMupdatenewpassword" />
 
     <TextView
         android:id="@+id/textView16"
@@ -111,10 +111,10 @@
         android:textColor="@color/red_pink"
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SMsigninemail" />
+        app:layout_constraintTop_toBottomOf="@+id/SMupdateemail" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/SMupdatecurrentpassword"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:ems="10"
@@ -137,10 +137,10 @@
         android:textColor="@color/red_pink"
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/SMupdatecurrentpassword" />
 
     <EditText
-        android:id="@+id/editTextTextPassword3"
+        android:id="@+id/SMupdatenewpassword"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:ems="10"

@@ -5,7 +5,7 @@
       <map>
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_admin_panel.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_delete_advertisement.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_manage_advertisement.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_match_finder.xml" value="0.20416666666666666" />
@@ -17,12 +17,17 @@
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_reject_reason.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_search.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
-        <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/fragment_buy_premium.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_tempact.xml" value="0.17083333333333334" />
+        <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_tempory.xml" value="0.17083333333333334" />
+        <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_update_profile.xml" value="0.33" />
+        <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/fragment_buy_premium.xml" value="0.33" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/fragment_my_advertisement.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/fragment_pending.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/fragment_reported.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/home_nav_drawer.xml" value="0.25" />
+        <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/profile_recycle.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/toolbar.xml" value="0.18645833333333334" />
+        <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/toolbar_home.xml" value="0.18645833333333334" />
       </map>
     </option>
   </component>

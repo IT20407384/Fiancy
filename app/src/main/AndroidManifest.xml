@@ -27,6 +27,7 @@
         <activity android:name=".AdConfirmActivity" />
         <activity android:name=".PostAdActivity" />
         <activity android:name=".UpdateProfile">
+
         </activity>
         <activity android:name=".SignUpActivity" />
         <activity android:name=".PremiumLog" />

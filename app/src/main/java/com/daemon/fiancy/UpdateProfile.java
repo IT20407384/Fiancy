@@ -64,8 +64,6 @@ public class UpdateProfile extends AppCompatActivity {
 
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("AppUser");
 
-        final String[] docChild = {null};
-
         dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -75,7 +73,6 @@ public class UpdateProfile extends AppCompatActivity {
 
                     assert userModel != null;
                     if(userModel.getEmail().equalsIgnoreCase(emailShared)) {
-                        docChild[0] = mySnap.getChildren().toString();
                         break;
                     }
                 }
@@ -93,13 +90,11 @@ public class UpdateProfile extends AppCompatActivity {
         updateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //DatabaseReference updateRef = FirebaseDatabase.getInstance().getReference().child("AppUser").child(docChild[0]);
                 if(TextUtils.isEmpty(oldPassword.getText().toString()))
                     Toast.makeText(getApplicationContext(), "Please Enter Your Current Password", Toast.LENGTH_SHORT).show();
 
                 if(TextUtils.isEmpty(newPassword.getText().toString())) {
-                    Toast.makeText(getApplicationContext(), docChild[0], Toast.LENGTH_SHORT).show();
+                    //
                 }
             }
         });

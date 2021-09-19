@@ -27,13 +27,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    sourceSets {
-        main {
-            java {
-                srcDirs 'src\\main\\java', 'src\\main\\java\\com.daemon.fiancy\\cimodels', 'src\\main\\java\\2'
-            }
-        }
-    }
 }
 
 dependencies {
@@ -50,4 +43,8 @@ dependencies {
     //Image picker
     implementation 'com.github.Drjacky:ImagePicker:2.1.13'
 
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation  'com.android.support:recyclerview-v7:30.0.0'
 }

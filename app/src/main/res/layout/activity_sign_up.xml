@@ -37,7 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <EditText
-        android:id="@+id/signinfname"
+        android:id="@+id/SMupdatename"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:ems="10"
@@ -50,7 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <EditText
-        android:id="@+id/siigninphone"
+        android:id="@+id/SMupdatephone"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:ems="10"
@@ -73,10 +73,10 @@
         android:textColor="@color/red_pink"
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signinfname" />
+        app:layout_constraintTop_toBottomOf="@+id/SMupdatename" />
 
     <EditText
-        android:id="@+id/signinemail"
+        android:id="@+id/SMupdateemail"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:ems="10"
@@ -99,10 +99,10 @@
         android:textColor="@color/red_pink"
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/siigninphone" />
+        app:layout_constraintTop_toBottomOf="@+id/SMupdatephone" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/SMsigninpassword"
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:ems="10"
@@ -125,30 +125,32 @@
         android:textColor="@color/red_pink"
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signinemail" />
+        app:layout_constraintTop_toBottomOf="@+id/SMupdateemail" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/SMagreeCheckSign"
         android:layout_width="256dp"
         android:layout_height="40dp"
         android:layout_marginTop="47dp"
+        android:onClick="agreeTerms"
         android:text="@string/termsofservices"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.541"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2" />
+        app:layout_constraintTop_toBottomOf="@+id/SMsigninpassword" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/SMupdateprofilebtn"
         android:layout_width="200dp"
         android:layout_height="45dp"
         android:layout_marginTop="18dp"
+        android:enabled="false"
         android:text="@string/SignIn"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+        app:layout_constraintTop_toBottomOf="@+id/SMagreeCheckSign" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

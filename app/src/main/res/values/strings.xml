@@ -16,9 +16,8 @@
     <string name="status">Status</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
-    <string name="unmarried">Unmarried</string>
+    <string name="nevermarried">Never Married</string>
     <string name="married">Married</string>
-    <string name="widow">Widow</string>
     <string name="address">Address</string>
     <string name="contact_details">Contact details</string>
     <string name="add_photos">Add Photos</string>
@@ -56,7 +55,6 @@
     <string name="ok">ok</string>
     <string name="religion">Religion</string>
     <string name="educational_qualification">Educational Qualification</string>
-    <string name="profession">Profession</string>
     <string name="nationality">Nationality</string>
     <string name="message">Message</string>
     <string name="pr_email">email</string>
@@ -119,5 +117,25 @@
     <string name="payForAd">Pay for Ad</string>
     <string name="editAd">Edit Ad</string>
     <string name="foundedMatches">Possible Matches</string>
+    <string name="devorced">Devorced</string>
+    <string name="separated">Separated</string>
+    <string name="unmarried">Unmarried</string>
+    <string name="widowed">Widowed</string>
+    <string name="profession">Profession</string>
+    <string name="min_education_level">Min Education Level</string>
+    <string name="hobbies">Hobbies</string>
+
+    <!--    String array for min education level-->
+    <string-array name="CI_MinEducation">
+        <item>Up to GCE O/L</item>
+        <item>Up to GCE A/L</item>
+        <item>Diploma</item>
+        <item>Professional Qualification</item>
+        <item>Undergraduate</item>
+        <item>Bachelor\'s Degree or Equivalent</item>
+        <item>Post Graduate Diploma</item>
+        <item>Master\'s Degree or Equivalent</item>
+        <item>Phd or Post Doctoral</item>
+    </string-array>
 
 </resources>

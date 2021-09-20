@@ -16,7 +16,8 @@
         <activity android:name=".Search" />
         <activity android:name=".ReportAd" />
         <activity android:name=".profile" />
-        <activity android:name=".Home" >
+        <activity android:name=".Home" ></activity>
+        <activity android:name=".MatchFinder">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -30,13 +31,9 @@
         </activity>
         <activity android:name=".SignUpActivity" />
         <activity android:name=".PremiumLog" />
-        <activity android:name=".AdminPanel" />
-        <activity android:name=".MainActivity">
-
-        </activity>
-        <activity android:name=".MyAdCollection" >
-
-        </activity>
+        <activity android:name=".AdminPanel"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MyAdCollection" ></activity>
 
         <meta-data
             android:name="preloaded_fonts"

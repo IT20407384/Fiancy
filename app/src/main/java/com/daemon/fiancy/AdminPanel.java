@@ -1,11 +1,16 @@
 package com.daemon.fiancy;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
 
 import android.os.Bundle;
 import android.widget.TabHost;
 
 public class AdminPanel extends AppCompatActivity {
+
+    private AppBarConfiguration appBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +27,9 @@ public class AdminPanel extends AppCompatActivity {
         spec.setContent(R.id.reported);
         spec.setIndicator("Reported");
         tabHost.addTab(spec);
+
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main1);
+        NavController navController1 = Navigation.findNavController(this, R.id.nav_host_fragment_content_main2);
 
     }
 }

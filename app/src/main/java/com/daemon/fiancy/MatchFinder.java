@@ -1,6 +1,8 @@
 package com.daemon.fiancy;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.os.Bundle;
 import android.widget.TabHost;
@@ -27,5 +29,7 @@ public class MatchFinder extends AppCompatActivity {
 
         // adding the tab to tabhost
         tabhost.addTab(spec);
+
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main3);
     }
 }

@@ -6,12 +6,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+
+import com.daemon.fiancy.recyclers.RecyclerViewAdapter;
 
 import java.util.ArrayList;
 
@@ -22,7 +23,6 @@ public class Home extends AppCompatActivity {
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,8 +30,41 @@ public class Home extends AppCompatActivity {
         Log.d(TAG, "onCreate: started");
         initImageBitmaps();
 
-
         // profile = findViewById(R.id.p1);
+
+        DrawerLayout drawerLayout = findViewById(R.id.navDrawer);
+        ImageView profileNav = findViewById(R.id.menuInflator);
+        ImageView closeNav = findViewById(R.id.pro_Pic);
+
+        profileNav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDrawer(drawerLayout);
+            }
+        });
+
+        closeNav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closeDrawer(drawerLayout);
+            }
+        });
+    }
+
+    private static void openDrawer(DrawerLayout drawerLayout) {
+        // open Drawer
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+
+    // close Drawer
+    private void closeDrawer(DrawerLayout drawerLayout) {
+        //close Drawer
+        //check
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            // when drawer is open
+            // close Drawer
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
     }
 
     private void initImageBitmaps(){
@@ -72,4 +105,5 @@ public class Home extends AppCompatActivity {
 //            startActivity(intent);
 //        }
 //    }
+
 }

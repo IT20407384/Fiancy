@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:id="@+id/parent_layout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/SMfavoritesparent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:padding="10dp">
 
     <LinearLayout
-        android:id="@+id/p1"
+        android:id="@+id/pSM"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/ad_view_background"
@@ -19,11 +21,12 @@
             android:orientation="vertical">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profileimagehome"
+                android:id="@+id/SMfavoritesprofile"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginLeft="10dp"
                 android:src="@mipmap/ic_launcher_round" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -36,14 +39,34 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/profileuser_name"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="15dp"
-                    android:text="@string/name_1"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/SMprofilefavoritename"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:text="@string/name_1"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/buttonadcd4"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_weight="1"
+                        android:stateListAnimator="@null"
+                        app:backgroundTint="@color/white"
+                        app:backgroundTintMode="add"
+                        app:icon="@drawable/ic_baseline_delete_forever_24"
+                        app:iconGravity="end"
+                        app:iconSize="30dp"
+                        app:iconTint="@color/black" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"

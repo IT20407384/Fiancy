@@ -1,11 +1,17 @@
 package com.daemon.fiancy;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
 import android.widget.TabHost;
 
 public class MyAdCollection extends AppCompatActivity {
+
+    private AppBarConfiguration appBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,5 +41,7 @@ public class MyAdCollection extends AppCompatActivity {
         // setting the name of the tab 1 as "Tab Two"
         spec.setIndicator("My Favorites");
         tabhost.addTab(spec);
+
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
     }
 }

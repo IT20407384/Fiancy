@@ -34,30 +34,24 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <androidx.fragment.app.FragmentContainerView
-                        android:id="@+id/fragmentContainerView"
-                        android:name="com.daemon.fiancy.Pending"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                    <include layout="@layout/content_main1"/>
 
 
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/reported"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-                    <androidx.fragment.app.FragmentContainerView
-                        android:id="@+id/fragmentContainerView2"
-                        android:name="com.daemon.fiancy.Reported"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+
+                    <include layout="@layout/content_main2"/>
 
                 </LinearLayout>
 
-
             </FrameLayout>
+
         </LinearLayout>
     </TabHost>
 

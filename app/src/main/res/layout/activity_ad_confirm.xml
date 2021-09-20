@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".AdConfirmActivity"
     android:background="@color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/adconfirmlayout">
     <include layout="@layout/toolbar"/>
 
     <LinearLayout
@@ -39,14 +40,17 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tvACType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Account type : Free"
                     android:textSize="18sp" />
+
                 <TextView
+                    android:id="@+id/advertID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="AD ID  :- 11011"
+                    android:text="AD ID :- 1001"
                     android:textSize="18sp" />
 
                 <LinearLayout
@@ -67,6 +71,7 @@
                             android:text="Ad Fee"
                             android:textSize="18sp" />
                         <TextView
+                            android:id="@+id/ADfee"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text=": 350.00"
@@ -85,6 +90,7 @@
                             android:text="Discounts"
                             android:textSize="18sp" />
                         <TextView
+                            android:id="@+id/adDiscount"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text=": 0.00"
@@ -103,10 +109,11 @@
                             android:text="Total"
                             android:textSize="18sp" />
                         <TextView
+                            android:id="@+id/adTotFee"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text=": 350.00"
                             android:textSize="18sp"
+                            android:text=": 350.00"
                             android:gravity="left"
                             android:layout_marginLeft="40dp"/>
                     </LinearLayout>
@@ -116,6 +123,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/word_limit_warn"/>
                 <CheckBox
+                    android:id="@+id/TandC"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/agree_state"
@@ -123,6 +131,16 @@
                     android:layout_marginLeft="-8dp"/>
             </LinearLayout>
         </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/adUploadingProgress"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:visibility="invisible"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -131,14 +149,18 @@
             android:layout_marginBottom="25dp">
 
             <Button
+                android:id="@+id/adConfCancel"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="cancel"
-                android:layout_gravity="bottom"/>
+                android:layout_gravity="bottom"
+                android:onClick="btnCancel"/>
             <Button
+                android:id="@+id/adConferm"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="confirm"
+                android:onClick="adConfirmation"
                 android:layout_marginLeft="15dp"
                 android:layout_gravity="bottom"/>
 

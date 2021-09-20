@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 
 import java.util.ArrayList;
 
@@ -21,6 +22,7 @@ public class Home extends AppCompatActivity {
     //vars
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
+    RecyclerViewAdapter adapter;
 
 
     @Override
@@ -37,7 +39,7 @@ public class Home extends AppCompatActivity {
     private void initImageBitmaps(){
         Log.d(TAG, "initImageBitmaps: started");
         mImageUrls.add("https://lp-cms-production.imgix.net/2019-06/b4fbc706dab2a70a96588309ed268a1a-sri-lanka.jpeg");
-                mNames.add("Seegiriya");
+        mNames.add("Seegiriya");
         mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Demodara-Nine-Arch-Bridge.jpg");
         mNames.add("Ella");
         mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Train-ride-from-Kandy-to-Nuwara-Eliya.jpg");
@@ -61,9 +63,15 @@ public class Home extends AppCompatActivity {
     private void initRecyclerView(){
         Log.d(TAG, "initRecyclerView: started");
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(mNames,mImageUrls,this);
+        adapter = new RecyclerViewAdapter(mNames,mImageUrls,this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    // change intent to activity_post_ad
+    public void postAdBtn(View view) {
+        Intent intent = new Intent(getApplicationContext(), PostAdActivity.class);
+        startActivity(intent);
     }
 
 //    public void clicked(View view) {

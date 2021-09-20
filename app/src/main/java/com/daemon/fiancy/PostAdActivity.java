@@ -14,7 +14,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -22,10 +24,15 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.daemon.fiancy.models.Advertisements;
 import com.github.drjacky.imagepicker.ImagePicker;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -40,9 +47,17 @@ public class PostAdActivity extends AppCompatActivity {
             cbWalking, cbShopping, cbTraveling, cbWatchingSports, cbEatingOut, cbDancing;
     EditText fullname, age, description, profession, address, phone, email;
     ImageView postImage1, postImage2, postImage3;
+    RadioGroup radioGroupGender, radioGroupStatus;
+    RadioButton gender, statusRadioBtn;
+    ArrayList<String> hobbieList;
+    Uri filePath1, filePath2, filePath3;
 
     /////
     int x = 0;
+
+    Advertisements advertisements;
+
+    String EduLevel;
 
 
 
@@ -63,9 +78,21 @@ public class PostAdActivity extends AppCompatActivity {
         getEditTextInstance();
         // functions
         setAdapterToEducationDropDown();
-
-
+        // hobbies arraylist declaration
+        hobbieList = new ArrayList<String>();
+        advertisements = new Advertisements();
     }
+
+//    // Clear user inputs
+//    private void clearUserInputs() {
+//        fullname.setText("");
+//        age.setText("");
+//        description.setText("");
+//        profession.setText("");
+//        address.setText("");
+//        phone.setText("");
+//        email.setText("");
+//    }
 
     private void getEditTextInstance() {
         // get instance() of editTexts
@@ -76,6 +103,9 @@ public class PostAdActivity extends AppCompatActivity {
         address = findViewById(R.id.etAddress);
         phone = findViewById(R.id.etPhone);
         email = findViewById(R.id.etMail);
+        // get instance() of radiobuttons
+        radioGroupGender = findViewById(R.id.radioGroupGender);
+        radioGroupStatus = findViewById(R.id.radioGroupStatus);
     }
 
     private void getImageInstance() {
@@ -86,51 +116,30 @@ public class PostAdActivity extends AppCompatActivity {
     }
 
     // get Gender
-    public void getGender(View view) {
-        // Is the button now checked
-        boolean isChecked = ((RadioButton) view).isChecked();
+    private String getGender() {
+        String maleOrFemale;
+       int checkedRadioid = radioGroupGender.getCheckedRadioButtonId();
+       if (checkedRadioid != -1) {
+           gender = findViewById(checkedRadioid);
+           maleOrFemale = gender.getText().toString();
+       }
+       else
+           maleOrFemale = null;
 
-        // Check with radio button was checked
-        switch (view.getId()) {
-            case R.id.radioMale:
-                if(isChecked)
-                    Toast.makeText(this, "Male", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.radioFemale:
-                if(isChecked)
-                    Toast.makeText(this, "Female", Toast.LENGTH_SHORT).show();
-                break;
-        }
+       return maleOrFemale;
     }
 
     // get marriage status
-    public void getStatus(View view) {
-        // Is the button now checked
-        boolean isChecked = ((RadioButton) view).isChecked();
+    private String getStatus() {
+        String status;
+        int checkedRadioid = radioGroupStatus.getCheckedRadioButtonId();
+        if (checkedRadioid != -1) {
+            statusRadioBtn = findViewById(checkedRadioid);
+            status = statusRadioBtn.getText().toString();
+        } else
+            status = null;
 
-        // Check with radio button was checked
-        switch (view.getId()) {
-            case R.id.radioNevermarried:
-                if(isChecked)
-                    Toast.makeText(this, "Never Married", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.radioWidowed:
-                if(isChecked)
-                    Toast.makeText(this, "Widowed", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.radioDevorced:
-                if(isChecked)
-                    Toast.makeText(this, "Devorced", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.radioSeparated:
-                if(isChecked)
-                    Toast.makeText(this, "Separated", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.radioOtherStatus:
-                if(isChecked)
-                    Toast.makeText(this, "Other", Toast.LENGTH_SHORT).show();
-                break;
-        }
+        return status;
     }
 
     // set adapter for education level dropdown
@@ -147,7 +156,7 @@ public class PostAdActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String Elevel = EducationDropdown.getSelectedItem().toString();
-                Toast.makeText(PostAdActivity.this, "You selected : "+Elevel, Toast.LENGTH_SHORT).show();
+                EduLevel = Elevel;
             }
 
             @Override
@@ -176,43 +185,55 @@ public class PostAdActivity extends AppCompatActivity {
         StringBuilder result=new StringBuilder();
         result.append("Selected Items:");
         if(cbReading.isChecked()) {
+            hobbieList.add(cbReading.getText().toString());
             result.append("\nReading");
         }
         if(cbCollecting.isChecked()) {
+            hobbieList.add(cbCollecting.getText().toString());
             result.append("\nCollecting");
         }
         if(cbMusic.isChecked()) {
+            hobbieList.add(cbMusic.getText().toString());
             result.append("\nMusic");
         }
         if(cbGardening.isChecked()) {
+            hobbieList.add(cbGardening.getText().toString());
             result.append("\nGardening");
         }
         if(cbGames.isChecked()) {
+            hobbieList.add(cbGames.getText().toString());
             result.append("\nVideo Games");
         }
         if(cbFishing.isChecked()) {
+            hobbieList.add(cbFishing.getText().toString());
             result.append("\nFishing");
         }
         if(cbWalking.isChecked()) {
+            hobbieList.add(cbWalking.getText().toString());
             result.append("\nWalking");
         }
         if(cbShopping.isChecked()) {
+            hobbieList.add(cbShopping.getText().toString());
             result.append("\nShopping");
         }
         if(cbTraveling.isChecked()) {
+            hobbieList.add(cbTraveling.getText().toString());
             result.append("\nTraveling");
         }
         if(cbWatchingSports.isChecked()) {
+            hobbieList.add(cbWatchingSports.getText().toString());
             result.append("\nWatching Sports");
         }
         if(cbEatingOut.isChecked()) {
+            hobbieList.add(cbEatingOut.getText().toString());
             result.append("\nEating Out");
         }
         if(cbDancing.isChecked()) {
+            hobbieList.add(cbDancing.getText().toString());
             result.append("\nDancing");
         }
 
-        Toast.makeText(getApplicationContext(), result.toString(), Toast.LENGTH_LONG).show();
+//        Toast.makeText(getApplicationContext(), hobbieList.toString(), Toast.LENGTH_LONG).show();
     }
 
     // Image uploading
@@ -261,31 +282,89 @@ public class PostAdActivity extends AppCompatActivity {
     ActivityResultLauncher<Intent> launcher =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), (ActivityResult result) -> {
                 if (result.getResultCode() == RESULT_OK) {
-                    Uri uri = result.getData().getData();
                     // Use the uri to load the image
-                    if (x == 1)
-                        postImage1.setImageURI(uri);
-                    else if (x == 2)
-                        postImage2.setImageURI(uri);
-                    else if (x == 3)
-                        postImage3.setImageURI(uri);
+
+                    if (x == 1){
+                        filePath1 = result.getData().getData();
+                        postImage1.setImageURI(filePath1);
+                    }
+                    else if (x == 2) {
+                        filePath2 = result.getData().getData();
+                        postImage2.setImageURI(filePath2);
+                    }
+                    else if (x == 3) {
+                        filePath3 = result.getData().getData();
+                        postImage3.setImageURI(filePath3);
+                    }
+
                 } else if (result.getResultCode() == ImagePicker.RESULT_ERROR) {
                     // Use ImagePicker.Companion.getError(result.getData()) to show an error
                 }
             });
 
+    // set all values to the Advertisement model
+    private Boolean setAllValuesToModel() {
+        String maleOrFemale =  getGender();
+        String status = getStatus();
+
+        // validate
+        if(maleOrFemale == null || status == null) {
+            return false;
+        } else if(TextUtils.isEmpty(fullname.getText().toString())) {
+            return false;
+        } else if(TextUtils.isEmpty(age.getText().toString())) {
+            return false;
+        } else if(TextUtils.isEmpty(profession.getText().toString())) {
+            return false;
+        } else if(TextUtils.isEmpty(address.getText().toString())) {
+            return false;
+        } else if(TextUtils.isEmpty(phone.getText().toString())) {
+            return false;
+        } else if(TextUtils.isEmpty(email.getText().toString())) {
+            return false;
+        } else if(TextUtils.isEmpty(EduLevel)) {
+            return false;
+        } else if(TextUtils.isEmpty(hobbieList.toString())) {
+            return false;
+        } else {
+            advertisements.setFullname(fullname.getText().toString());
+            advertisements.setAge(age.getText().toString());
+            advertisements.setGender(maleOrFemale);
+            advertisements.setStatus(status);
+            advertisements.setDescription(description.getText().toString());
+            advertisements.setProfession(profession.getText().toString());
+            advertisements.setAddress(address.getText().toString());
+            advertisements.setPhone(phone.getText().toString());
+            advertisements.setEmail(email.getText().toString());
+            advertisements.setMinEducatuinLevel(EduLevel);
+            advertisements.setHobbiesList(hobbieList);
+            return true;
+        }
+    }
+
 
     // next button to load adconfiramation page
     public void adConfirmation(View view) {
         getCheckBoxesValues();
+        Boolean validate = setAllValuesToModel();
 
-        Intent intent = new Intent(this, AdConfirmActivity.class);
-        startActivity(intent);
+
+        if(!validate) {
+            Toast.makeText(this, "Please fill out the all fields", Toast.LENGTH_SHORT).show();
+        } else {
+            Intent intent = new Intent(this, AdConfirmActivity.class);
+            intent.putExtra("advertisements", advertisements);
+            intent.putExtra("image1", filePath1);
+            intent.putExtra("image2", filePath2);
+            intent.putExtra("image3", filePath3);
+            startActivity(intent);
+        }
     }
 
     // application cancel button
     public void cancelBtn(View view) {
         Intent intent = new Intent(getApplicationContext(), Home.class);
+        intent.putExtra("advertisements", advertisements);
         startActivity(intent);
     }
 

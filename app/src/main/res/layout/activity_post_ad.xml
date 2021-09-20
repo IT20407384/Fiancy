@@ -99,7 +99,6 @@
                         android:layout_height="wrap_content"
                         android:text="@string/male"
                         android:textSize="14sp"
-                        android:onClick="getGender"
                         android:layout_marginRight="15dp"/>
                     <RadioButton
                         android:id="@+id/radioFemale"
@@ -107,7 +106,6 @@
                         android:layout_height="wrap_content"
                         android:text="@string/female"
                         android:textSize="14sp"
-                        android:onClick="getGender"
                         android:layout_marginRight="34dp"/>
                 </RadioGroup>
                 <TextView
@@ -146,7 +144,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
                         android:text="@string/nevermarried"
-                        android:onClick="getStatus"
                         android:textSize="14sp" />
 
                     <RadioButton
@@ -155,7 +152,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
                         android:text="@string/widowed"
-                        android:onClick="getStatus"
                         android:textSize="14sp" />
 
                     <RadioButton
@@ -163,7 +159,6 @@
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="@string/devorced"
-                        android:onClick="getStatus"
                         android:textSize="14sp" />
 
                     <RadioButton
@@ -174,7 +169,6 @@
                         android:text="@string/separated"
                         android:textSize="14sp"
                         android:layout_gravity="right"
-                        android:onClick="getStatus"
                         android:layout_marginTop="-145dp"/>
 
                     <RadioButton
@@ -184,7 +178,6 @@
                         android:layout_marginRight="10dp"
                         android:text="Other"
                         android:textSize="14sp"
-                        android:onClick="getStatus"
                         android:layout_gravity="right"/>
                 </RadioGroup>
 
@@ -335,7 +328,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="text"
+                    android:inputType="textPostalAddress"
                     android:textSize="14dp" />
 
 

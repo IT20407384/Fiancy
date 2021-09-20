@@ -8,7 +8,6 @@
     android:orientation="vertical">
 
     <include layout="@layout/toolbar"/>
-
     <TabHost
         android:id="@+id/tabhost"
         android:layout_width="match_parent"
@@ -54,12 +53,8 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <androidx.fragment.app.FragmentContainerView
-                        android:id="@+id/fragmentContainerView400"
-                        android:name="com.daemon.fiancy.MyFavorites"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        tools:layout="@layout/fragment_my_favorites" />
+                    <include layout="@layout/content_main"/>
+
                 </LinearLayout>
 
             </FrameLayout>

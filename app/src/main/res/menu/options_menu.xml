@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/SMitem1"
+        android:title="@string/my_profile"
+        app:showAsAction="never"/>
+    <item android:id="@+id/SMitem2"
+        android:title="@string/my_advertisements"
+        app:showAsAction="never"/>
+    <item android:id="@+id/SMitem3"
+        android:title="@string/become_premium"
+        app:showAsAction="never"/>
+    <item android:id="@+id/SMitem4"
+        android:title="@string/log_out"
+        app:showAsAction="never"/>
+</menu>

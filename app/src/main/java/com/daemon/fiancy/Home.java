@@ -1,17 +1,13 @@
 package com.daemon.fiancy;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+
+import com.daemon.fiancy.recyclers.RecyclerViewAdapter;
 
 import java.util.ArrayList;
 
@@ -22,14 +18,12 @@ public class Home extends AppCompatActivity {
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Log.d(TAG, "onCreate: started");
         initImageBitmaps();
-
 
         // profile = findViewById(R.id.p1);
     }
@@ -72,4 +66,5 @@ public class Home extends AppCompatActivity {
 //            startActivity(intent);
 //        }
 //    }
+
 }

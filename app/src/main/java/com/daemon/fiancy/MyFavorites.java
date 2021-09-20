@@ -2,63 +2,64 @@ package com.daemon.fiancy;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MyFavorites#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.daemon.fiancy.recyclers.RecyclerViewAdapterForFavorites;
+
+import java.util.ArrayList;
+
 public class MyFavorites extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private RecyclerView recyclerView;
+    private ArrayList<String> mNames = new ArrayList<>();
+    private ArrayList<String> mImageUrls = new ArrayList<>();
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public MyFavorites() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MyFavorites.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MyFavorites newInstance(String param1, String param2) {
-        MyFavorites fragment = new MyFavorites();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_favorites, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_my_favorites, container,false);
+
+        initImageBitmaps();
+
+        recyclerView = view.findViewById(R.id.recycler_viewSM);
+        recyclerView.setLayoutManager((new LinearLayoutManager(view.getContext())));
+        recyclerView.setAdapter(new RecyclerViewAdapterForFavorites(mNames,mImageUrls, view.getContext()));
+
+        return view;
     }
+    private void initImageBitmaps(){
+
+        mImageUrls.add("https://lp-cms-production.imgix.net/2019-06/b4fbc706dab2a70a96588309ed268a1a-sri-lanka.jpeg");
+                mNames.add("Seegiriya");
+        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Demodara-Nine-Arch-Bridge.jpg");
+        mNames.add("Ella");
+        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Train-ride-from-Kandy-to-Nuwara-Eliya.jpg");
+        mNames.add("Nuwara Eliya");
+        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Pinnawala-Elephant-Orphanage.jpg");
+        mNames.add("Pinnawala Elephant Orphanage");
+        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Ruins-of-Polonnaruwa.jpg");
+        mNames.add("Polonnaruwa");
+        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Adams-Peak.jpg");
+        mNames.add("Adams Peak");
+        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Mirissa-Fisheries-Harbor.jpg");
+        mNames.add("Mirissa");
+        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Leopards.jpg");
+        mNames.add("Yala National Park");
+        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Colombo.jpg");
+        mNames.add("Colombo");
+        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Jaffna.jpg");
+        mNames.add("Jaffna");
+    }
+
+
 }

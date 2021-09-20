@@ -3,11 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/drawable/ic_adprofile.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/drawable/ic_baseline_event_available_24.xml" value="0.10052083333333334" />
+        <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/drawable/ic_baseline_military_tech_24.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/drawable/ic_baseline_power_settings_new_24.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/drawable/ic_home.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/drawable/ic_menu.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/drawable/ic_user_profile.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout-v21/recycleview_favorites.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_admin_panel.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_delete_advertisement.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_home.xml" value="0.22" />
+        <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_home.xml" value="0.18" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_manage_advertisement.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_match_finder.xml" value="0.20416666666666666" />
@@ -35,7 +41,7 @@
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/recycleview_favorites.xml" value="0.25" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/recycleview_profile.xml" value="0.25" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/toolbar.xml" value="0.18645833333333334" />
-        <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/toolbar_home.xml" value="0.1" />
+        <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/toolbar_home.xml" value="0.33" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/menu/options_menu.xml" value="0.18645833333333334" />
       </map>
     </option>

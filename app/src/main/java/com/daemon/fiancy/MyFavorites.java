@@ -40,7 +40,7 @@ public class MyFavorites extends Fragment {
     private void initImageBitmaps(){
 
         mImageUrls.add("https://lp-cms-production.imgix.net/2019-06/b4fbc706dab2a70a96588309ed268a1a-sri-lanka.jpeg");
-                mNames.add("Seegiriya");
+        mNames.add("Seegiriya");
         mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Demodara-Nine-Arch-Bridge.jpg");
         mNames.add("Ella");
         mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Train-ride-from-Kandy-to-Nuwara-Eliya.jpg");

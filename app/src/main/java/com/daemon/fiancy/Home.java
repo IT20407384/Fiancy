@@ -1,11 +1,16 @@
 package com.daemon.fiancy;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.daemon.fiancy.recyclers.RecyclerViewAdapter;
 
@@ -26,6 +31,40 @@ public class Home extends AppCompatActivity {
         initImageBitmaps();
 
         // profile = findViewById(R.id.p1);
+
+        DrawerLayout drawerLayout = findViewById(R.id.navDrawer);
+        ImageView profileNav = findViewById(R.id.menuInflator);
+        ImageView closeNav = findViewById(R.id.pro_Pic);
+
+        profileNav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDrawer(drawerLayout);
+            }
+        });
+
+        closeNav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closeDrawer(drawerLayout);
+            }
+        });
+    }
+
+    private static void openDrawer(DrawerLayout drawerLayout) {
+        // open Drawer
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+
+    // close Drawer
+    private void closeDrawer(DrawerLayout drawerLayout) {
+        //close Drawer
+        //check
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            // when drawer is open
+            // close Drawer
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
     }
 
     private void initImageBitmaps(){

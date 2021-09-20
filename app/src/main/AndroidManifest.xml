@@ -23,7 +23,8 @@
         <activity android:name=".Search" />
         <activity android:name=".ReportAd" />
         <activity android:name=".profile" />
-        <activity android:name=".Home">
+        <activity android:name=".Home"/>
+        <activity android:name=".MatchFinder">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,9 +37,8 @@
         <activity android:name=".UpdateProfile" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".PremiumLog" />
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".AdminPanel" />
+        <activity android:name=".MainActivity"/>
         <activity android:name=".MyAdCollection" />
 
         <meta-data

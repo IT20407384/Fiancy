@@ -120,4 +120,7 @@
     <string name="separated">Separated</string>
     <string name="min_education_level">Min Education Level</string>
     <string name="hobbies">Hobbies</string>
+    <string name="my_profile">My Profile</string>
+    <string name="become_premium">Become Premium</string>
+    <string name="log_out">Log Out</string>
 </resources>

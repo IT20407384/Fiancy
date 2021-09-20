@@ -1,4 +1,4 @@
-package com.daemon.fiancy;
+package com.daemon.fiancy.recyclers;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -14,12 +14,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.daemon.fiancy.R;
 
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-class RecyclerViewAdapter extends
+public class RecyclerViewAdapter extends
         RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     private static final String TAG = "test.sliit.recyclerview.RecyclerViewAdapter";
     private ArrayList<String> mImageNames = new ArrayList<>();
@@ -72,8 +73,8 @@ class RecyclerViewAdapter extends
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            image = itemView.findViewById(R.id.image);
-            imageName = itemView.findViewById(R.id.image_name);
+            image = itemView.findViewById(R.id.profileimagehome);
+            imageName = itemView.findViewById(R.id.profileuser_name);
             parentLayout = itemView.findViewById(R.id.parent_layout);
         }
     }

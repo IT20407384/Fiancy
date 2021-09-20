@@ -137,5 +137,10 @@
         <item>Master\'s Degree or Equivalent</item>
         <item>Phd or Post Doctoral</item>
     </string-array>
+    <string name="my_profile">My Profile</string>
+    <string name="my_advertisements">My Advertisements</string>
+    <string name="become_premium">Become Premium</string>
+    <string name="log_out">Log Out</string>
+    <string name="welcome_to_fiancy">Welcome to Fiancy</string>
 
 </resources>

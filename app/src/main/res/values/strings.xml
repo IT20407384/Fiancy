@@ -124,5 +124,6 @@
     <string name="become_premium">Become Premium</string>
     <string name="log_out">Log Out</string>
     <string name="welcome_to_fiancy">Welcome to Fiancy</string>
+    <string name="freemium_account">Freemium Account</string>
 
 </resources>

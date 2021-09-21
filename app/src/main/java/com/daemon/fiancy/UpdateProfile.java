@@ -1,9 +1,12 @@
 package com.daemon.fiancy;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -41,6 +44,7 @@ public class UpdateProfile extends AppCompatActivity {
     EditText newPassword;
     Button updateProfile;
 
+    String oldPasswordHolder, key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,12 +77,14 @@ public class UpdateProfile extends AppCompatActivity {
 
                     assert userModel != null;
                     if(userModel.getEmail().equalsIgnoreCase(emailShared)) {
+                        updateName.setText(userModel.getFullName());
+                        updatePhone.setText(userModel.getPhoneNumber());
+                        updateEmail.setText(userModel.getEmail());
+                        oldPasswordHolder = userModel.getPassword();
+                        key = mySnap.getKey();
                         break;
                     }
                 }
-                updateName.setText(userModel.getFullName());
-                updatePhone.setText(userModel.getPhoneNumber());
-                updateEmail.setText(userModel.getEmail());
             }
 
             @Override
@@ -90,11 +96,118 @@ public class UpdateProfile extends AppCompatActivity {
         updateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(TextUtils.isEmpty(oldPassword.getText().toString()))
+
+                if((TextUtils.isEmpty(updateName.getText().toString())) || (TextUtils.isEmpty(updateEmail.getText().toString())))
+                    Toast.makeText(getApplicationContext(), "Cannot be any Empty Fields", Toast.LENGTH_SHORT).show();
+
+                else if(TextUtils.isEmpty(oldPassword.getText().toString()))
                     Toast.makeText(getApplicationContext(), "Please Enter Your Current Password", Toast.LENGTH_SHORT).show();
 
-                if(TextUtils.isEmpty(newPassword.getText().toString())) {
-                    //
+                else if(TextUtils.isEmpty(newPassword.getText().toString())) {
+
+                    UserModel updatedUser = new UserModel();
+                    DatabaseReference updateRef;
+                    updateRef = FirebaseDatabase.getInstance().getReference().child("AppUser").child(key);
+
+                    updateRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            updatedUser.setFullName(updateName.getText().toString());
+                            updatedUser.setPhoneNumber(updatePhone.getText().toString());
+                            updatedUser.setEmail(updateEmail.getText().toString());
+
+                            if(oldPasswordHolder.equals(oldPassword.getText().toString())) {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(UpdateProfile.this);
+                                builder.setMessage("Are you sure want to update ?");
+                                builder.setTitle("Alert !");
+                                builder.setCancelable(false);
+
+                                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        updatedUser.setPassword(oldPasswordHolder);
+                                        updateRef.setValue(updatedUser);
+
+                                        SharedPreferences.Editor editor = sharedpreferences.edit();
+                                        editor.putString(EMAIL_KEY, updatedUser.getEmail());
+                                        editor.apply();
+
+                                        Intent intent = new Intent(UpdateProfile.this, Home.class);
+                                        startActivity(intent);
+                                    }
+                                });
+
+                                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                    }
+                                });
+
+                                AlertDialog alertDialog = builder.create();
+                                alertDialog.show();
+                            }
+                            else
+                                Toast.makeText(getApplicationContext(), "Password is Incorrect.", Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {}
+                    });
+                }
+
+                else {
+                    UserModel updatedUser = new UserModel();
+                    DatabaseReference updateRef;
+                    updateRef = FirebaseDatabase.getInstance().getReference().child("AppUser").child(key);
+
+                    updateRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            updatedUser.setFullName(updateName.getText().toString());
+                            updatedUser.setPhoneNumber(updatePhone.getText().toString());
+                            updatedUser.setEmail(updateEmail.getText().toString());
+
+                            if(oldPasswordHolder.equals(oldPassword.getText().toString())) {
+
+                                AlertDialog.Builder builder = new AlertDialog.Builder(UpdateProfile.this);
+                                builder.setMessage("Are you sure want to update ?");
+                                builder.setTitle("Alert !");
+                                builder.setCancelable(false);
+
+                                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        updatedUser.setPassword(newPassword.getText().toString());
+                                        updateRef.setValue(updatedUser);
+
+                                        SharedPreferences.Editor editor = sharedpreferences.edit();
+                                        editor.putString(EMAIL_KEY, updatedUser.getEmail());
+                                        editor.apply();
+
+                                        Intent intent = new Intent(UpdateProfile.this, Home.class);
+                                        startActivity(intent);
+                                    }
+                                });
+
+                                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                    }
+                                });
+
+                                AlertDialog alertDialog = builder.create();
+                                alertDialog.show();
+
+                            }
+                            else
+                                Toast.makeText(getApplicationContext(), "Password is Incorrect.", Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {}
+                    });
                 }
             }
         });

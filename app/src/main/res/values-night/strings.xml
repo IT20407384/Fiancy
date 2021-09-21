@@ -120,4 +120,5 @@
     <string name="my_profile">My Profile</string>
     <string name="become_premium">Become Premium</string>
     <string name="log_out">Log Out</string>
+    <string name="freemium_account">Freemium Account</string>
 </resources>

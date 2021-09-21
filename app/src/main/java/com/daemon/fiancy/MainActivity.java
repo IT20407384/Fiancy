@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -95,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
                                            if(adminLog.getAdminPassword().equals(password)) {
                                                Intent intent = new Intent(MainActivity.this, AdminPanel.class);
                                                startActivity(intent);
+                                               finish();
                                                x = 1;
                                            }
                                            else
@@ -142,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
                                                Intent intent = new Intent(MainActivity.this, Home.class);
                                                startActivity(intent);
+                                               finish();
                                                x = 1;
                                            }
                                            else
@@ -189,6 +192,7 @@ public class MainActivity extends AppCompatActivity {
 
                                            Intent intent = new Intent(MainActivity.this, Home.class);
                                            startActivity(intent);
+                                           finish();
                                            x = 1;
                                        }
                                        else
@@ -208,7 +212,6 @@ public class MainActivity extends AppCompatActivity {
                        }
                    });
                }
-
            }
        });
 

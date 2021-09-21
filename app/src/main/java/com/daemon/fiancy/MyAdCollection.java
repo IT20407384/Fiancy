@@ -6,12 +6,22 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TabHost;
+import android.widget.Toast;
 
 public class MyAdCollection extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
+
+    public static final String SHARED_PREFS = "shared_prefs";
+    public static final String EMAIL_KEY = "email_key";
+    SharedPreferences sharedpreferences;
+    String emailShared;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +29,7 @@ public class MyAdCollection extends AppCompatActivity {
         setContentView(R.layout.activity_my_ad_collection);
 
         // initiating the tabhost
-        TabHost tabhost = (TabHost) findViewById(R.id.tabhost);
+        TabHost tabhost = (TabHost) findViewById(R.id.SMtabhost2);
 
         // setting up the tab host
         tabhost.setup();
@@ -41,6 +51,9 @@ public class MyAdCollection extends AppCompatActivity {
         // setting the name of the tab 1 as "Tab Two"
         spec.setIndicator("My Favorites");
         tabhost.addTab(spec);
+
+        sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        emailShared = sharedpreferences.getString(EMAIL_KEY, null);
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
     }

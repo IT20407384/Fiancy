@@ -13,7 +13,7 @@ public class PremiumLog extends AppCompatActivity {
         setContentView(R.layout.activity_premiumlog);
 
         // initiating the tabhost
-        TabHost tabhost = (TabHost) findViewById(R.id.tabhost);
+        TabHost tabhost = (TabHost) findViewById(R.id.SMtabhost1);
 
         // setting up the tab host
         tabhost.setup();

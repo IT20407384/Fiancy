@@ -6,22 +6,34 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.daemon.fiancy.recyclers.RecyclerViewAdapter;
 
 import java.util.ArrayList;
 
 public class Home extends AppCompatActivity {
-   //LinearLayout profile;
+   LinearLayout profile;
    private static final String TAG = "MainActivity";
-    //vars
+
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
+
+    // creating constant keys for shared preferences.
+    public static final String SHARED_PREFS = "shared_prefs";
+    // key for storing email.
+    public static final String EMAIL_KEY = "email_key";
+    SharedPreferences sharedpreferences;
+    String email;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +42,10 @@ public class Home extends AppCompatActivity {
         Log.d(TAG, "onCreate: started");
         initImageBitmaps();
 
-        // profile = findViewById(R.id.p1);
+        sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        email = sharedpreferences.getString(EMAIL_KEY, null);
+
+        profile = findViewById(R.id.p1);
 
         DrawerLayout drawerLayout = findViewById(R.id.navDrawer);
         ImageView profileNav = findViewById(R.id.menuInflator);
@@ -91,6 +106,7 @@ public class Home extends AppCompatActivity {
         mNames.add("Jaffna");
         initRecyclerView();
     }
+
     private void initRecyclerView(){
         Log.d(TAG, "initRecyclerView: started");
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
@@ -99,11 +115,36 @@ public class Home extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-//    public void clicked(View view) {
-//        if (view == profile) {
-//            Intent intent = new Intent(this, profile.class);
-//            startActivity(intent);
-//        }
-//    }
+    public void clicked(View view) {
+        if (view == profile) {
+            Intent intent = new Intent(this, profile.class);
+            startActivity(intent);
+        }
+    }
 
+    public void clickedMyProfile(View view) {
+        Intent intent = new Intent(Home.this, UpdateProfile.class);
+        startActivity(intent);
+    }
+
+    public void clickedMyAdvertisement(View view) {
+        Intent intent = new Intent(Home.this, MyAdCollection.class);
+        startActivity(intent);
+    }
+
+    public void clickedBecomePremium(View view) {
+        Intent intent = new Intent(Home.this, PremiumLog.class);
+        startActivity(intent);
+    }
+
+    public void clickedLogOut(View view) {
+
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.clear();
+        editor.apply();
+
+        Intent intent = new Intent(Home.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

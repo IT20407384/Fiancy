@@ -3,6 +3,7 @@ package com.daemon.fiancy.recyclers;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.media.Image;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,20 +16,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.daemon.fiancy.R;
+import com.daemon.fiancy.models.Advertisements;
 
 import java.util.ArrayList;
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static android.content.ContentValues.TAG;
+
 public class RecycleViewAdapterforPending extends RecyclerView.Adapter<ViewHolderforPending> {
 
-    private ArrayList<String> mImageNames = new ArrayList<>();
-    private ArrayList<String> mImage = new ArrayList<>();
+    private ArrayList<Advertisements> list;
     private Context mContext;
 
-    public  RecycleViewAdapterforPending (ArrayList<String> mImageNames, ArrayList<String>
-            mImage, Context mContext) {
-        this.mImageNames = mImageNames;
-        this.mImage = mImage;
+    public  RecycleViewAdapterforPending (ArrayList<Advertisements> list, Context mContext) {
+        this.list = list;
         this.mContext = mContext;
     }
 
@@ -44,15 +45,23 @@ public class RecycleViewAdapterforPending extends RecyclerView.Adapter<ViewHolde
     @SuppressLint("LongLogTag")
     @Override
     public void onBindViewHolder(@NonNull ViewHolderforPending holder, final int position) {
-        holder.imageName.setText(mImageNames.get(position));
+        Log.d(TAG,"onBindViewHolder:called");
+        Advertisements advertisements = list.get(position);
         Glide.with(mContext)
-                .asBitmap().load(mImage.get(position))
+                .asBitmap().load(advertisements.getImage1())
                 .into(holder.image);
+
+        holder.imageName.setText(advertisements.getFullname());
+        holder.location.setText(advertisements.getAddress());
+        holder.age.setText(advertisements.getAge());
+        holder.gender.setText(advertisements.getGender());
+//        holder.religion.setText(advertisements.getReligious());
+        holder.proffesion.setText(advertisements.getProfession());
     }
 
     @Override
     public int getItemCount() {
-        return mImageNames.size();
+        return list.size();
     }
 }
 

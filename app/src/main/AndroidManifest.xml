@@ -32,18 +32,19 @@
         <activity android:name=".PaypalUI" />
         <activity android:name=".AdConfirmActivity" />
         <activity android:name=".PostAdActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".UpdateProfile" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".PremiumLog" />
-        <activity android:name=".AdminPanel" />
+        <activity android:name=".AdminPanel">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".MainActivity"/>
         <activity android:name=".MyAdCollection" />
+
 
         <meta-data
             android:name="preloaded_fonts"

@@ -58,14 +58,15 @@ public class RecyclerViewAdapter extends
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called");
         Advertisements advertisements = list.get(position);
-//        Glide.with(mContext)
-//                .asBitmap().load(advertisements.getImage1())
-//                .into(holder.image);
+        Glide.with(mContext)
+                .asBitmap().load(advertisements.getImage1())
+                .into(holder.image);
 
         holder.imageName.setText(advertisements.getFullname());
         holder.location.setText(advertisements.getAddress());
         holder.age.setText(advertisements.getAge());
         holder.gender.setText(advertisements.getGender());
+        holder.religion.setText(advertisements.getReligion());
         holder.profession.setText(advertisements.getProfession());
 //        holder.imageName.setText(mImageNames.get(position));
 
@@ -108,6 +109,7 @@ public class RecyclerViewAdapter extends
             age = itemView.findViewById(R.id.NPAge);
             gender = itemView.findViewById(R.id.NPGender);
             profession = itemView.findViewById(R.id.NPProfession);
+            religion = itemView.findViewById(R.id.NPReligion);
             parentLayout = itemView.findViewById(R.id.parent_layout);
         }
     }

@@ -38,7 +38,7 @@ public class PostAdActivity extends AppCompatActivity {
     Spinner EducationDropdown, ReligionDD;
     CheckBox cbReading, cbCollecting, cbMusic, cbGardening, cbGames, cbFishing,
             cbWalking, cbShopping, cbTraveling, cbWatchingSports, cbEatingOut, cbDancing;
-    EditText fullname, age, description, profession, address, phone, email;
+    EditText fullname, age, description, profession, address, phone;
     ImageView postImage1, postImage2, postImage3;
     RadioGroup radioGroupGender, radioGroupStatus;
     RadioButton gender, statusRadioBtn;
@@ -51,7 +51,7 @@ public class PostAdActivity extends AppCompatActivity {
     Advertisements advertisements;
 
     // all strings
-    String FullName, Age, Gender, Status, Description, Profession, Address, Phone, Email,
+    String FullName, Age, Gender, Status, Description, Profession, Address, Phone,
             EduLevel, religion;
 
     @Override
@@ -103,7 +103,6 @@ public class PostAdActivity extends AppCompatActivity {
         profession.setText("");
         address.setText("");
         phone.setText("");
-        email.setText("");
     }
 
     private void getEditTextInstance() {
@@ -114,7 +113,6 @@ public class PostAdActivity extends AppCompatActivity {
         profession = findViewById(R.id.etProffesion);
         address = findViewById(R.id.etAddress);
         phone = findViewById(R.id.etPhone);
-        email = findViewById(R.id.etMail);
         // get instance() of radiobuttons
         radioGroupGender = findViewById(R.id.radioGroupGender);
         radioGroupStatus = findViewById(R.id.radioGroupStatus);
@@ -362,7 +360,6 @@ public class PostAdActivity extends AppCompatActivity {
         Profession = profession.getText().toString();
         Address = address.getText().toString();
         Phone = phone.getText().toString();
-        Email = email.getText().toString();
         
         // validate
         if(maleOrFemale == null || status == null) {
@@ -376,8 +373,6 @@ public class PostAdActivity extends AppCompatActivity {
         } else if(TextUtils.isEmpty(Address)) {
             return false;
         } else if(TextUtils.isEmpty(Phone)) {
-            return false;
-        } else if(TextUtils.isEmpty(Email)) {
             return false;
         } else if(TextUtils.isEmpty(EduLevel)) {
             return false;
@@ -412,7 +407,6 @@ public class PostAdActivity extends AppCompatActivity {
             intent.putExtra("gender", maleOrFemale);
             intent.putExtra("status", status);
             intent.putExtra("phone", Phone);
-            intent.putExtra("email", Email);
             intent.putExtra("minEduLevel", EduLevel);
             intent.putExtra("religion", religion);
             // pass array list

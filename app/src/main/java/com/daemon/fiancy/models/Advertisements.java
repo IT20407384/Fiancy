@@ -11,7 +11,7 @@ public class Advertisements {
     private String profession;
     private String address;
     private String phone;
-    private String email;
+    private String adOwner;
     private String religion;
     private String minEducatuinLevel;
     private ArrayList<String> hobbiesList;
@@ -22,13 +22,14 @@ public class Advertisements {
     private String discount;
     private String totatlFee;
     private Boolean liveAdvertisement = false;
+    private Boolean paymentNeeded = false;
 
     public Advertisements() {
     }
 
     public Advertisements(String fullname, String age, String gender, String status, String description, String profession,
-                          String address, String phone, String email, String religion, String minEducatuinLevel, ArrayList<String> hobbiesList,
-                          String image1, String image2, String image3, Boolean liveAdvertisement) {
+                          String address, String phone, String adOwner, String religion, String minEducatuinLevel, ArrayList<String> hobbiesList,
+                          String image1, String image2, String image3, Boolean liveAdvertisement, Boolean paymentNeeded) {
         this.fullname = fullname;
         this.age = age;
         this.gender = gender;
@@ -37,7 +38,7 @@ public class Advertisements {
         this.profession = profession;
         this.address = address;
         this.phone = phone;
-        this.email = email;
+        this.adOwner = adOwner;
         this.religion = religion;
         this.minEducatuinLevel = minEducatuinLevel;
         this.hobbiesList = hobbiesList;
@@ -111,12 +112,12 @@ public class Advertisements {
         this.phone = phone;
     }
 
-    public String getEmail() {
-        return email;
+    public String getOwner() {
+        return adOwner;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setOwner(String adOwner) {
+        this.adOwner = adOwner;
     }
 
     public String getMinEducatuinLevel() {
@@ -197,5 +198,13 @@ public class Advertisements {
 
     public void setTotatlFee(String totatlFee) {
         this.totatlFee = totatlFee;
+    }
+
+    public Boolean getPaymentNeeded() {
+        return paymentNeeded;
+    }
+
+    public void setPaymentNeeded(Boolean paymentNeeded) {
+        this.paymentNeeded = paymentNeeded;
     }
 }

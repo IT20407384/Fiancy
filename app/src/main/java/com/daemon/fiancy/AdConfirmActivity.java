@@ -382,7 +382,19 @@ public class AdConfirmActivity extends AppCompatActivity {
         if (uploadBtnClicked) {
             Toast.makeText(this, "You can't cancel after upload the photos", Toast.LENGTH_SHORT).show();
         } else {
-            Log.d("IMG", "Image Uploaded  : " + downloadUrl1);
+            Intent intent = new Intent(getApplicationContext(), Home.class);
+            startActivity(intent);
+        }
+    }
+
+    // back with back button
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (uploadBtnClicked) {
+            Toast.makeText(this, "You can't cancel after upload the photos", Toast.LENGTH_SHORT).show();
+        } else {
             Intent intent = new Intent(getApplicationContext(), Home.class);
             startActivity(intent);
         }

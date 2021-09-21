@@ -463,6 +463,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/red_pink"
+                    android:layout_marginBottom="25dp"
                     android:textSize="16sp" />
 
                 <LinearLayout

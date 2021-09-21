@@ -43,6 +43,7 @@
         <activity android:name=".AdminPanel" />
         <activity android:name=".MyAdCollection" />
         <activity android:name=".ManageAdvertisementActiviy"/>
+        <activity android:name=".deleteAdvertisementActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

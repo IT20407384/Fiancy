@@ -19,29 +19,24 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView33"
+            android:id="@+id/SMnameinaccount"
             android:layout_width="115dp"
             android:layout_height="40dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="96dp"
+            android:layout_marginTop="60dp"
             android:text="@string/full_name"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/imageView5"
+            app:layout_constraintStart_toEndOf="@+id/SMaccimage"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="112dp"
-            android:layout_height="108dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginLeft="28dp"
-            android:layout_marginTop="28dp"
-            android:src="@drawable/ic_woman"
-            app:layout_constraintEnd_toStartOf="@+id/textView33"
-            app:layout_constraintHorizontal_bias="0.5"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/SMaccimage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="36dp"
+            android:src="@mipmap/ic_launcher_round"
+            app:layout_constraintEnd_toStartOf="@+id/SMnameinaccount"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,13 +45,14 @@
             style="@style/Divider"
             android:layout_width="300dp"
             android:layout_height="1dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="48dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.488"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView33"></View>
+            app:layout_constraintTop_toBottomOf="@+id/SMnameinaccount" />
 
         <TextView
-            android:id="@+id/textView28"
+            android:id="@+id/SMadstatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -64,7 +60,7 @@
             android:layout_marginTop="48dp"
             android:text="@string/ADLive"
             app:layout_constraintStart_toEndOf="@+id/imageView6"
-            app:layout_constraintTop_toBottomOf="@+id/view213"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/view213" />
 
         <ImageView
             android:id="@+id/imageView7"
@@ -88,18 +84,18 @@
             android:src="@drawable/ic_baseline_online_prediction_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view213"
-            app:tint="@color/black"></ImageView>
+            app:tint="@color/black" />
 
         <TextView
-            android:id="@+id/textView32"
+            android:id="@+id/SMaccountstatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"
             android:layout_marginTop="36dp"
-            android:text="@string/primeaccount"
+            android:text="@string/freemium_account"
             app:layout_constraintStart_toEndOf="@+id/imageView7"
-            app:layout_constraintTop_toBottomOf="@+id/textView28" />
+            app:layout_constraintTop_toBottomOf="@+id/SMadstatus" />
 
         <ImageView
             android:id="@+id/imageView8"
@@ -114,7 +110,7 @@
             app:tint="@color/black" />
 
         <TextView
-            android:id="@+id/textView34"
+            android:id="@+id/SMpaymentstatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -122,10 +118,10 @@
             android:layout_marginTop="44dp"
             android:text="@string/successPayment"
             app:layout_constraintStart_toEndOf="@+id/imageView8"
-            app:layout_constraintTop_toBottomOf="@+id/textView32" />
+            app:layout_constraintTop_toBottomOf="@+id/SMaccountstatus" />
 
         <Button
-            android:id="@+id/CSacceptbutton"
+            android:id="@+id/SMmatchfinderbtn"
             android:layout_width="175dp"
             android:layout_height="55dp"
             android:layout_marginTop="20dp"
@@ -133,7 +129,7 @@
             android:includeFontPadding="false"
             android:text="@string/matchFinder"
             android:textAllCaps="false"
-            android:textColor="@color/black"
+            android:textColor="@color/PayPal_Blue"
             app:backgroundTint="@color/white"
             app:cornerRadius="100dp"
             app:icon="@drawable/ic_icons8_wedding_ring_60"
@@ -146,7 +142,7 @@
             app:strokeWidth="2dp" />
 
         <Button
-            android:id="@+id/button50"
+            android:id="@+id/SMpayforad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -157,16 +153,15 @@
             app:backgroundTint="@color/white"
             app:icon="@drawable/ic_baseline_payment_24"
             app:iconTint="@color/black"
-            app:layout_constraintEnd_toStartOf="@+id/button40"
+            app:layout_constraintEnd_toStartOf="@+id/SMeditadbtn"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/CSacceptbutton" />
+            app:layout_constraintTop_toBottomOf="@+id/SMmatchfinderbtn" />
 
         <Button
-            android:id="@+id/button40"
+            android:id="@+id/SMeditadbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:enabled="false"
             android:stateListAnimator="@null"
             android:text="@string/editAd"
             android:textAllCaps="false"
@@ -174,10 +169,10 @@
             app:backgroundTint="@color/white"
             app:icon="@drawable/ic_baseline_edit_24"
             app:iconTint="@color/black"
-            app:layout_constraintBaseline_toBaselineOf="@+id/button50"
+            app:layout_constraintBaseline_toBaselineOf="@+id/SMpayforad"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/button50" />
+            app:layout_constraintStart_toEndOf="@+id/SMpayforad" />
 
         <View
             android:id="@+id/view207"
@@ -185,9 +180,9 @@
             android:layout_width="1dp"
             android:layout_height="50dp"
             android:layout_marginTop="40dp"
-            app:layout_constraintEnd_toStartOf="@+id/button40"
-            app:layout_constraintStart_toEndOf="@+id/button50"
-            app:layout_constraintTop_toBottomOf="@+id/CSacceptbutton"></View>
+            app:layout_constraintEnd_toStartOf="@+id/SMeditadbtn"
+            app:layout_constraintStart_toEndOf="@+id/SMpayforad"
+            app:layout_constraintTop_toBottomOf="@+id/SMmatchfinderbtn"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

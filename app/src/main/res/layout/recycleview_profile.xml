@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/ad_view_background"
-        android:onClick="clicked"
+        android:onClick="Checkprofile"
         android:orientation="horizontal"
         android:paddingTop="15dp">
 
@@ -57,6 +57,7 @@
                         android:src="@drawable/ic_location" />
 
                     <TextView
+                        android:id="@+id/NPlocation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/loc"
@@ -72,12 +73,14 @@
                     android:paddingRight="50dp">
 
                     <TextView
+                        android:id="@+id/NPAge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/age_1"
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/NPGender"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="right"
@@ -95,12 +98,14 @@
                     android:paddingBottom="10dp">
 
                     <TextView
+                        android:id="@+id/NPReligion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/reli"
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/NPProfession"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="right"

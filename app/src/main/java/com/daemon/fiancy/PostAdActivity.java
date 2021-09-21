@@ -3,20 +3,16 @@ package com.daemon.fiancy;
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.provider.MediaStore;
+import android.os.PersistableBundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -32,6 +28,7 @@ import com.daemon.fiancy.models.Advertisements;
 import com.github.drjacky.imagepicker.ImagePicker;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import kotlin.Unit;
@@ -42,7 +39,7 @@ import kotlin.jvm.internal.Intrinsics;
 public class PostAdActivity extends AppCompatActivity {
 
     // initialization
-    Spinner EducationDropdown;
+    Spinner EducationDropdown, ReligionDD;
     CheckBox cbReading, cbCollecting, cbMusic, cbGardening, cbGames, cbFishing,
             cbWalking, cbShopping, cbTraveling, cbWatchingSports, cbEatingOut, cbDancing;
     EditText fullname, age, description, profession, address, phone, email;
@@ -57,42 +54,63 @@ public class PostAdActivity extends AppCompatActivity {
 
     Advertisements advertisements;
 
-    String EduLevel;
+    // all strings
+    String FullName, Age, Gender, Status, Description, Profession, Address, Phone, Email,
+            EduLevel, religion;
 
-
+    String savereligion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_ad);
 
+        // get instance() view by id
+        getImageInstance();
+        getEditTextInstance();
+
+        advertisements = new Advertisements();
+
+        // functions
+        setAdapterToEducationDropDown();
+        setAdapterToReligionDropdown();
+        // hobbies arraylist declaration
+        hobbieList = new ArrayList<String>();
+
     }
 
     @Override
-    protected void onPostResume() {
-        super.onPostResume();
+    protected void onResume() {
+        super.onResume();
 
-        // get instance() view by id
-        EducationDropdown = findViewById(R.id.SPEducationLevel);
-        getImageInstance();
-        getEditTextInstance();
-        // functions
         setAdapterToEducationDropDown();
-        // hobbies arraylist declaration
-        hobbieList = new ArrayList<String>();
-        advertisements = new Advertisements();
+        setAdapterToReligionDropdown();
     }
 
-//    // Clear user inputs
-//    private void clearUserInputs() {
-//        fullname.setText("");
-//        age.setText("");
-//        description.setText("");
-//        profession.setText("");
-//        address.setText("");
-//        phone.setText("");
-//        email.setText("");
-//    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        Log.d("lifecycle", "Fiancy is stop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        Log.d("lifecycle", "Fiancy is Destroyed");
+    }
+
+    // Clear user inputs
+    private void clearUserInputs() {
+        fullname.setText("");
+        age.setText("");
+        description.setText("");
+        profession.setText("");
+        address.setText("");
+        phone.setText("");
+        email.setText("");
+    }
 
     private void getEditTextInstance() {
         // get instance() of editTexts
@@ -106,6 +124,9 @@ public class PostAdActivity extends AppCompatActivity {
         // get instance() of radiobuttons
         radioGroupGender = findViewById(R.id.radioGroupGender);
         radioGroupStatus = findViewById(R.id.radioGroupStatus);
+        //get dropdown instances
+        EducationDropdown = findViewById(R.id.SPEducationLevel);
+        ReligionDD = findViewById(R.id.SPReligion);
     }
 
     private void getImageInstance() {
@@ -155,8 +176,28 @@ public class PostAdActivity extends AppCompatActivity {
         EducationDropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String Elevel = EducationDropdown.getSelectedItem().toString();
-                EduLevel = Elevel;
+                EduLevel = EducationDropdown.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
+
+    private void setAdapterToReligionDropdown() {
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.CI_Religions, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        ReligionDD.setAdapter(adapter);
+
+        ReligionDD.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                religion = ReligionDD.getSelectedItem().toString();
             }
 
             @Override
@@ -183,7 +224,6 @@ public class PostAdActivity extends AppCompatActivity {
         cbDancing = findViewById(R.id.cbDancing);
 
         StringBuilder result=new StringBuilder();
-        result.append("Selected Items:");
         if(cbReading.isChecked()) {
             hobbieList.add(cbReading.getText().toString());
             result.append("\nReading");
@@ -259,85 +299,67 @@ public class PostAdActivity extends AppCompatActivity {
     }
 
     private void selectImageForUpload() {
-
-        ImagePicker.Companion.with(this)
-                .crop()
-//                .cropOval()
-                .maxResultSize(1024, 1024, true)
-                .createIntentFromDialog((Function1) (new Function1() {
-                    public Object invoke(Object var1) {
-                        this.invoke((Intent) var1);
-                        return Unit.INSTANCE;
-                    }
-
-                    public final void invoke(Intent it) {
-                        Intrinsics.checkNotNullParameter(it, "it");
-                        launcher.launch(it);
-                    }
-                }));
-
-
+        Intent gallery = new Intent();
+        gallery.setAction(Intent.ACTION_GET_CONTENT);
+        gallery.setType("image/*");
+        startActivityForResult(gallery, 2);
     }
 
-    ActivityResultLauncher<Intent> launcher =
-            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), (ActivityResult result) -> {
-                if (result.getResultCode() == RESULT_OK) {
-                    // Use the uri to load the image
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-                    if (x == 1){
-                        filePath1 = result.getData().getData();
-                        postImage1.setImageURI(filePath1);
-                    }
-                    else if (x == 2) {
-                        filePath2 = result.getData().getData();
-                        postImage2.setImageURI(filePath2);
-                    }
-                    else if (x == 3) {
-                        filePath3 = result.getData().getData();
-                        postImage3.setImageURI(filePath3);
-                    }
-
-                } else if (result.getResultCode() == ImagePicker.RESULT_ERROR) {
-                    // Use ImagePicker.Companion.getError(result.getData()) to show an error
-                }
-            });
+        if(requestCode == 2 && resultCode == RESULT_OK && data != null) {
+            if(x == 1) {
+                filePath1 = data.getData();
+                postImage1.setImageURI(filePath1);
+            } else if (x == 2) {
+                filePath2 = data.getData();
+                postImage2.setImageURI(filePath2);
+            } else if (x == 3) {
+                filePath3 = data.getData();
+                postImage3.setImageURI(filePath3);
+            }
+        }
+    }
 
     // set all values to the Advertisement model
     private Boolean setAllValuesToModel() {
         String maleOrFemale =  getGender();
         String status = getStatus();
 
+        FullName = fullname.getText().toString();
+        Age = age.getText().toString();
+        Gender = maleOrFemale;
+        Status = status;
+        Description = description.getText().toString();
+        Profession = profession.getText().toString();
+        Address = address.getText().toString();
+        Phone = phone.getText().toString();
+        Email = email.getText().toString();
+        
         // validate
         if(maleOrFemale == null || status == null) {
             return false;
-        } else if(TextUtils.isEmpty(fullname.getText().toString())) {
+        } else if(TextUtils.isEmpty(FullName)) {
             return false;
-        } else if(TextUtils.isEmpty(age.getText().toString())) {
+        } else if(TextUtils.isEmpty(Age)) {
             return false;
-        } else if(TextUtils.isEmpty(profession.getText().toString())) {
+        } else if(TextUtils.isEmpty(Profession)) {
             return false;
-        } else if(TextUtils.isEmpty(address.getText().toString())) {
+        } else if(TextUtils.isEmpty(Address)) {
             return false;
-        } else if(TextUtils.isEmpty(phone.getText().toString())) {
+        } else if(TextUtils.isEmpty(Phone)) {
             return false;
-        } else if(TextUtils.isEmpty(email.getText().toString())) {
+        } else if(TextUtils.isEmpty(Email)) {
             return false;
         } else if(TextUtils.isEmpty(EduLevel)) {
             return false;
         } else if(TextUtils.isEmpty(hobbieList.toString())) {
             return false;
+        } else if(TextUtils.isEmpty(religion)) {
+            return false;
         } else {
-            advertisements.setFullname(fullname.getText().toString());
-            advertisements.setAge(age.getText().toString());
-            advertisements.setGender(maleOrFemale);
-            advertisements.setStatus(status);
-            advertisements.setDescription(description.getText().toString());
-            advertisements.setProfession(profession.getText().toString());
-            advertisements.setAddress(address.getText().toString());
-            advertisements.setPhone(phone.getText().toString());
-            advertisements.setEmail(email.getText().toString());
-            advertisements.setMinEducatuinLevel(EduLevel);
-            advertisements.setHobbiesList(hobbieList);
             return true;
         }
     }
@@ -346,6 +368,8 @@ public class PostAdActivity extends AppCompatActivity {
     // next button to load adconfiramation page
     public void adConfirmation(View view) {
         getCheckBoxesValues();
+        String maleOrFemale =  getGender();
+        String status = getStatus();
         Boolean validate = setAllValuesToModel();
 
 
@@ -353,10 +377,31 @@ public class PostAdActivity extends AppCompatActivity {
             Toast.makeText(this, "Please fill out the all fields", Toast.LENGTH_SHORT).show();
         } else {
             Intent intent = new Intent(this, AdConfirmActivity.class);
-            intent.putExtra("advertisements", advertisements);
-            intent.putExtra("image1", filePath1);
-            intent.putExtra("image2", filePath2);
-            intent.putExtra("image3", filePath3);
+            //send normal strings
+            intent.putExtra("fullname", FullName);
+            intent.putExtra("age", Age);
+            intent.putExtra("profession", Profession);
+            intent.putExtra("address", Address);
+            intent.putExtra("description", Description);
+            intent.putExtra("gender", maleOrFemale);
+            intent.putExtra("status", status);
+            intent.putExtra("phone", Phone);
+            intent.putExtra("email", Email);
+            intent.putExtra("minEduLevel", EduLevel);
+            intent.putExtra("religion", religion);
+            // pass array list
+            intent.putExtra("hobbieList", hobbieList);
+
+            //send uris
+            if(filePath1 != null) {
+                intent.putExtra("image1", filePath1.toString());
+            }
+            if(filePath2 != null) {
+                intent.putExtra("image2", filePath2.toString());
+            }
+            if(filePath3 != null) {
+                intent.putExtra("image3", filePath3.toString());
+            }
             startActivity(intent);
         }
     }
@@ -364,7 +409,6 @@ public class PostAdActivity extends AppCompatActivity {
     // application cancel button
     public void cancelBtn(View view) {
         Intent intent = new Intent(getApplicationContext(), Home.class);
-        intent.putExtra("advertisements", advertisements);
         startActivity(intent);
     }
 

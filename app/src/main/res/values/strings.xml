@@ -124,6 +124,13 @@
     <string name="profession">Profession</string>
     <string name="min_education_level">Min Education Level</string>
     <string name="hobbies">Hobbies</string>
+    <string name="my_profile">My Profile</string>
+    <string name="my_advertisements">My Advertisements</string>
+    <string name="become_premium">Become Premium</string>
+    <string name="log_out">Log Out</string>
+    <string name="welcome_to_fiancy">Welcome to Fiancy</string>
+    <string name="freemium_account">Freemium Account</string>
+    <string name="SPreligion">Religion</string>
 
     <!--    String array for min education level-->
     <string-array name="CI_MinEducation">
@@ -137,10 +144,14 @@
         <item>Master\'s Degree or Equivalent</item>
         <item>Phd or Post Doctoral</item>
     </string-array>
-    <string name="my_profile">My Profile</string>
-    <string name="my_advertisements">My Advertisements</string>
-    <string name="become_premium">Become Premium</string>
-    <string name="log_out">Log Out</string>
-    <string name="welcome_to_fiancy">Welcome to Fiancy</string>
+
+<!--    String array for religions-->
+    <string-array name="CI_Religions">
+        <item>Buddhist</item>
+        <item>Catholic</item>
+        <item>Cristian</item>
+        <item>Islam</item>
+        <item>Hinduism</item>
+    </string-array>
 
 </resources>

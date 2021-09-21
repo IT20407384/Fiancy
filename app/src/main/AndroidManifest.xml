@@ -3,7 +3,7 @@
     package="com.daemon.fiancy"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -18,33 +18,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FIANCY">
-        <activity android:name=".Reject_Reason" />
-        <activity android:name=".ProfileReview" />
-        <activity android:name=".Search" />
-        <activity android:name=".ReportAd" />
-        <activity android:name=".profile" />
-        <activity android:name=".Home">
 
-        </activity>
-        <activity android:name=".MatchFinder">
-
-        </activity>
-        <activity android:name=".PaypalUI" />
-        <activity android:name=".AdConfirmActivity" />
-        <activity android:name=".PostAdActivity">
-        </activity>
-        <activity android:name=".UpdateProfile" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".PremiumLog" />
-        <activity android:name=".AdminPanel">
+        <activity android:name=".MainActivity"
+            android:noHistory="true"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".MyAdCollection" />
 
+        <activity android:name=".Reject_Reason" />
+        <activity android:name=".ProfileReview" />
+        <activity android:name=".ReportAd" />
+        <activity android:name=".profile" />
+        <activity android:name=".Home" />
+        <activity android:name=".MatchFinder" />
+        <activity android:name=".PaypalUI" />
+        <activity android:name=".AdConfirmActivity" />
+        <activity android:name=".PostAdActivity" />
+        <activity android:name=".UpdateProfile" />
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".PremiumLog" />
+        <activity android:name=".AdminPanel" />
+        <activity android:name=".MyAdCollection" />
+        <activity android:name=".ManageAdvertisementActiviy"/>
 
         <meta-data
             android:name="preloaded_fonts"

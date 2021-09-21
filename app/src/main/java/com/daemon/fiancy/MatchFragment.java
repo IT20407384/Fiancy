@@ -29,7 +29,7 @@ public class MatchFragment extends Fragment {
 
         initImageBitmaps();
 
-        recyclerView = view.findViewById(R.id.recycler_viewSM);
+        recyclerView = view.findViewById(R.id.recycler_matchSM);
         recyclerView.setLayoutManager((new LinearLayoutManager(view.getContext())));
         recyclerView.setAdapter(new RecyclerViewForMatchFinder(mNames,mImageUrls, view.getContext()));
 

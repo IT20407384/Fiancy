@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PostAdActivity"
     android:background="@color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".PostAdActivity">
 
-    <include layout="@layout/toolbar"/>
+    <include layout="@layout/toolbar" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,45 +23,47 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="15dp">
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/fill_in_the_details"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
                     android:paddingLeft="10dp"
-                    android:paddingTop="16dp"/>
+                    android:paddingTop="16dp"
+                    android:text="@string/fill_in_the_details"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/Horizontal_grey"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"/>
+                    android:layout_marginRight="10dp"
+                    android:background="@color/Horizontal_grey" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tvFullname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/full_name"
-                    android:textSize="16sp"
-                    android:textColor="@color/red_pink"
                     android:paddingTop="25dp"
-                    android:layout_marginLeft="34dp"/>
+                    android:text="@string/full_name"
+                    android:textColor="@color/red_pink"
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/etFullName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
                     android:gravity="left"
                     android:textSize="14dp" />
 
@@ -67,140 +71,288 @@
                     android:id="@+id/tvAge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/age"
-                    android:textSize="16sp"
-                    android:textColor="@color/red_pink"
                     android:paddingTop="25dp"
-                    android:layout_marginLeft="34dp"/>
+                    android:text="@string/age"
+                    android:textColor="@color/red_pink"
+                    android:textSize="16sp" />
+
                 <EditText
                     android:id="@+id/etAge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:gravity="left"/>
+                    android:gravity="left"
+                    android:inputType="numberDecimal"
+                    android:textSize="14dp" />
 
                 <TextView
                     android:id="@+id/tvGender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/gender"
-                    android:textSize="16sp"
-                    android:textColor="@color/red_pink"
                     android:paddingTop="25dp"
-                    android:layout_marginLeft="34dp"/>
+                    android:text="@string/gender"
+                    android:textColor="@color/red_pink"
+                    android:textSize="16sp" />
+
                 <RadioGroup
                     android:id="@+id/radioGroupGender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="left">
+                    android:gravity="left"
+                    android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/radioMale"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
                         android:text="@string/male"
-                        android:textSize="14sp"
-                        android:layout_marginLeft="65dp"
-                        android:layout_marginRight="15dp"/>
+                        android:textSize="14sp" />
+
                     <RadioButton
                         android:id="@+id/radioFemale"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="34dp"
                         android:text="@string/female"
-                        android:textSize="14sp"/>
+                        android:textSize="14sp" />
                 </RadioGroup>
+
                 <TextView
                     android:id="@+id/tvDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/description"
-                    android:textSize="16sp"
-                    android:textColor="@color/red_pink"
                     android:paddingTop="25dp"
-                    android:layout_marginLeft="34dp"/>
+                    android:text="@string/description"
+                    android:textColor="@color/red_pink"
+                    android:textSize="16sp" />
+
                 <EditText
                     android:id="@+id/etDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:gravity="left"/>
+                    android:gravity="left"
+                    android:textSize="14dp" />
+
                 <TextView
                     android:id="@+id/tvStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/status"
-                    android:textSize="16sp"
-                    android:textColor="@color/red_pink"
                     android:paddingTop="25dp"
-                    android:layout_marginLeft="34dp"/>
+                    android:text="@string/status"
+                    android:textColor="@color/red_pink"
+                    android:textSize="16sp" />
+
                 <RadioGroup
                     android:id="@+id/radioGroupStatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                    android:gravity="left"
+                    android:orientation="vertical">
 
                     <RadioButton
-                        android:id="@+id/radioUnmarried"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/radioNevermarried"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/unmarried"
-                        android:textSize="14sp"
-                        android:layout_marginRight="10dp"/>
+                        android:layout_marginRight="10dp"
+                        android:text="@string/nevermarried"
+                        android:textSize="14sp" />
+
                     <RadioButton
-                        android:id="@+id/radioDivorced"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/radioWidowed"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/married"
-                        android:textSize="14sp"
-                        android:layout_marginRight="10dp"/>
+                        android:layout_marginRight="10dp"
+                        android:text="@string/widowed"
+                        android:textSize="14sp" />
+
                     <RadioButton
-                        android:id="@+id/radioWidow"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/radioDevorced"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/widow"
-                        android:textSize="14sp"/>
+                        android:text="@string/devorced"
+                        android:textSize="14sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioSeparated"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="-145dp"
+                        android:layout_marginRight="10dp"
+                        android:text="@string/separated"
+                        android:textSize="14sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioOtherStatus"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="10dp"
+                        android:text="Other"
+                        android:textSize="14sp" />
                 </RadioGroup>
+
+                <TextView
+                    android:id="@+id/tvProfession"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profession"
+                    android:textColor="@color/red_pink"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etProffesion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/tvHobbies"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="25dp"
+                    android:text="@string/hobbies"
+                    android:textColor="@color/red_pink"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cbReading"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Reading" />
+
+                    <CheckBox
+                        android:id="@+id/cbCollecting"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Collecting" />
+
+                    <CheckBox
+                        android:id="@+id/cbMusic"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Music" />
+
+                    <CheckBox
+                        android:id="@+id/cbGardening"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Gardening" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cbGames"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Video Games" />
+
+                    <CheckBox
+                        android:id="@+id/cbFishing"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Fishing" />
+
+                    <CheckBox
+                        android:id="@+id/cbWalking"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Walking" />
+
+                    <CheckBox
+                        android:id="@+id/cbShopping"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Shopping" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cbTraveling"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Traveling" />
+
+                    <CheckBox
+                        android:id="@+id/cbWatchingSports"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Watching Sports" />
+
+                    <CheckBox
+                        android:id="@+id/cbEatingOut"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Eating Out" />
+
+                    <CheckBox
+                        android:id="@+id/cbDancing"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Dancing" />
+                </LinearLayout>
+
                 <TextView
                     android:id="@+id/tvAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/address"
-                    android:textSize="16sp"
-                    android:textColor="@color/red_pink"
                     android:paddingTop="25dp"
-                    android:layout_marginLeft="34dp"/>
+                    android:text="@string/address"
+                    android:textColor="@color/red_pink"
+                    android:textSize="16sp" />
+
                 <EditText
                     android:id="@+id/etAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="text"
-                    android:textSize="14dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"/>
+                    android:inputType="textPostalAddress"
+                    android:textSize="14dp" />
+
+
                 <TextView
                     android:id="@+id/tvContact"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/contact_details"
-                    android:textSize="16sp"
-                    android:textColor="@color/red_pink"
                     android:paddingTop="25dp"
-                    android:layout_marginLeft="34dp"/>
+                    android:text="@string/contact_details"
+                    android:textColor="@color/red_pink"
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="left"
                     android:layout_marginLeft="50dp"
                     android:layout_marginRight="50dp"
+                    android:gravity="left"
+                    android:orientation="horizontal"
                     android:paddingTop="25dp">
 
                     <ImageView
@@ -208,21 +360,23 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:src="@drawable/ic_phone" />
+
                     <EditText
                         android:id="@+id/etPhone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="phone"
-                        android:textSize="14sp"
-                        android:paddingLeft="25dp"/>
+                        android:paddingLeft="25dp"
+                        android:textSize="14sp" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="left"
                     android:layout_marginLeft="50dp"
                     android:layout_marginRight="50dp"
+                    android:gravity="left"
+                    android:orientation="horizontal"
                     android:paddingTop="15dp">
 
                     <ImageView
@@ -230,66 +384,106 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:src="@drawable/ic_mail" />
+
                     <EditText
                         android:id="@+id/etMail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textEmailAddress"
-                        android:textSize="14dp"
-                        android:paddingLeft="25dp"/>
+                        android:paddingLeft="25dp"
+                        android:textSize="14dp" />
                 </LinearLayout>
+
                 <TextView
                     android:id="@+id/tvPhotos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/add_photos"
-                    android:textSize="16sp"
-                    android:textColor="@color/red_pink"
                     android:paddingTop="25dp"
-                    android:layout_marginLeft="34dp"/>
+                    android:text="@string/add_photos"
+                    android:textColor="@color/red_pink"
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/insertImg1"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/ic_photo"/>
+                        android:onClick="uploadImage"
+                        android:src="@drawable/ic_photo" />
+
                     <ImageView
                         android:id="@+id/insertImg2"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/ic_photo"
-                        android:layout_marginLeft="12dp"/>
+                        android:layout_marginLeft="12dp"
+                        android:onClick="uploadImage"
+                        android:src="@drawable/ic_photo" />
+
                     <ImageView
                         android:id="@+id/insertImg3"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/ic_photo"
-                        android:layout_marginLeft="12dp"/>
+                        android:layout_marginLeft="12dp"
+                        android:onClick="uploadImage"
+                        android:src="@drawable/ic_photo" />
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvEducationLevel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="25dp"
+                    android:text="@string/min_education_level"
+                    android:textColor="@color/red_pink"
+                    android:textSize="16sp" />
+
+                <Spinner
+                    android:id="@+id/SPEducationLevel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/red_pink"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvReligion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="25dp"
+                    android:text="@string/SPreligion"
+                    android:textColor="@color/red_pink"
+                    android:textSize="16sp" />
+
+                <Spinner
+                    android:id="@+id/SPReligion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/red_pink"
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
+                    android:layout_marginBottom="25dp"
                     android:gravity="center"
-                    android:layout_marginBottom="25dp">
+                    android:orientation="horizontal">
 
                     <Button
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/cancel"/>
+                        android:onClick="cancelBtn"
+                        android:text="@string/cancel" />
+
                     <Button
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/next"
                         android:layout_marginLeft="25dp"
-                        android:onClick="adConfirmation"/>
+                        android:onClick="adConfirmation"
+                        android:text="@string/next" />
 
                 </LinearLayout>
 

@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 public class Home extends AppCompatActivity {
    //LinearLayout profile;
+
    private static final String TAG = "MainActivity";
     //vars
     private ArrayList<String> mNames = new ArrayList<>();

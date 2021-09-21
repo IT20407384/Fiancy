@@ -1,5 +1,6 @@
 package com.daemon.fiancy;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 
 public class Pending extends Fragment {
 
+
     private RecyclerView recyclerView;
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
@@ -29,12 +31,13 @@ public class Pending extends Fragment {
 
         initImageBitmaps();
 
-        recyclerView = view.findViewById(R.id.recycler_viewCS);
+        recyclerView = view.findViewById(R.id.recycler_viewCS1);
         recyclerView.setLayoutManager((new LinearLayoutManager(view.getContext())));
         recyclerView.setAdapter(new RecycleViewAdapterforPending(mNames,mImageUrls, view.getContext()));
 
         return view;
     }
+
     private void initImageBitmaps(){
 
         mImageUrls.add("https://lp-cms-production.imgix.net/2019-06/b4fbc706dab2a70a96588309ed268a1a-sri-lanka.jpeg");

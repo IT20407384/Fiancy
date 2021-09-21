@@ -125,7 +125,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView32" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/CSacceptbutton"
             android:layout_width="175dp"
             android:layout_height="55dp"
             android:layout_marginTop="20dp"
@@ -160,7 +160,7 @@
             app:layout_constraintEnd_toStartOf="@+id/button40"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button3" />
+            app:layout_constraintTop_toBottomOf="@+id/CSacceptbutton" />
 
         <Button
             android:id="@+id/button40"
@@ -187,7 +187,7 @@
             android:layout_marginTop="40dp"
             app:layout_constraintEnd_toStartOf="@+id/button40"
             app:layout_constraintStart_toEndOf="@+id/button50"
-            app:layout_constraintTop_toBottomOf="@+id/button3"></View>
+            app:layout_constraintTop_toBottomOf="@+id/CSacceptbutton"></View>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

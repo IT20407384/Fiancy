@@ -14,14 +14,19 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ViewHolderforPending extends RecyclerView.ViewHolder {
 
     CircleImageView image;
-    TextView imageName;
+    TextView imageName,location,age,gender,religion,proffesion;
     RelativeLayout parentLayout;
 
     public ViewHolderforPending(@NonNull View itemView) {
         super(itemView);
         image = itemView.findViewById(R.id.CSprofileimagehome);
         imageName = itemView.findViewById(R.id.CSprofileuser_name);
-        parentLayout = itemView.findViewById(R.id.recycler_viewCS);
+        location = itemView.findViewById(R.id.CSlocation);
+        age = itemView.findViewById(R.id.CSage);
+        gender = itemView.findViewById(R.id.CSreligion);
+        religion = itemView.findViewById(R.id.CSreligion);
+        proffesion = itemView.findViewById(R.id.CSproffetion);
+        parentLayout = itemView.findViewById(R.id.recycler_viewCS1);
     }
 
     public CircleImageView getImage() {

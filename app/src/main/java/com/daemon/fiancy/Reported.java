@@ -30,7 +30,7 @@ public class Reported extends Fragment {
 
         initImageBitmaps();
 
-        recyclerView = view.findViewById(R.id.recycler_viewCS);
+        recyclerView = view.findViewById(R.id.recycler_viewCS2);
         recyclerView.setLayoutManager((new LinearLayoutManager(view.getContext())));
         recyclerView.setAdapter(new RecyclerViewforReported(mNames,mImageUrls, view.getContext()));
 

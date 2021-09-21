@@ -2,9 +2,13 @@ package com.daemon.fiancy.recyclers;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.daemon.fiancy.R;
 
 import java.util.ArrayList;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RecycleViewAdapterforPending extends RecyclerView.Adapter<ViewHolderforPending> {
 
@@ -20,12 +25,13 @@ public class RecycleViewAdapterforPending extends RecyclerView.Adapter<ViewHolde
     private ArrayList<String> mImage = new ArrayList<>();
     private Context mContext;
 
-    public RecycleViewAdapterforPending(ArrayList<String> mImageNames, ArrayList<String>
+    public  RecycleViewAdapterforPending (ArrayList<String> mImageNames, ArrayList<String>
             mImage, Context mContext) {
         this.mImageNames = mImageNames;
         this.mImage = mImage;
         this.mContext = mContext;
     }
+
 
     @NonNull
     @Override
@@ -49,4 +55,6 @@ public class RecycleViewAdapterforPending extends RecyclerView.Adapter<ViewHolde
         return mImageNames.size();
     }
 }
+
+
 

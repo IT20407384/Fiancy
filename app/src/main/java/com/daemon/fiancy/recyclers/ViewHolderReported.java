@@ -21,7 +21,7 @@ public ViewHolderReported(@NonNull View itemView){
         super(itemView);
         image=itemView.findViewById(R.id.CSprofileimagehome);
         imageName=itemView.findViewById(R.id.CSprofileuser_name);
-        parentLayout=itemView.findViewById(R.id.recycler_viewCS);
+        parentLayout=itemView.findViewById(R.id.recycler_viewCS2);
         }
 
 public CircleImageView getImage(){

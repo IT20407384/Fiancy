@@ -6,6 +6,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
@@ -97,6 +98,11 @@ public class Home extends AppCompatActivity {
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(mNames,mImageUrls,this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    public void postAdBtn(View view) {
+        Intent intent = new Intent(getApplicationContext(), PostAdActivity.class);
+        startActivity(intent);
     }
 
 //    public void clicked(View view) {

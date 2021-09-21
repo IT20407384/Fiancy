@@ -1,14 +1,8 @@
 package com.daemon.fiancy.models;
 
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Advertisements implements Parcelable{
+public class Advertisements {
     private String fullname;
     private String age;
     private String gender;
@@ -18,17 +12,23 @@ public class Advertisements implements Parcelable{
     private String address;
     private String phone;
     private String email;
+    private String religion;
     private String minEducatuinLevel;
     private ArrayList<String> hobbiesList;
     private String image1;
     private String image2;
     private String image3;
+    private String fee;
+    private String discount;
+    private String totatlFee;
+    private Boolean liveAdvertisement = false;
 
-    public Advertisements() {}
+    public Advertisements() {
+    }
 
-    public Advertisements(String fullname, String age, String gender, String status, String description,
-                          String profession, String address, String phone, String email, String minEducatuinLevel,
-                          ArrayList<String> hobbiesList, String image1, String image2, String image3) {
+    public Advertisements(String fullname, String age, String gender, String status, String description, String profession,
+                          String address, String phone, String email, String religion, String minEducatuinLevel, ArrayList<String> hobbiesList,
+                          String image1, String image2, String image3, Boolean liveAdvertisement) {
         this.fullname = fullname;
         this.age = age;
         this.gender = gender;
@@ -38,41 +38,14 @@ public class Advertisements implements Parcelable{
         this.address = address;
         this.phone = phone;
         this.email = email;
+        this.religion = religion;
         this.minEducatuinLevel = minEducatuinLevel;
         this.hobbiesList = hobbiesList;
         this.image1 = image1;
         this.image2 = image2;
         this.image3 = image3;
+        this.liveAdvertisement = liveAdvertisement;
     }
-
-    protected Advertisements(Parcel in) {
-        fullname = in.readString();
-        age = in.readString();
-        gender = in.readString();
-        status = in.readString();
-        description = in.readString();
-        profession = in.readString();
-        address = in.readString();
-        phone = in.readString();
-        email = in.readString();
-        minEducatuinLevel = in.readString();
-        hobbiesList = in.createStringArrayList();
-        image1 = in.readString();
-        image2 = in.readString();
-        image3 = in.readString();
-    }
-
-    public static final Creator<Advertisements> CREATOR = new Creator<Advertisements>() {
-        @Override
-        public Advertisements createFromParcel(Parcel in) {
-            return new Advertisements(in);
-        }
-
-        @Override
-        public Advertisements[] newArray(int size) {
-            return new Advertisements[size];
-        }
-    };
 
     public String getFullname() {
         return fullname;
@@ -186,26 +159,43 @@ public class Advertisements implements Parcelable{
         this.image3 = image3;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public String getReligion() {
+        return religion;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(fullname);
-        dest.writeString(age);
-        dest.writeString(gender);
-        dest.writeString(status);
-        dest.writeString(description);
-        dest.writeString(profession);
-        dest.writeString(address);
-        dest.writeString(phone);
-        dest.writeString(email);
-        dest.writeString(minEducatuinLevel);
-        dest.writeStringList(hobbiesList);
-        dest.writeString(image1);
-        dest.writeString(image2);
-        dest.writeString(image3);
+    public void setReligion(String religion) {
+        this.religion = religion;
+    }
+
+    public Boolean getLiveAdvertisement() {
+        return liveAdvertisement;
+    }
+
+    public void setLiveAdvertisement(Boolean liveAdvertisement) {
+        this.liveAdvertisement = liveAdvertisement;
+    }
+
+    public String getFee() {
+        return fee;
+    }
+
+    public void setFee(String fee) {
+        this.fee = fee;
+    }
+
+    public String getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(String discount) {
+        this.discount = discount;
+    }
+
+    public String getTotatlFee() {
+        return totatlFee;
+    }
+
+    public void setTotatlFee(String totatlFee) {
+        this.totatlFee = totatlFee;
     }
 }

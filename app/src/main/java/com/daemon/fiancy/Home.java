@@ -1,34 +1,57 @@
 package com.daemon.fiancy;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.daemon.fiancy.models.Advertisements;
 import com.daemon.fiancy.recyclers.RecyclerViewAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class Home extends AppCompatActivity {
-   //LinearLayout profile;
-   private static final String TAG = "MainActivity";
+    DatabaseReference databaseReference;
+    RecyclerViewAdapter adapter;
+    ArrayList<Advertisements> list;
+    EditText Search;
+
+
+    //LinearLayout profile;
+    private static final String TAG = "MainActivity";
     //vars
-    private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<String> mImageUrls = new ArrayList<>();
+//    private ArrayList<String> mNames = new ArrayList<>();
+//    private ArrayList<String> mImageUrls = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Log.d(TAG, "onCreate: started");
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("PendingAdvertisements");
+
+
         initImageBitmaps();
+        searchView();
+
 
         // profile = findViewById(R.id.p1);
 
@@ -51,6 +74,27 @@ public class Home extends AppCompatActivity {
         });
     }
 
+    private void searchView() {
+        Search = findViewById(R.id.Search);
+        //Search function
+        Search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                adapter.filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+    }
+
     private static void openDrawer(DrawerLayout drawerLayout) {
         // open Drawer
         drawerLayout.openDrawer(GravityCompat.START);
@@ -67,43 +111,62 @@ public class Home extends AppCompatActivity {
         }
     }
 
-    private void initImageBitmaps(){
+    private void initImageBitmaps() {
         Log.d(TAG, "initImageBitmaps: started");
-        mImageUrls.add("https://lp-cms-production.imgix.net/2019-06/b4fbc706dab2a70a96588309ed268a1a-sri-lanka.jpeg");
-                mNames.add("Seegiriya");
-        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Demodara-Nine-Arch-Bridge.jpg");
-        mNames.add("Ella");
-        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Train-ride-from-Kandy-to-Nuwara-Eliya.jpg");
-        mNames.add("Nuwara Eliya");
-        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Pinnawala-Elephant-Orphanage.jpg");
-        mNames.add("Pinnawala Elephant Orphanage");
-        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Ruins-of-Polonnaruwa.jpg");
-        mNames.add("Polonnaruwa");
-        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Adams-Peak.jpg");
-        mNames.add("Adams Peak");
-        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Mirissa-Fisheries-Harbor.jpg");
-        mNames.add("Mirissa");
-        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Leopards.jpg");
-        mNames.add("Yala National Park");
-        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Colombo.jpg");
-        mNames.add("Colombo");
-        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Jaffna.jpg");
-        mNames.add("Jaffna");
+
         initRecyclerView();
     }
-    private void initRecyclerView(){
+
+
+    private void initRecyclerView() {
         Log.d(TAG, "initRecyclerView: started");
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(mNames,mImageUrls,this);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setHasFixedSize(true);
+//        RecyclerViewAdapter adapter = new RecyclerViewAdapter(mNames,mImageUrls,this);
+//        recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        list = new ArrayList<>();
+        adapter = new RecyclerViewAdapter(this, list);
+        recyclerView.setAdapter(adapter);
+
+
+        //get & set data from firebase
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                list.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Advertisements advertisements = dataSnapshot.getValue(Advertisements.class);
+
+                    list.add(advertisements);
+
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+
+            }
+        });
+
+
     }
 
-//    public void clicked(View view) {
+    //    public void clicked(View view) {
 //        if (view == profile) {
 //            Intent intent = new Intent(this, profile.class);
 //            startActivity(intent);
 //        }
 //    }
+    public void Checkprofile(View view) {
+        Intent intent = new Intent(Home.this, profile.class);
+        startActivity(intent);
 
+    }
+
+    public void Checkfilter(View view) {
+        Intent intent = new Intent(Home.this, Filter.class);
+        startActivity(intent);
+    }
 }

@@ -29,14 +29,15 @@
                 android:gravity="left"
                 android:orientation="horizontal">
 
-                <SearchView
+                <EditText
                     android:id="@+id/Search"
                     android:layout_width="219dp"
                     android:layout_height="match_parent"
                     tools:layout_editor_absoluteX="16dp"
-                    tools:layout_editor_absoluteY="102dp">
+                    tools:layout_editor_absoluteY="102dp"
+                    android:hint="Search here">
 
-                </SearchView>
+                </EditText>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -49,7 +50,8 @@
                         android:layout_height="40dp"
                         android:layout_marginRight="10dp"
                         android:src="@drawable/ic_filter"
-                        android:layout_marginEnd="10dp" />
+                        android:layout_marginEnd="10dp"
+                        android:onClick="Checkfilter"/>
 
                 </LinearLayout>
 
@@ -60,8 +62,7 @@
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="16dp">
-            </androidx.recyclerview.widget.RecyclerView>
+                android:layout_marginBottom="16dp"></androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
 

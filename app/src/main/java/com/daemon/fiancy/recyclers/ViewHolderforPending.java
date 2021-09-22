@@ -26,7 +26,7 @@ public class ViewHolderforPending extends RecyclerView.ViewHolder {
         gender = itemView.findViewById(R.id.CSpendinggender);
         religion = itemView.findViewById(R.id.CSpendingreligion);
         profession = itemView.findViewById(R.id.CSpendingprofession);
-        parentLayout = itemView.findViewById(R.id.CSRecyclerView);
+        parentLayout = itemView.findViewById(R.id.CSRecyclerViewPending);
     }
 
     public CircleImageView getImage() {

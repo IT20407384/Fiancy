@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.daemon.fiancy.models.Advertisements;
 import com.daemon.fiancy.models.UserModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,6 +40,8 @@ public class MyAdvertisement extends Fragment implements View.OnClickListener {
     public static final String EMAIL_KEY = "email_key";
     SharedPreferences sharedpreferences;
     String emailShared;
+
+    String documentKey;
 
     public MyAdvertisement() {}
 
@@ -115,6 +118,25 @@ public class MyAdvertisement extends Fragment implements View.OnClickListener {
             public void onCancelled(@NonNull DatabaseError error) {}
         });
 
+        DatabaseReference advertiseDB = FirebaseDatabase.getInstance().getReference().child("Advertisements");
+        advertiseDB.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Advertisements advertisements = new Advertisements();
+
+                for(DataSnapshot mySnap : snapshot.getChildren()) {
+                    advertisements = mySnap.getValue(Advertisements.class);
+                    assert advertisements != null;
+                    if(advertisements.getOwner().equalsIgnoreCase(emailShared))
+                        documentKey = mySnap.getKey();
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+
         return view;
     }
 
@@ -128,6 +150,7 @@ public class MyAdvertisement extends Fragment implements View.OnClickListener {
                 break;
             case R.id.SMeditadbtn:
                 Intent intent1 = new Intent(getActivity(), ManageAdvertisementActiviy.class);
+                intent1.putExtra("DocumentKey", documentKey);
                 startActivity(intent1);
                 break;
             case R.id.SMpayforad:

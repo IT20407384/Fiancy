@@ -27,12 +27,12 @@ public class Pending extends Fragment {
 
     private RecyclerView recyclerView;
     private ArrayList<Advertisements> dbAdList = new ArrayList<>();
+    private ArrayList<String> adKey = new ArrayList<>();
     DatabaseReference dbadvertisementRef;
     RecycleViewAdapterforPending adapter;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_pending, container,false);
 
         dbadvertisementRef = FirebaseDatabase.getInstance().getReference().child("Advertisements");
@@ -41,7 +41,7 @@ public class Pending extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager((new LinearLayoutManager(view.getContext())));
 
-        adapter = new RecycleViewAdapterforPending(dbAdList, view.getContext());
+        adapter = new RecycleViewAdapterforPending(dbAdList, adKey, view.getContext());
         recyclerView.setAdapter(adapter);
 
         dbadvertisementRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -50,7 +50,11 @@ public class Pending extends Fragment {
                 dbAdList.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Advertisements advertisement = dataSnapshot.getValue(Advertisements.class);
-                    dbAdList.add(advertisement);
+                    assert advertisement != null;
+                    if(!advertisement.getPaymentNeeded() && !advertisement.getLiveAdvertisement()) {
+                        dbAdList.add(advertisement);
+                        adKey.add(dataSnapshot.getKey());
+                    }
                 }
                 adapter.notifyDataSetChanged();
             }

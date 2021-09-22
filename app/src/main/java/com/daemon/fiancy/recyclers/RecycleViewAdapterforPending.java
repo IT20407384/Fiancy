@@ -45,9 +45,24 @@ public class RecycleViewAdapterforPending extends RecyclerView.Adapter<ViewHolde
 
         Advertisements advertisement = advertisementsArrayList.get(position);
 
-        Glide.with(mContext)
-                .asBitmap().load(advertisement.getImage1())
-                .into(holder.image);
+        if(advertisement.getImage1() != null) {
+            Glide.with(mContext)
+                    .asBitmap().load(advertisement.getImage1())
+                    .into(holder.image);
+        } else {
+            // gender = male
+            if (advertisement.getGender().equals("Male")) {
+                Glide.with(mContext)
+                        .asBitmap().load("https://cdn-icons-png.flaticon.com/512/2922/2922510.png")
+                        .into(holder.image);
+            }
+            // gender = female
+            if (advertisement.getGender().equals("Female")) {
+                Glide.with(mContext)
+                        .asBitmap().load("https://cdn-icons-png.flaticon.com/512/2922/2922561.png")
+                        .into(holder.image);
+            }
+        }
         holder.imageName.setText(advertisement.getFullname());
         holder.location.setText(advertisement.getAddress());
         holder.age.setText(advertisement.getAge());

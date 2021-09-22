@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -45,6 +46,10 @@ public class profile extends AppCompatActivity {
 
         //get Instance()
         getInstance();
+
+        ImageView imageView = findViewById(R.id.user_profile);
+
+        imageView.setBackgroundResource(R.drawable.ic_back);
     }
 
     private void getInstance() {

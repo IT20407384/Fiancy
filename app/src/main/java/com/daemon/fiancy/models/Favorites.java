@@ -1,9 +1,11 @@
 package com.daemon.fiancy.models;
 
+import java.util.ArrayList;
+
 public class Favorites {
 
     private String favouredUser;
-    private String []advertisementKeys;
+    private ArrayList<String> advertisementKeys;
 
     public Favorites() {
     }
@@ -16,11 +18,11 @@ public class Favorites {
         this.favouredUser = favouredUser;
     }
 
-    public String[] getAdvertisementKeys() {
+    public ArrayList<String> getAdvertisementKeys() {
         return advertisementKeys;
     }
 
-    public void setAdvertisementKeys(String[] advertisementKeys) {
+    public void setAdvertisementKeys(ArrayList<String> advertisementKeys) {
         this.advertisementKeys = advertisementKeys;
     }
 }

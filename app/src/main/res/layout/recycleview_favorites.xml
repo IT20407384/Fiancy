@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/ad_view_background"
-        android:onClick="clicked"
         android:orientation="horizontal"
         android:paddingTop="15dp">
 
@@ -46,7 +45,7 @@
 
                     <TextView
                         android:id="@+id/SMprofilefavoritename"
-                        android:layout_width="wrap_content"
+                        android:layout_width="223dp"
                         android:layout_height="wrap_content"
                         android:paddingLeft="15dp"
                         android:text="@string/name_1"
@@ -54,7 +53,7 @@
                         android:textStyle="bold" />
 
                     <Button
-                        android:id="@+id/buttonadcd4"
+                        android:id="@+id/SMfavdeletebtn"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_weight="1"
@@ -80,6 +79,7 @@
                         android:src="@drawable/ic_location" />
 
                     <TextView
+                        android:id="@+id/SMfavoritelocation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/loc"
@@ -95,12 +95,14 @@
                     android:paddingRight="50dp">
 
                     <TextView
+                        android:id="@+id/SMfavoritesage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/age_1"
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/SMfavoritesgender"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="right"
@@ -118,12 +120,14 @@
                     android:paddingBottom="10dp">
 
                     <TextView
+                        android:id="@+id/SMfavoritesreligion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/reli"
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/SMfavoriteprofession"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="right"

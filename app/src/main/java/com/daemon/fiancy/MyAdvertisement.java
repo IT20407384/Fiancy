@@ -126,9 +126,10 @@ public class MyAdvertisement extends Fragment implements View.OnClickListener {
 
                 for(DataSnapshot mySnap : snapshot.getChildren()) {
                     advertisements = mySnap.getValue(Advertisements.class);
-                    if(advertisements.getOwner().equalsIgnoreCase(emailShared)) {
-                        documentKey = advertisements.getDocumentKey();
-                    }
+                    assert advertisements != null;
+                    if(advertisements.getOwner().equalsIgnoreCase(emailShared))
+                        documentKey = mySnap.getKey();
+
                 }
             }
 

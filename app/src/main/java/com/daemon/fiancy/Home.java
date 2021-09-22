@@ -49,7 +49,7 @@ public class Home extends AppCompatActivity {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Advertisements");
 
-        initImageBitmaps();
+        initRecyclerView();
         searchView();
 
         sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
@@ -105,12 +105,6 @@ public class Home extends AppCompatActivity {
         }
     }
 
-    private void initImageBitmaps() {
-        Log.d(TAG, "initImageBitmaps: started");
-
-        initRecyclerView();
-    }
-
     private void initRecyclerView() {
         Log.d(TAG, "initRecyclerView: started");
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
@@ -126,10 +120,10 @@ public class Home extends AppCompatActivity {
             public void onDataChange(DataSnapshot snapshot) {
                 list.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
                     Advertisements advertisements = dataSnapshot.getValue(Advertisements.class);
-
+                    advertisements.setDocumentKey(dataSnapshot.getKey());
                     list.add(advertisements);
-
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -143,10 +137,10 @@ public class Home extends AppCompatActivity {
         Intent intent = new Intent(Home.this, UpdateProfile.class);
         startActivity(intent);
     }
-    public void Checkprofile(View view) {
-        Intent intent = new Intent(Home.this, profile.class);
-        startActivity(intent);
-    }
+//    public void Checkprofile(View view) {
+//        Intent intent = new Intent(Home.this, profile.class);
+//        startActivity(intent);
+//    }
     public void clickedMyAdvertisement(View view) {
         Intent intent = new Intent(Home.this, MyAdCollection.class);
         startActivity(intent);

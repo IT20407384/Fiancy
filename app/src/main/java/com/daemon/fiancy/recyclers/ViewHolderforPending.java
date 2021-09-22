@@ -14,20 +14,50 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ViewHolderforPending extends RecyclerView.ViewHolder {
 
     CircleImageView image;
-    TextView imageName;
+    TextView imageName, location, age, gender, religion, profession;
     RelativeLayout parentLayout;
 
     public ViewHolderforPending(@NonNull View itemView) {
         super(itemView);
-        image = itemView.findViewById(R.id.CSprofileimagehome);
-        imageName = itemView.findViewById(R.id.CSprofileuser_name);
-        parentLayout = itemView.findViewById(R.id.recycler_viewCS);
+        image = itemView.findViewById(R.id.CSprofileimagepending);
+        imageName = itemView.findViewById(R.id.CSprofileuser_namepending);
+        location = itemView.findViewById(R.id.CSpendinglocation);
+        age = itemView.findViewById(R.id.CSpendingage);
+        gender = itemView.findViewById(R.id.CSpendinggender);
+        religion = itemView.findViewById(R.id.CSpendingreligion);
+        profession = itemView.findViewById(R.id.CSpendingprofession);
+        parentLayout = itemView.findViewById(R.id.CSRecyclerViewPending);
     }
 
     public CircleImageView getImage() {
         return image;
     }
+
     public TextView getImageName() {
         return imageName;
+    }
+
+    public TextView getLocation() {
+        return location;
+    }
+
+    public TextView getAge() {
+        return age;
+    }
+
+    public TextView getGender() {
+        return gender;
+    }
+
+    public TextView getReligion() {
+        return religion;
+    }
+
+    public TextView getProfession() {
+        return profession;
+    }
+
+    public RelativeLayout getParentLayout() {
+        return parentLayout;
     }
 }

@@ -11,9 +11,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.daemon.fiancy.models.Advertisements;
+import com.daemon.fiancy.models.Favorites;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -34,9 +36,11 @@ public class profile extends AppCompatActivity {
     // model class
     Advertisements singleAdvertisement;
     // initializations
-    ImageView profileimageinAd, Gender;
+    ImageView profileimageinAd, Gender, heartFav;
     TextView location, fullname, age, profession, religion, minEducation,
     description;
+
+    String documentKey;
 
 
     @Override
@@ -46,10 +50,7 @@ public class profile extends AppCompatActivity {
 
         //get Instance()
         getInstance();
-
-        ImageView imageView = findViewById(R.id.user_profile);
-
-        imageView.setBackgroundResource(R.drawable.ic_back);
+        setFavorites();
     }
 
     private void getInstance() {
@@ -62,6 +63,7 @@ public class profile extends AppCompatActivity {
         religion = findViewById(R.id.NPReligion);
         minEducation = findViewById(R.id.NPMinEducationLevel);
         description = findViewById(R.id.NPDescription);
+        heartFav = findViewById(R.id.user_profileHeart);
     }
 
     @Override
@@ -69,10 +71,11 @@ public class profile extends AppCompatActivity {
         super.onResume();
         // get document key of current post
         Intent intent = getIntent();
-        String documentKey = intent.getExtras().getString("documetKey");
+         documentKey = intent.getExtras().getString("documetKey");
 
         // call functions
         getAdvertisementData(documentKey);
+        setFavorites();
 
     }
 
@@ -132,6 +135,18 @@ public class profile extends AppCompatActivity {
     // go to report ad activty
     public void report(View view) {
         Intent intent = new Intent(profile.this, ReportAd.class);
+        intent.putExtra("ReportedAdKey",documentKey);
         startActivity(intent);
+    }
+
+    public void setFavorites() {
+        Favorites favorites = new Favorites();
+        DatabaseReference favDbRef = FirebaseDatabase.getInstance().getReference().child("Favorites");
+        heartFav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 }

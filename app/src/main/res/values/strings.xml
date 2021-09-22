@@ -44,7 +44,7 @@
     <string name="select_reason">Select Reason</string>
     <string name="your_email">Your Email</string>
     <string name="wrong_ad">report</string>
-    <string name="reason">Is there something wrong with this ad ?</string>
+    <string name="reason"> Is there something wrong with this ad ?</string>
     <string name="report_reason">Select reason</string>
     <string name="email">Your Emali</string>
     <string name="button">SENT</string>
@@ -154,4 +154,13 @@
         <item>Hinduism</item>
     </string-array>
 
+    <array name="NPReason_Array">
+        <item>English</item>
+        <item>English</item>
+        <item>English</item>
+        <item>English</item>
+        <item>English</item>
+    </array>
+
 </resources>
+

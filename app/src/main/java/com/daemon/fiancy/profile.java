@@ -37,6 +37,8 @@ public class profile extends AppCompatActivity {
     TextView location, fullname, age, profession, religion, minEducation,
     description;
 
+    String documentKey;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +66,7 @@ public class profile extends AppCompatActivity {
         super.onResume();
         // get document key of current post
         Intent intent = getIntent();
-        String documentKey = intent.getExtras().getString("documetKey");
+         documentKey = intent.getExtras().getString("documetKey");
 
         // call functions
         getAdvertisementData(documentKey);
@@ -127,6 +129,7 @@ public class profile extends AppCompatActivity {
     // go to report ad activty
     public void report(View view) {
         Intent intent = new Intent(profile.this, ReportAd.class);
+        intent.putExtra("ReportedAdKey",documentKey);
         startActivity(intent);
     }
 }

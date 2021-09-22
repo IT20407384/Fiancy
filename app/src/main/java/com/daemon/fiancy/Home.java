@@ -27,6 +27,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 
 public class Home extends AppCompatActivity {
@@ -117,11 +119,12 @@ public class Home extends AppCompatActivity {
         //get & set data from firebase
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
+            public void onDataChange(@NotNull DataSnapshot snapshot) {
                 list.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     Advertisements advertisements = dataSnapshot.getValue(Advertisements.class);
+                    assert advertisements != null;
                     advertisements.setDocumentKey(dataSnapshot.getKey());
                     list.add(advertisements);
                 }
@@ -129,7 +132,7 @@ public class Home extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {}
+            public void onCancelled(@NotNull DatabaseError error) {}
         });
     }
 

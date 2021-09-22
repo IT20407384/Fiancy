@@ -6,6 +6,7 @@
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/drawable/box.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/drawable/ic_adprofile.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/drawable/ic_baseline_event_available_24.xml" value="0.10052083333333334" />
+        <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/drawable/ic_baseline_military_tech_24.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/drawable/ic_baseline_power_settings_new_24.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/drawable/ic_home.xml" value="0.20260416666666667" />
@@ -47,6 +48,7 @@
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/recycleview_profile.xml" value="0.25" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/toolbar.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/toolbar_home.xml" value="0.33" />
+        <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/toolbar_profile.xml" value="0.33" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/menu/options_menu.xml" value="0.18645833333333334" />
       </map>
     </option>

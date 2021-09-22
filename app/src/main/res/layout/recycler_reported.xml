@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:id="@+id/CSRecyclerView"
+    android:id="@+id/CSRecyclerViewreported"
     android:padding="10dp">
 
     <LinearLayout
@@ -57,6 +57,7 @@
                         android:src="@drawable/ic_location" />
 
                     <TextView
+                        android:id="@+id/CSreportlocation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/loc"
@@ -72,12 +73,14 @@
                     android:paddingRight="50dp">
 
                     <TextView
+                        android:id="@+id/CSreportyear"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/age_1"
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/CSreportgender"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="right"
@@ -95,12 +98,14 @@
                     android:paddingBottom="10dp">
 
                     <TextView
+                        android:id="@+id/CSreportedreligion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/reli"
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/CSreportedproffesion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="right"

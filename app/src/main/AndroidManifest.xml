@@ -22,13 +22,9 @@
         <activity android:name=".MainActivity"
             android:noHistory="true"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
 
-        <activity android:name=".Reject_Reason" />
         <activity android:name=".ProfileReview" />
         <activity android:name=".ReportAd" />
         <activity android:name=".profile" />
@@ -40,7 +36,12 @@
         <activity android:name=".UpdateProfile" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".PremiumLog" />
-        <activity android:name=".AdminPanel" />
+        <activity android:name=".AdminPanel" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".MyAdCollection" />
         <activity android:name=".ManageAdvertisementActiviy"/>
         <activity android:name=".deleteAdvertisementActivity"/>

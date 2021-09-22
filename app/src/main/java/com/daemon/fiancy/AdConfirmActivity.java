@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -42,6 +44,17 @@ import java.util.Map;
 import java.util.Objects;
 
 public class AdConfirmActivity extends AppCompatActivity {
+    // creating constant keys for shared preferences.
+    public static final String SHARED_PREFS = "shared_prefs";
+
+    // key for storing email.
+    public static final String EMAIL_KEY = "email_key";
+
+    // variable for shared preferences.
+    SharedPreferences sharedpreferences;
+
+    String emailShared;
+
     // initialization
     ImageView back, img01, img02, img03;
     TextView advertID, adFee, adDiscount, adTotFee;
@@ -64,8 +77,7 @@ public class AdConfirmActivity extends AppCompatActivity {
     double totFee;
 
     // all strings
-    String fullname, age, gender, status, description, profession, address, phone,
-            email, minEduLevel, religion;
+    String fullname, age, gender, status, description, profession, address, phone, minEduLevel, religion;
 
     ArrayList<String> hobbieList;
 
@@ -84,6 +96,13 @@ public class AdConfirmActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ad_confirm);
+
+        // initializing our shared preferences.
+        sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+
+        // getting data from shared prefs and
+        // storing it in our string variable.
+        emailShared = sharedpreferences.getString(EMAIL_KEY, null);
 
         advertisements = new Advertisements();
 
@@ -133,7 +152,6 @@ public class AdConfirmActivity extends AppCompatActivity {
         gender = getintent.getExtras().getString("gender");
         status = getintent.getExtras().getString("status");
         phone = getintent.getExtras().getString("phone");
-        email = getintent.getExtras().getString("email");
         minEduLevel = getintent.getExtras().getString("minEduLevel");
         religion = getintent.getExtras().getString("religion");
         // get arraylist using parcelable
@@ -292,7 +310,7 @@ public class AdConfirmActivity extends AppCompatActivity {
         progressDialog.setContentView(R.layout.progress_dialog);
         progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         // upload to the firebase
-        myRef = FirebaseDatabase.getInstance().getReference().child("PendingAdvertisements");
+        myRef = FirebaseDatabase.getInstance().getReference().child("Advertisements");
 
         advertisements.setFullname(fullname);
         advertisements.setAge(age);
@@ -302,7 +320,7 @@ public class AdConfirmActivity extends AppCompatActivity {
         advertisements.setProfession(profession);
         advertisements.setAddress(address);
         advertisements.setPhone(phone);
-        advertisements.setEmail(email);
+        advertisements.setOwner(emailShared);
         advertisements.setMinEducatuinLevel(minEduLevel);
         advertisements.setReligion(religion);
         advertisements.setHobbiesList(hobbieList);
@@ -382,7 +400,19 @@ public class AdConfirmActivity extends AppCompatActivity {
         if (uploadBtnClicked) {
             Toast.makeText(this, "You can't cancel after upload the photos", Toast.LENGTH_SHORT).show();
         } else {
-            Log.d("IMG", "Image Uploaded  : " + downloadUrl1);
+            Intent intent = new Intent(getApplicationContext(), Home.class);
+            startActivity(intent);
+        }
+    }
+
+    // back with back button
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (uploadBtnClicked) {
+            Toast.makeText(this, "You can't cancel after upload the photos", Toast.LENGTH_SHORT).show();
+        } else {
             Intent intent = new Intent(getApplicationContext(), Home.class);
             startActivity(intent);
         }

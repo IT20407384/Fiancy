@@ -1,16 +1,8 @@
 package com.daemon.fiancy;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -24,11 +16,15 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.daemon.fiancy.models.Advertisements;
 import com.github.drjacky.imagepicker.ImagePicker;
 
-import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import kotlin.Unit;
@@ -42,7 +38,7 @@ public class PostAdActivity extends AppCompatActivity {
     Spinner EducationDropdown, ReligionDD;
     CheckBox cbReading, cbCollecting, cbMusic, cbGardening, cbGames, cbFishing,
             cbWalking, cbShopping, cbTraveling, cbWatchingSports, cbEatingOut, cbDancing;
-    EditText fullname, age, description, profession, address, phone, email;
+    EditText fullname, age, description, profession, address, phone;
     ImageView postImage1, postImage2, postImage3;
     RadioGroup radioGroupGender, radioGroupStatus;
     RadioButton gender, statusRadioBtn;
@@ -55,10 +51,8 @@ public class PostAdActivity extends AppCompatActivity {
     Advertisements advertisements;
 
     // all strings
-    String FullName, Age, Gender, Status, Description, Profession, Address, Phone, Email,
+    String FullName, Age, Gender, Status, Description, Profession, Address, Phone,
             EduLevel, religion;
-
-    String savereligion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,7 +103,6 @@ public class PostAdActivity extends AppCompatActivity {
         profession.setText("");
         address.setText("");
         phone.setText("");
-        email.setText("");
     }
 
     private void getEditTextInstance() {
@@ -120,7 +113,6 @@ public class PostAdActivity extends AppCompatActivity {
         profession = findViewById(R.id.etProffesion);
         address = findViewById(R.id.etAddress);
         phone = findViewById(R.id.etPhone);
-        email = findViewById(R.id.etMail);
         // get instance() of radiobuttons
         radioGroupGender = findViewById(R.id.radioGroupGender);
         radioGroupStatus = findViewById(R.id.radioGroupStatus);
@@ -299,11 +291,43 @@ public class PostAdActivity extends AppCompatActivity {
     }
 
     private void selectImageForUpload() {
-        Intent gallery = new Intent();
-        gallery.setAction(Intent.ACTION_GET_CONTENT);
-        gallery.setType("image/*");
-        startActivityForResult(gallery, 2);
+        ImagePicker.Companion.with(this)
+                .crop()
+                //.cropOval()
+                .maxResultSize(512, 512, true)
+                .createIntentFromDialog(new Function1() {
+                    public Object invoke(Object var1) {
+                        this.invoke((Intent) var1);
+                        return Unit.INSTANCE;
+                    }
+
+                    public final void invoke(Intent it) {
+                        Intrinsics.checkNotNullParameter(it, "it");
+                        launcher.launch(it);
+                    }
+                });
     }
+
+    ActivityResultLauncher<Intent> launcher =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), (ActivityResult result) -> {
+                if (result.getResultCode() == RESULT_OK) {
+                    Uri uri = result.getData().getData();
+                    // Use the uri to load the image
+                    if(x == 1) {
+                        filePath1 = uri;
+                        postImage1.setImageURI(filePath1);
+                    } else if(x == 2) {
+                        filePath2 = uri;
+                        postImage2.setImageURI(filePath2);
+                    } else if(x == 3) {
+                        filePath3 = uri;
+                        postImage3.setImageURI(filePath3);
+                    }
+                } else if (result.getResultCode() == ImagePicker.RESULT_ERROR) {
+                    // Use ImagePicker.Companion.getError(result.getData()) to show an error
+                    Toast.makeText(this, "Image selector error!", Toast.LENGTH_SHORT).show();
+                }
+            });
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
@@ -336,7 +360,6 @@ public class PostAdActivity extends AppCompatActivity {
         Profession = profession.getText().toString();
         Address = address.getText().toString();
         Phone = phone.getText().toString();
-        Email = email.getText().toString();
         
         // validate
         if(maleOrFemale == null || status == null) {
@@ -350,8 +373,6 @@ public class PostAdActivity extends AppCompatActivity {
         } else if(TextUtils.isEmpty(Address)) {
             return false;
         } else if(TextUtils.isEmpty(Phone)) {
-            return false;
-        } else if(TextUtils.isEmpty(Email)) {
             return false;
         } else if(TextUtils.isEmpty(EduLevel)) {
             return false;
@@ -386,7 +407,6 @@ public class PostAdActivity extends AppCompatActivity {
             intent.putExtra("gender", maleOrFemale);
             intent.putExtra("status", status);
             intent.putExtra("phone", Phone);
-            intent.putExtra("email", Email);
             intent.putExtra("minEduLevel", EduLevel);
             intent.putExtra("religion", religion);
             // pass array list

@@ -21,17 +21,18 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:gravity="left"
             android:paddingTop="25dp"
+            android:layout_marginLeft="5dp"
             android:text="@string/confirm_advertisement"
             android:textColor="@color/black"
-            android:textSize="32sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="25dp"
             android:background="@drawable/confirm_box">
 
             <LinearLayout
@@ -170,10 +171,11 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="bottom">
+            android:gravity="bottom"
+            android:paddingTop="50dp">
 
             <Button
                 android:id="@+id/imageUpload"
@@ -185,8 +187,7 @@
                 android:onClick="btnUpload"
                 android:text="upload" />
 
-        </LinearLayout>
-
+        </RelativeLayout>
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"

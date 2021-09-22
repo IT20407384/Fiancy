@@ -51,17 +51,19 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
                         android:paddingLeft="12dp"
-                        android:src="@drawable/ic_location" />
+                        android:src="@drawable/locate_icon" />
 
                     <TextView
                         android:id="@+id/NPlocation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/loc"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:paddingTop="8dp"
+                        android:paddingLeft="10dp"/>
                 </LinearLayout>
 
                 <LinearLayout

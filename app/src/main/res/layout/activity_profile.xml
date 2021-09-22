@@ -7,6 +7,7 @@
     tools:context=".profile"
     android:orientation="vertical">
     <include layout="@layout/toolbar"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,15 +15,13 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp">
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-
         <ImageView
+            android:id="@+id/NPImage"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginLeft="15dp"
@@ -33,92 +32,218 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_favorite"
-            android:layout_gravity="right"
-            android:layout_marginTop="10dp"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:paddingLeft="12dp"
-                android:src="@drawable/ic_location" />
+                android:layout_marginTop="20dp"
+                android:src="@drawable/locate_icon" />
 
             <TextView
+                android:id="@+id/NPlocation"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/locatio"
-                android:textSize="20sp"
-                android:gravity="center_vertical"/>
+                android:textSize="15sp"
+                android:paddingTop="30dp"
+                android:paddingLeft="5dp"/>
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="12dp">
+
+            <ImageView
+                android:id="@+id/ic_gender"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_gen"
+                android:layout_marginTop="10dp"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/ic_favorite"
+                android:layout_gravity=""/>
+
+        </LinearLayout>
+
     </LinearLayout>
     </LinearLayout>
 
         <TextView
+            android:id="@+id/NPfullname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:paddingLeft="20dp"
             android:text="@string/name_4"
-            android:textSize="36sp"
+            android:textSize="23sp"
+            android:gravity="right"
+            android:textColor="@color/PayPal_Blue"
+            android:paddingRight="25dp"
             android:textStyle="bold" />
 
         <LinearLayout
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:orientation="vertical">
-           <TextView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:text="@string/_28_years"
-               android:textSize="20sp"
-               android:layout_marginTop="20dp"/>
 
-           <TextView
+           <LinearLayout
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:layout_marginTop="20dp"
-               android:text="@string/profess"
-               android:textSize="20sp" />
+               android:orientation="horizontal"
+               android:layout_marginTop="20dp">
 
-           <TextView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_marginTop="20dp"
-               android:text="@string/national"
-               android:textSize="20sp" />
+               <TextView
+                   android:layout_width="0dp"
+                   android:layout_weight="1"
+                   android:layout_height="wrap_content"
+                   android:text="Age"
+                   android:paddingLeft="15dp"
+                   android:textSize="16sp"
+                   android:textStyle="bold"/>
 
-           <TextView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_marginTop="20dp"
-               android:text="@string/professio"
-               android:textSize="20sp" />
+               <TextView
+                   android:id="@+id/NPAge"
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="1"
+                   android:text="24 years old"
+                   android:textSize="16sp" />
+
+           </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Profession"
+                    android:paddingLeft="15dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/NPProfession"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Software Engineer"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/SPreligion"
+                    android:paddingLeft="15dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/NPReligion"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Budhist"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Education Level"
+                    android:paddingLeft="15dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/NPMinEducationLevel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="O/L"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="Description"
+                android:paddingLeft="15dp"
                 android:layout_marginTop="20dp"
+                android:textSize="16dp"
+                android:textStyle="bold"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@drawable/horizontal_line"
+                android:backgroundTint="@color/red_pink"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:id="@+id/NPDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
                 android:text="@string/Description"
-                android:textSize="20sp" />
+                android:textSize="16sp"
+                android:justificationMode="inter_word"/>
 
         </LinearLayout>
 
-        <Button
-            android:layout_width="200dp"
-            android:layout_height="35dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp"
-            android:onClick="report"
-            android:text="@string/report_ad"
-            android:textSize="10dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:gravity="bottom|center">
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="15dp"
+                android:onClick="report"
+                android:text="@string/report_ad"
+                android:textSize="10dp" />
+        </LinearLayout>
 
     </LinearLayout>
 </LinearLayout>

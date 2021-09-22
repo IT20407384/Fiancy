@@ -3,6 +3,7 @@ package com.daemon.fiancy.models;
 import java.util.ArrayList;
 
 public class Advertisements {
+    private String documentKey;
     private String fullname;
     private String age;
     private String gender;
@@ -27,9 +28,10 @@ public class Advertisements {
     public Advertisements() {
     }
 
-    public Advertisements(String fullname, String age, String gender, String status, String description, String profession,
+    public Advertisements(String documentKey, String fullname, String age, String gender, String status, String description, String profession,
                           String address, String phone, String adOwner, String religion, String minEducatuinLevel, ArrayList<String> hobbiesList,
                           String image1, String image2, String image3, Boolean liveAdvertisement, Boolean paymentNeeded) {
+        this.documentKey = documentKey;
         this.fullname = fullname;
         this.age = age;
         this.gender = gender;
@@ -46,6 +48,14 @@ public class Advertisements {
         this.image2 = image2;
         this.image3 = image3;
         this.liveAdvertisement = liveAdvertisement;
+    }
+
+    public String getDocumentKey() {
+        return documentKey;
+    }
+
+    public void setDocumentKey(String documentKey) {
+        this.documentKey = documentKey;
     }
 
     public String getFullname() {

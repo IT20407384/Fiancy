@@ -19,14 +19,14 @@ public class ViewHolderforPending extends RecyclerView.ViewHolder {
 
     public ViewHolderforPending(@NonNull View itemView) {
         super(itemView);
-        image = itemView.findViewById(R.id.CSprofileimagehome);
-        imageName = itemView.findViewById(R.id.CSprofileuser_name);
-        location = itemView.findViewById(R.id.CSlocation);
-        age = itemView.findViewById(R.id.CSage);
-        gender = itemView.findViewById(R.id.CSreligion);
-        religion = itemView.findViewById(R.id.CSreligion);
-        proffesion = itemView.findViewById(R.id.CSproffetion);
-        parentLayout = itemView.findViewById(R.id.parent_layout);
+//        image = itemView.findViewById(R.id.CSprofileimagehome);
+//        imageName = itemView.findViewById(R.id.CSprofileuser_name);
+//        location = itemView.findViewById(R.id.CSlocation);
+//        age = itemView.findViewById(R.id.CSage);
+//        gender = itemView.findViewById(R.id.CSreligion);
+//        religion = itemView.findViewById(R.id.CSreligion);
+//        proffesion = itemView.findViewById(R.id.CSproffetion);
+//        parentLayout = itemView.findViewById(R.id.parent_layout);
     }
 
     public CircleImageView getImage() {

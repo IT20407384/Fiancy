@@ -5,11 +5,11 @@
     android:padding="10dp">
 
     <LinearLayout
-        android:id="@+id/p1"
+        android:id="@+id/p2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/ad_view_background"
-        android:onClick="clicked"
+        android:onClick="Checkreportedadd"
         android:orientation="horizontal"
         android:paddingTop="15dp">
 

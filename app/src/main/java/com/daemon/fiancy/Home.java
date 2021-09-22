@@ -47,7 +47,7 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         Log.d(TAG, "onCreate: started");
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("PendingAdvertisements");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Advertisements");
 
         initImageBitmaps();
         searchView();

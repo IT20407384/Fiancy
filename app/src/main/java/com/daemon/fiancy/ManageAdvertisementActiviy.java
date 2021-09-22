@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,6 +39,9 @@ public class ManageAdvertisementActiviy extends AppCompatActivity {
     // firebase
     FirebaseDatabase db;
     DatabaseReference dbRef;
+
+    // get document relevant document key
+    String documentKey = getIntent().getExtras().getString("DocumentKey");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +88,7 @@ public class ManageAdvertisementActiviy extends AppCompatActivity {
     }
 
     private void getAdvertisementFilleddetails() {
+        Log.d("docKey", documentKey);
     }
 
     // delete button

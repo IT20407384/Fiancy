@@ -45,6 +45,8 @@ public class profile extends AppCompatActivity {
 
         //get Instance()
         getInstance();
+
+
     }
 
     private void getInstance() {

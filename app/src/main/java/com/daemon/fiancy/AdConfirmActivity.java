@@ -222,8 +222,6 @@ public class AdConfirmActivity extends AppCompatActivity {
 
     // upload images to firebase
     private void uploadImages() {
-
-
         progressDialog = new ProgressDialog(AdConfirmActivity.this);
         progressDialog.show();
         progressDialog.setContentView(R.layout.progress_dialog);
@@ -275,7 +273,6 @@ public class AdConfirmActivity extends AppCompatActivity {
                     Toast.makeText(AdConfirmActivity.this, "Image 02 upload failed!", Toast.LENGTH_SHORT).show();
                 }
             });
-            ;
         }
 
         if (filePath3 != null) {

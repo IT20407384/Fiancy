@@ -2,6 +2,7 @@ package com.daemon.fiancy.recyclers;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.daemon.fiancy.ProfileReview;
 import com.daemon.fiancy.R;
+import com.daemon.fiancy.Report_Ad_Check;
 import com.daemon.fiancy.models.Advertisements;
 
 import java.util.ArrayList;
@@ -64,6 +67,15 @@ public class RecyclerViewforReported extends RecyclerView.Adapter<ViewHolderRepo
         holder.gender.setText(advertisement.getGender());
         holder.religion.setText(advertisement.getReligion());
         holder.profession.setText(advertisement.getProfession());
+
+        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, Report_Ad_Check.class);
+                intent.putExtra("SelectedRAD", rpkey.get(position));
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override

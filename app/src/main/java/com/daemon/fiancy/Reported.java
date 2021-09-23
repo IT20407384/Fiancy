@@ -46,6 +46,7 @@ public class Reported extends Fragment {
         reporteddbref = FirebaseDatabase.getInstance().getReference().child("ReportedAdvertisements");
 
         recyclerView = view.findViewById(R.id.recycler_viewCS2);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager((new LinearLayoutManager(view.getContext())));
 
         rcadpter = new RecyclerViewforReported(dblist,rpkey,view.getContext());
@@ -60,18 +61,22 @@ public class Reported extends Fragment {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                         reportadkey = dataSnapshot.child("reportedAdKey").getValue().toString();
-                        dbrefference.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                                advertisements = snapshot.child(reportadkey).getValue(Advertisements.class);
-                                dblist.add(advertisements);
-                            }
 
-                            @Override
-                            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                       dbrefference.child(reportadkey).addListenerForSingleValueEvent(new ValueEventListener() {
+                           @Override
+                           public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                               advertisements = snapshot.getValue(Advertisements.class);
+                               dblist.add(advertisements);
+                               rpkey.add(dataSnapshot.getKey());
 
-                            }
-                        });
+                           }
+
+                           @Override
+                           public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                           }
+                       });
+
                     }
                 }
 
@@ -81,29 +86,6 @@ public class Reported extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError error) { }
         });
-
-
-
-//        dbrefference.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                dblist.clear();
-//                for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//                    Advertisements advertisement = dataSnapshot.getValue(Advertisements.class);
-//                    assert advertisement != null;
-//                    if(!advertisement.getPaymentNeeded() && !advertisement.getLiveAdvertisement()) {
-//                        dblist.add(advertisement);
-//                        rpkey.add(dataSnapshot.getKey());
-//                    }
-//                }
-//                rcadpter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
 
         return view;
 

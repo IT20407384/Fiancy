@@ -41,8 +41,10 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".MyAdCollection" />
+        <activity android:name=".Report_Ad_Check"/>
         <activity android:name=".ManageAdvertisementActiviy"/>
         <activity android:name=".deleteAdvertisementActivity"/>
 

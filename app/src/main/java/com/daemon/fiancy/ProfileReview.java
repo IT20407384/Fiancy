@@ -35,6 +35,7 @@ public class ProfileReview extends AppCompatActivity {
     EditText reason ;
     DatabaseReference dbref;
     String selectedAdId;
+    DatabaseReference adDb;
 
 
     @Override
@@ -55,7 +56,7 @@ public class ProfileReview extends AppCompatActivity {
         Intent intent = getIntent();
        selectedAdId = intent.getStringExtra("SelectedAD");
 
-        DatabaseReference adDb = FirebaseDatabase.getInstance().getReference().child("Advertisements").child(selectedAdId);
+        adDb = FirebaseDatabase.getInstance().getReference().child("Advertisements").child(selectedAdId);
 
         adDb.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -88,6 +89,10 @@ public class ProfileReview extends AppCompatActivity {
 
 
     }
+    public void buttonaccept(){
+        //adDb= FirebaseDatabase.getInstance().getReference().child("Advertisements").child(selectedAdId);
+
+    }
 
     public void buttonsave(String data){
 
@@ -99,6 +104,9 @@ public class ProfileReview extends AppCompatActivity {
         dbref.push().setValue(rejectedAds);
 
         Toast.makeText(getApplicationContext(), "Data successfully inserted", Toast.LENGTH_SHORT).show();
+
+        adDb= FirebaseDatabase.getInstance().getReference().child("Advertisements").child(selectedAdId);
+        adDb.removeValue();
 
     }
 

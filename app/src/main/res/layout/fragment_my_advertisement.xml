@@ -6,185 +6,184 @@
     android:layout_height="match_parent"
     tools:context=".MyAdvertisement">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="343dp"
-        android:layout_height="536dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/box"
-        android:focusableInTouchMode="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/SMnameinaccount"
-            android:layout_width="115dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="60dp"
-            android:text="@string/full_name"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/SMaccimage"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/SMaccimage"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="36dp"
-            android:src="@mipmap/ic_launcher_round"
-            app:layout_constraintEnd_toStartOf="@+id/SMnameinaccount"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:id="@+id/view213"
-            style="@style/Divider"
-            android:layout_width="300dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.488"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SMnameinaccount" />
-
-        <TextView
-            android:id="@+id/SMadstatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="48dp"
-            android:text="@string/ADLive"
-            app:layout_constraintStart_toEndOf="@+id/imageView6"
-            app:layout_constraintTop_toBottomOf="@+id/view213" />
-
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="28dp"
-            android:src="@drawable/ic_baseline_military_tech_24"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView6"
-            app:tint="@color/black" />
-
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="343dp"
+            android:layout_height="536dp"
             android:layout_marginTop="32dp"
-            android:src="@drawable/ic_baseline_online_prediction_24"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view213"
-            app:tint="@color/black" />
-
-        <TextView
-            android:id="@+id/SMaccountstatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="36dp"
-            android:text="@string/freemium_account"
-            app:layout_constraintStart_toEndOf="@+id/imageView7"
-            app:layout_constraintTop_toBottomOf="@+id/SMadstatus" />
-
-        <ImageView
-            android:id="@+id/imageView8"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="28dp"
-            android:src="@drawable/ic_baseline_card_membership_24"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView7"
-            app:tint="@color/black" />
-
-        <TextView
-            android:id="@+id/SMpaymentstatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="44dp"
-            android:text="@string/successPayment"
-            app:layout_constraintStart_toEndOf="@+id/imageView8"
-            app:layout_constraintTop_toBottomOf="@+id/SMaccountstatus" />
-
-        <Button
-            android:id="@+id/SMmatchfinderbtn"
-            android:layout_width="175dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/pacifico"
-            android:includeFontPadding="false"
-            android:text="@string/matchFinder"
-            android:textAllCaps="false"
-            android:textColor="@color/PayPal_Blue"
-            app:backgroundTint="@color/white"
-            app:cornerRadius="100dp"
-            app:icon="@drawable/ic_icons8_wedding_ring_60"
-            app:iconSize="30dp"
-            app:iconTint="@color/ringBlue"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView8"
-            app:strokeColor="@color/ringBlue"
-            app:strokeWidth="2dp" />
-
-        <Button
-            android:id="@+id/SMpayforad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:stateListAnimator="@null"
-            android:text="@string/payForAd"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            app:backgroundTint="@color/white"
-            app:icon="@drawable/ic_baseline_payment_24"
-            app:iconTint="@color/black"
-            app:layout_constraintEnd_toStartOf="@+id/SMeditadbtn"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SMmatchfinderbtn" />
-
-        <Button
-            android:id="@+id/SMeditadbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:stateListAnimator="@null"
-            android:text="@string/editAd"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            app:backgroundTint="@color/white"
-            app:icon="@drawable/ic_baseline_edit_24"
-            app:iconTint="@color/black"
-            app:layout_constraintBaseline_toBaselineOf="@+id/SMpayforad"
+            android:background="@drawable/box"
+            android:focusableInTouchMode="false"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/SMpayforad" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <View
-            android:id="@+id/view207"
-            style="@style/Divider"
-            android:layout_width="1dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="40dp"
-            app:layout_constraintEnd_toStartOf="@+id/SMeditadbtn"
-            app:layout_constraintStart_toEndOf="@+id/SMpayforad"
-            app:layout_constraintTop_toBottomOf="@+id/SMmatchfinderbtn"/>
+            <TextView
+                android:id="@+id/SMnameinaccount"
+                android:layout_width="115dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="60dp"
+                android:text="@string/full_name"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/SMaccimage"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/SMaccimage"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="36dp"
+                android:src="@mipmap/ic_launcher_round"
+                app:layout_constraintEnd_toStartOf="@+id/SMnameinaccount"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view213"
+                style="@style/Divider"
+                android:layout_width="300dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.488"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/SMnameinaccount" />
+
+            <TextView
+                android:id="@+id/SMadstatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="48dp"
+                android:text="@string/ADLive"
+                app:layout_constraintStart_toEndOf="@+id/imageView6"
+                app:layout_constraintTop_toBottomOf="@+id/view213" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="28dp"
+                android:src="@drawable/ic_baseline_military_tech_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView6"
+                app:tint="@color/black" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="32dp"
+                android:src="@drawable/ic_baseline_online_prediction_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view213"
+                app:tint="@color/black" />
+
+            <TextView
+                android:id="@+id/SMaccountstatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="36dp"
+                android:text="@string/freemium_account"
+                app:layout_constraintStart_toEndOf="@+id/imageView7"
+                app:layout_constraintTop_toBottomOf="@+id/SMadstatus" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="28dp"
+                android:src="@drawable/ic_baseline_card_membership_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView7"
+                app:tint="@color/black" />
+
+            <TextView
+                android:id="@+id/SMpaymentstatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="44dp"
+                android:text="@string/successPayment"
+                app:layout_constraintStart_toEndOf="@+id/imageView8"
+                app:layout_constraintTop_toBottomOf="@+id/SMaccountstatus" />
+
+            <Button
+                android:id="@+id/SMmatchfinderbtn"
+                android:layout_width="175dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/pacifico"
+                android:includeFontPadding="false"
+                android:text="@string/matchFinder"
+                android:textAllCaps="false"
+                android:textColor="@color/PayPal_Blue"
+                app:backgroundTint="@color/white"
+                app:cornerRadius="100dp"
+                app:icon="@drawable/ic_icons8_wedding_ring_60"
+                app:iconSize="30dp"
+                app:iconTint="@color/ringBlue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView8"
+                app:strokeColor="@color/ringBlue"
+                app:strokeWidth="2dp" />
+
+            <Button
+                android:id="@+id/SMpayforad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:stateListAnimator="@null"
+                android:text="@string/payForAd"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:backgroundTint="@color/white"
+                app:icon="@drawable/ic_baseline_payment_24"
+                app:iconTint="@color/black"
+                app:layout_constraintEnd_toStartOf="@+id/SMeditadbtn"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/SMmatchfinderbtn" />
+
+            <Button
+                android:id="@+id/SMeditadbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:stateListAnimator="@null"
+                android:text="@string/editAd"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:backgroundTint="@color/white"
+                app:icon="@drawable/ic_baseline_edit_24"
+                app:iconTint="@color/black"
+                app:layout_constraintBaseline_toBaselineOf="@+id/SMpayforad"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/SMpayforad" />
+
+            <View
+                android:id="@+id/view207"
+                style="@style/Divider"
+                android:layout_width="1dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp"
+                app:layout_constraintEnd_toStartOf="@+id/SMeditadbtn"
+                app:layout_constraintStart_toEndOf="@+id/SMpayforad"
+                app:layout_constraintTop_toBottomOf="@+id/SMmatchfinderbtn" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,16 +3,21 @@ package com.daemon.fiancy;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.daemon.fiancy.models.Advertisements;
+import com.daemon.fiancy.models.Favorites;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,15 +38,24 @@ public class profile extends AppCompatActivity {
     // model class
     Advertisements singleAdvertisement;
     // initializations
-    ImageView profileimageinAd, Gender;
+    ImageView profileimageinAd, Gender, heartFav;
     TextView location, fullname, age, profession, religion, minEducation,
     description;
 
+    String documentKey;
+
+    public static final String SHARED_PREFS = "shared_prefs";
+    public static final String EMAIL_KEY = "email_key";
+    SharedPreferences sharedpreferences;
+    String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        email = sharedpreferences.getString(EMAIL_KEY, null);
 
         //get Instance()
         getInstance();
@@ -57,6 +71,7 @@ public class profile extends AppCompatActivity {
         religion = findViewById(R.id.NPReligion);
         minEducation = findViewById(R.id.NPMinEducationLevel);
         description = findViewById(R.id.NPDescription);
+        heartFav = findViewById(R.id.user_profileHeart);
     }
 
     @Override
@@ -64,11 +79,11 @@ public class profile extends AppCompatActivity {
         super.onResume();
         // get document key of current post
         Intent intent = getIntent();
-        String documentKey = intent.getExtras().getString("documetKey");
+        documentKey = intent.getExtras().getString("documetKey");
 
         // call functions
         getAdvertisementData(documentKey);
-
+        setFavorites(documentKey);
     }
 
     // get data from database to single post
@@ -127,6 +142,61 @@ public class profile extends AppCompatActivity {
     // go to report ad activty
     public void report(View view) {
         Intent intent = new Intent(profile.this, ReportAd.class);
+        intent.putExtra("ReportedAdKey", documentKey);
         startActivity(intent);
+    }
+
+    public void setFavorites(String docKey) {
+
+        DatabaseReference favDbRef = FirebaseDatabase.getInstance().getReference().child("Favorites").child(email);
+
+        favDbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.hasChildren()) {
+                    ArrayList<String> existingFavorites = (ArrayList<String>) snapshot.child("advertisementKeys").getValue();
+
+                    assert existingFavorites != null;
+                    for(String savedAdkey : existingFavorites) {
+                        if(savedAdkey.equals(docKey)) {
+                            heartFav.setImageResource(R.drawable.ic_baseline_favorite_24);
+                            heartFav.setEnabled(false);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+
+
+        heartFav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                favDbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.hasChildren()) {
+                            ArrayList<String> existingFavorites = (ArrayList<String>) snapshot.child("advertisementKeys").getValue();
+                            assert existingFavorites != null;
+                            existingFavorites.add(docKey);
+                            favDbRef.child("advertisementKeys").setValue(existingFavorites);
+                        }
+                        else {
+                            ArrayList<String> adKeys = new ArrayList<>();
+                            adKeys.add(docKey);
+                            favDbRef.child("advertisementKeys").setValue(adKeys);
+                        }
+                        heartFav.setImageResource(R.drawable.ic_baseline_favorite_24);
+                        heartFav.setEnabled(false);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {}
+                });
+            }
+        });
     }
 }

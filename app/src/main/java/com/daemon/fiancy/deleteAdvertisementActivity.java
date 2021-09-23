@@ -10,16 +10,21 @@ import android.widget.ImageView;
 public class deleteAdvertisementActivity extends AppCompatActivity {
     ImageView back;
 
+    String documentKey;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete_advertisement);
+        // document key
+        documentKey = getIntent().getExtras().getString("DocumentKey");
 
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(deleteAdvertisementActivity.this, ManageAdvertisementActiviy.class);
+                intent.putExtra("DocumentKey", documentKey);
                 startActivity(intent);
             }
         });
@@ -34,6 +39,7 @@ public class deleteAdvertisementActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(deleteAdvertisementActivity.this, ManageAdvertisementActiviy.class);
+        intent.putExtra("DocumentKey", documentKey);
         startActivity(intent);
     }
 }

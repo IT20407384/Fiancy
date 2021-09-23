@@ -1,7 +1,10 @@
 package com.daemon.fiancy;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,55 +14,88 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.daemon.fiancy.models.Advertisements;
 import com.daemon.fiancy.recyclers.RecyclerViewAdapterForFavorites;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class MyFavorites extends Fragment {
 
     private RecyclerView recyclerView;
-    private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<String> mImageUrls = new ArrayList<>();
+    private ArrayList<Advertisements> DBadList = new ArrayList<>();
+    private ArrayList<String> adKey = new ArrayList<>();
+    DatabaseReference dbFavRef, dbAdRef;
+    RecyclerViewAdapterForFavorites adapter;
+    Advertisements advertisements = new Advertisements();
 
+    public static final String SHARED_PREFS = "shared_prefs";
+    public static final String EMAIL_KEY = "email_key";
+    SharedPreferences sharedpreferences;
+    String emailShared;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        try {sharedpreferences = this.getActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE); }
+        catch (NullPointerException e) { Log.d("Share Error", e.toString()); }
+
+        emailShared = sharedpreferences.getString(EMAIL_KEY, null);
+
         View view = inflater.inflate(R.layout.fragment_my_favorites, container,false);
 
-        initImageBitmaps();
+        dbFavRef = FirebaseDatabase.getInstance().getReference().child("Favorites").child(emailShared);
+        dbAdRef = FirebaseDatabase.getInstance().getReference().child("Advertisements");
 
-        recyclerView = view.findViewById(R.id.recycler_viewSM);
-        recyclerView.setLayoutManager((new LinearLayoutManager(view.getContext())));
-        recyclerView.setAdapter(new RecyclerViewAdapterForFavorites(mNames,mImageUrls, view.getContext()));
+        recyclerView = view.findViewById(R.id.recycler_favoriteSM);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+
+        adapter = new RecyclerViewAdapterForFavorites(DBadList, adKey, view.getContext());
+        recyclerView.setAdapter(adapter);
+
+        dbFavRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if(snapshot.hasChildren()) {
+                    ArrayList<String> favouredADs = new ArrayList<>();
+                    favouredADs = (ArrayList<String>) snapshot.child("advertisementKeys").getValue();
+
+                    DBadList.clear();
+
+                    assert favouredADs != null;
+                    for(String adID : favouredADs) {
+                        dbAdRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                advertisements = snapshot.child(adID).getValue(Advertisements.class);
+                                DBadList.add(advertisements);
+                                adKey.add(adID);
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) { }
+                        });
+                    }
+                }
+                else
+                    Toast.makeText(getContext(), "Currently you don't have any favorites.", Toast.LENGTH_SHORT).show();
+
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) { }
+        });
 
         return view;
     }
-    private void initImageBitmaps(){
-
-        mImageUrls.add("https://lp-cms-production.imgix.net/2019-06/b4fbc706dab2a70a96588309ed268a1a-sri-lanka.jpeg");
-        mNames.add("Seegiriya");
-        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Demodara-Nine-Arch-Bridge.jpg");
-        mNames.add("Ella");
-        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Train-ride-from-Kandy-to-Nuwara-Eliya.jpg");
-        mNames.add("Nuwara Eliya");
-        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Pinnawala-Elephant-Orphanage.jpg");
-        mNames.add("Pinnawala Elephant Orphanage");
-        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Ruins-of-Polonnaruwa.jpg");
-        mNames.add("Polonnaruwa");
-        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Adams-Peak.jpg");
-        mNames.add("Adams Peak");
-        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Mirissa-Fisheries-Harbor.jpg");
-        mNames.add("Mirissa");
-        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Leopards.jpg");
-        mNames.add("Yala National Park");
-        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Colombo.jpg");
-        mNames.add("Colombo");
-        mImageUrls.add("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Jaffna.jpg");
-        mNames.add("Jaffna");
-    }
-
-
 }

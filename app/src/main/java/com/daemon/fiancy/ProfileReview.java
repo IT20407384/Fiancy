@@ -1,8 +1,10 @@
 package com.daemon.fiancy;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -87,46 +89,73 @@ public class ProfileReview extends AppCompatActivity {
 
     }
 
-    public void onButtonShowPopupWindowClick(View view) {
-
-        // inflate the layout of the popup window
-        LayoutInflater inflater = (LayoutInflater)
-                getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.popup_window, null);
-
-        // create the popup window
-        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        boolean focusable = true; // lets taps outside the popup also dismiss it
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-
-
-        // show the popup window
-        // which view you pass in doesn't matter, it is only used for the window tolken
-        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-
-
-        // dismiss the popup window when touched
-        popupView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                popupWindow.setFocusable(true);
-                return true;
-            }
-
-        });
-
-    }
-
-    public void buttonsave(View view){
+    public void buttonsave(String data){
 
         dbref = FirebaseDatabase.getInstance().getReference().child("RejectAds");
-        reason = findViewById(R.id.CSEditText);
         RejectedAds rejectedAds;
         rejectedAds = new RejectedAds();
-        rejectedAds.setReason(reason.getText().toString().trim());
+        rejectedAds.setReason(data);
         rejectedAds.setId(selectedAdId);
         dbref.push().setValue(rejectedAds);
 
+        Toast.makeText(getApplicationContext(), "Data successfully inserted", Toast.LENGTH_SHORT).show();
+
     }
+
+    public void showAlertDialogButtonClicked(View view)
+    {
+
+        // Create an alert builder
+        AlertDialog.Builder builder
+                = new AlertDialog.Builder(this);
+        builder.setTitle("Reason");
+
+        // set the custom layout
+        final View customLayout
+                = getLayoutInflater()
+                .inflate(
+                        R.layout.custom_layout,
+                        null);
+        builder.setView(customLayout);
+
+        // add a button
+        builder
+                .setPositiveButton(
+                        "OK",
+                        new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(
+                                    DialogInterface dialog,
+                                    int which)
+                            {
+
+                                // send data from the
+                                // AlertDialog to the Activity
+                                EditText editText
+                                        = customLayout
+                                        .findViewById(
+                                                R.id.editText);
+                                sendDialogDataToActivity(
+                                        editText
+                                                .getText()
+                                                .toString());
+                            }
+                        });
+
+        // create and show
+        // the alert dialog
+        AlertDialog dialog
+                = builder.create();
+        dialog.show();
+    }
+
+    // Do something with the data
+    // coming from the AlertDialog
+    private void sendDialogDataToActivity(String data)
+    {
+        buttonsave(data);
+
+    }
+
 }

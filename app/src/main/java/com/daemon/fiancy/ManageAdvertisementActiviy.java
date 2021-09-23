@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.nfc.Tag;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -57,13 +58,16 @@ public class ManageAdvertisementActiviy extends AppCompatActivity {
     ImageView Image1, Image2, Image3;
     RadioButton male, female;
     RadioButton r1, r2, r3, r4, r5;
+    RadioGroup radioGroupStatus;
+    RadioButton statusRadioBtn;
     Button imageUpdate;
+    Button advertUpdateBtn;
     ProgressDialog progressDialog;
 
     ArrayList<String> hobbieList;
     Uri filePath1, filePath2, filePath3;
 
-    String FullName, Age, Gender, Status, Description, Profession, Address, Phone,
+    String FullName, Age, Gender, Description, Profession, Address, Phone,
             EduLevel, religion;
 
     String documentKey;
@@ -80,10 +84,13 @@ public class ManageAdvertisementActiviy extends AppCompatActivity {
     boolean clicked3 = false;
 
     Boolean clickedUploadImageBtn = false;
+    Boolean getData = false;
 
     // firebase
     DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("Advertisements");
     StorageReference imageFolder = FirebaseStorage.getInstance().getReference().child("Images");
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,10 +127,23 @@ public class ManageAdvertisementActiviy extends AppCompatActivity {
         r3 = findViewById(R.id.radioDevorced);
         r4 = findViewById(R.id.radioSeparated);
         r5 = findViewById(R.id.radioOtherStatus);
+        radioGroupStatus = findViewById(R.id.radioGroupStatus);
         // buttons
         imageUpdate = findViewById(R.id.imageUpdate);
-
-
+        advertUpdateBtn = findViewById(R.id.advertUpdateBtn);
+        //Getting instance of CheckBoxes and Button from the activity_post_ad.xml file
+        cbReading = findViewById(R.id.cbReading);
+        cbCollecting = findViewById(R.id.cbCollecting);
+        cbMusic = findViewById(R.id.cbMusic);
+        cbGardening = findViewById(R.id.cbGardening);
+        cbGames = findViewById(R.id.cbGames);
+        cbFishing = findViewById(R.id.cbFishing);
+        cbWalking = findViewById(R.id.cbWalking);
+        cbShopping = findViewById(R.id.cbShopping);
+        cbTraveling = findViewById(R.id.cbTraveling);
+        cbWatchingSports = findViewById(R.id.cbWatchingSports);
+        cbEatingOut = findViewById(R.id.cbEatingOut);
+        cbDancing = findViewById(R.id.cbDancing);
     }
 
     @Override
@@ -133,15 +153,24 @@ public class ManageAdvertisementActiviy extends AppCompatActivity {
 
 
         // functions
-        getAdvertisementFilleddetails();
+        getCheckBoxesValues();
+        if (!getData) {
+            getAdvertisementFilleddetails();
+        }
+
         //disable upload image button when no photos to add
         if (filePath1 != null || filePath2 != null || filePath3 != null) {
             imageUpdate.setEnabled(true);
         }
 
+        if(filePath1 != null || filePath2 != null || filePath3 != null) {
+            advertUpdateBtn.setEnabled(false);
+        }
+
     }
 
     private void getAdvertisementFilleddetails() {
+        getData = true;
         // get document relevant document key
         documentKey = getIntent().getExtras().getString("DocumentKey");
 
@@ -158,6 +187,56 @@ public class ManageAdvertisementActiviy extends AppCompatActivity {
         });
     }
 
+    //get checkboxes values
+    public void getCheckBoxesValues() {
+        if (cbReading.isChecked()) {
+            hobbieList.add(cbReading.getText().toString());
+        }
+        if (cbCollecting.isChecked()) {
+            hobbieList.add(cbCollecting.getText().toString());
+        }
+        if (cbMusic.isChecked()) {
+            hobbieList.add(cbMusic.getText().toString());
+        }
+        if (cbGardening.isChecked()) {
+            hobbieList.add(cbGardening.getText().toString());
+        }
+        if (cbGames.isChecked()) {
+            hobbieList.add(cbGames.getText().toString());
+        }
+        if (cbFishing.isChecked()) {
+            hobbieList.add(cbFishing.getText().toString());
+        }
+        if (cbWalking.isChecked()) {
+            hobbieList.add(cbWalking.getText().toString());
+        }
+        if (cbShopping.isChecked()) {
+            hobbieList.add(cbShopping.getText().toString());
+        }
+        if (cbTraveling.isChecked()) {
+            hobbieList.add(cbTraveling.getText().toString());
+        }
+        if (cbWatchingSports.isChecked()) {
+            hobbieList.add(cbWatchingSports.getText().toString());
+        }
+        if (cbEatingOut.isChecked()) {
+            hobbieList.add(cbEatingOut.getText().toString());
+        }
+        if (cbDancing.isChecked()) {
+            hobbieList.add(cbDancing.getText().toString());
+        }
+
+//        Toast.makeText(getApplicationContext(), hobbieList.toString(), Toast.LENGTH_LONG).show();
+    }
+
+    // get marriage status
+    private String getStatus() {
+        String status;
+        int checkedRadioid = radioGroupStatus.getCheckedRadioButtonId();
+        statusRadioBtn = findViewById(checkedRadioid);
+        return statusRadioBtn.getText().toString();
+    }
+
     // set details to editable form
     private void setPreviousFilledDataTothisActivity() {
         // set edittexts
@@ -168,6 +247,59 @@ public class ManageAdvertisementActiviy extends AppCompatActivity {
         address.setText(singleEditableAd.getAddress());
         phone.setText(singleEditableAd.getPhone());
         upReligion.setText(singleEditableAd.getReligion());
+
+        // set hobbie list
+        hobbieList = singleEditableAd.getHobbiesList();
+        for (int i = 0; i < hobbieList.size(); i++) {
+
+
+            if (cbReading.getText().equals(hobbieList.get(i))) {
+                cbReading.setChecked(true);
+            } else if (cbCollecting.getText().equals(hobbieList.get(i))) {
+                cbCollecting.setChecked(true);
+            } else if (cbDancing.getText().equals(hobbieList.get(i))) {
+                cbDancing.setChecked(true);
+            } else if (cbEatingOut.getText().equals(hobbieList.get(i))) {
+                cbEatingOut.setChecked(true);
+            } else if (cbFishing.getText().equals(hobbieList.get(i))) {
+                cbFishing.setChecked(true);
+            } else if (cbGames.getText().equals(hobbieList.get(i))) {
+                cbGames.setChecked(true);
+            } else if (cbGardening.getText().equals(hobbieList.get(i))) {
+                cbGardening.setChecked(true);
+            } else if (cbMusic.getText().equals(hobbieList.get(i))) {
+                cbMusic.setChecked(true);
+            } else if (cbShopping.getText().equals(hobbieList.get(i))) {
+                cbShopping.setChecked(true);
+            } else if (cbTraveling.getText().equals(hobbieList.get(i))) {
+                cbTraveling.setChecked(true);
+            } else if (cbWalking.getText().equals(hobbieList.get(i))) {
+                cbWalking.setChecked(true);
+            } else if (cbWatchingSports.getText().equals(hobbieList.get(i))) {
+                cbWatchingSports.setChecked(true);
+            }
+        }
+
+        // set dropdown value
+        if (singleEditableAd.getMinEducatuinLevel().equals("Up to GCE O/L")) {
+            EducationDropdown.setSelection(0);
+        } else if (singleEditableAd.getMinEducatuinLevel().equals("Up to GCE A/L")) {
+            EducationDropdown.setSelection(1);
+        } else if (singleEditableAd.getMinEducatuinLevel().equals("Diploma")) {
+            EducationDropdown.setSelection(2);
+        } else if (singleEditableAd.getMinEducatuinLevel().equals("Professional Qualification")) {
+            EducationDropdown.setSelection(3);
+        } else if (singleEditableAd.getMinEducatuinLevel().equals("Undergraduate")) {
+            EducationDropdown.setSelection(4);
+        } else if (singleEditableAd.getMinEducatuinLevel().equals("Bachelor's Degree or Equivalent")) {
+            EducationDropdown.setSelection(5);
+        } else if (singleEditableAd.getMinEducatuinLevel().equals("Post Graduate Diploma")) {
+            EducationDropdown.setSelection(6);
+        } else if (singleEditableAd.getMinEducatuinLevel().equals("Master's Degree or Equivalent")) {
+            EducationDropdown.setSelection(7);
+        } else if (singleEditableAd.getMinEducatuinLevel().equals("Phd or Post Doctoral")) {
+            EducationDropdown.setSelection(8);
+        }
 
 
         // set gender radio
@@ -180,21 +312,16 @@ public class ManageAdvertisementActiviy extends AppCompatActivity {
         }
 
         // set status
-        if (singleEditableAd.getStatus().equals(r1.getText().toString())) {
+        if (singleEditableAd.getStatus().contentEquals(r1.getText())) {
             r1.setChecked(true);
-            Status = singleEditableAd.getStatus();
-        } else if (singleEditableAd.getStatus().equals(r2.getText().toString())) {
+        } else if (singleEditableAd.getStatus().contentEquals(r2.getText())) {
             r2.setChecked(true);
-            Status = singleEditableAd.getStatus();
-        } else if (singleEditableAd.getStatus().equals(r3.getText().toString())) {
+        } else if (singleEditableAd.getStatus().contentEquals(r3.getText())) {
             r3.setChecked(true);
-            Status = singleEditableAd.getStatus();
-        } else if (singleEditableAd.getStatus().equals(r4.getText().toString())) {
+        } else if (singleEditableAd.getStatus().contentEquals(r4.getText())) {
             r4.setChecked(true);
-            Status = singleEditableAd.getStatus();
-        } else if (singleEditableAd.getStatus().equals(r5.getText().toString())) {
+        } else if (singleEditableAd.getStatus().contentEquals(r5.getText())) {
             r5.setChecked(true);
-            Status = singleEditableAd.getStatus();
         }
 
         // set image 1
@@ -450,6 +577,7 @@ public class ManageAdvertisementActiviy extends AppCompatActivity {
     public void uploadImage(View view) {
         uploadImages();
         clickedUploadImageBtn = true;
+        advertUpdateBtn.setEnabled(true);
         imageUpdate.setEnabled(false);
     }
 
@@ -466,8 +594,6 @@ public class ManageAdvertisementActiviy extends AppCompatActivity {
             isNull = true;
         } else if (upReligion.getText().toString().equals("")) {
             isNull = true;
-        } else if (Status == null) {
-            isNull = true;
         } else if (Gender == null) {
             isNull = true;
         } else if (EducationDropdown.getSelectedItem().toString().equals("")) {
@@ -480,7 +606,6 @@ public class ManageAdvertisementActiviy extends AppCompatActivity {
             singleEditableAd.setAddress(address.getText().toString());
             singleEditableAd.setPhone(phone.getText().toString());
             singleEditableAd.setReligion(upReligion.getText().toString());
-            singleEditableAd.setStatus(Status);
             singleEditableAd.setGender(Gender);
             singleEditableAd.setMinEducatuinLevel(EducationDropdown.getSelectedItem().toString());
             isNull = false;
@@ -495,35 +620,37 @@ public class ManageAdvertisementActiviy extends AppCompatActivity {
         boolean isNull = updateAdvertisementDetails();
         Log.d("TAG1", String.valueOf(isNull));
 
-        if(!isNull) {
+        if (!isNull) {
             if (clickedUploadImageBtn) {
                 // delete current image
-                if(d1 == 1) {
+                if (d1 == 1) {
                     deleteCurrentImage1();
                 }
-                if(d2 == 2) {
+                if (d2 == 2) {
                     deleteCurrentImage2();
                 }
-                if(d3 == 3) {
+                if (d3 == 3) {
                     deleteCurrentImage3();
                 }
                 // new download url update
                 if (downloadUrl1 != null) {
                     singleEditableAd.setImage1(downloadUrl1);
-                    Toast.makeText(this, "Download URL : "+downloadUrl1, Toast.LENGTH_SHORT).show();
                 }
                 if (downloadUrl2 != null) {
-                    singleEditableAd.setImage1(downloadUrl2);
-                    Toast.makeText(this, "Download URL : "+downloadUrl2, Toast.LENGTH_SHORT).show();
+                    singleEditableAd.setImage2(downloadUrl2);
                 }
                 if (downloadUrl3 != null) {
-                    singleEditableAd.setImage1(downloadUrl3);
-                    Toast.makeText(this, "Download URL : "+downloadUrl3, Toast.LENGTH_SHORT).show();
+                    singleEditableAd.setImage3(downloadUrl3);
                 }
             }
+            hobbieList.clear();
+            getCheckBoxesValues();
+            String status = getStatus();
+            singleEditableAd.setStatus(status);
+            singleEditableAd.setHobbiesList(hobbieList);
 
             DatabaseReference updateRef = dbRef.child(documentKey);
-            updateRef.push().setValue(singleEditableAd).addOnSuccessListener(new OnSuccessListener<Void>() {
+            updateRef.setValue(singleEditableAd).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void unused) {
                     Toast.makeText(ManageAdvertisementActiviy.this, "Advertisement update successful", Toast.LENGTH_SHORT).show();
@@ -544,7 +671,8 @@ public class ManageAdvertisementActiviy extends AppCompatActivity {
     // delete button
     public void deleteAd(View view) {
 
-//        Intent intent = new Intent(getApplicationContext(), deleteAdvertisementActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(getApplicationContext(), deleteAdvertisementActivity.class);
+        intent.putExtra("DocumentKey", documentKey);
+        startActivity(intent);
     }
 }

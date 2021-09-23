@@ -42,15 +42,6 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:background="@color/Horizontal_grey" />
-
-                <TextView
-                    android:id="@+id/tvDescription"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="25dp"
-                    android:text="@string/description"
-                    android:textColor="@color/red_pink"
-                    android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -71,13 +62,6 @@
 
                 <EditText
                     android:id="@+id/etFullName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:textSize="14dp" />
-
-                <EditText
-                    android:id="@+id/etDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left"
@@ -133,6 +117,31 @@
                         android:textSize="14sp" />
                 </RadioGroup>
 
+                <TextView
+                    android:id="@+id/tvDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="25dp"
+                    android:text="@string/description"
+                    android:textColor="@color/red_pink"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/etDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/tvStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="25dp"
+                    android:text="@string/status"
+                    android:textColor="@color/red_pink"
+                    android:textSize="16sp" />
+
                 <RadioGroup
                     android:id="@+id/radioGroupStatus"
                     android:layout_width="match_parent"
@@ -164,6 +173,16 @@
                         android:textSize="14sp" />
 
                     <RadioButton
+                        android:id="@+id/radioSeparated"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="-145dp"
+                        android:layout_marginRight="10dp"
+                        android:text="@string/separated"
+                        android:textSize="14sp" />
+
+                    <RadioButton
                         android:id="@+id/radioOtherStatus"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
@@ -172,15 +191,6 @@
                         android:text="Other"
                         android:textSize="14sp" />
                 </RadioGroup>
-
-                <TextView
-                    android:id="@+id/tvStatus"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="25dp"
-                    android:text="@string/status"
-                    android:textColor="@color/red_pink"
-                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tvProfession"
@@ -453,16 +463,6 @@
                         android:text="@string/next" />
 
                 </LinearLayout>
-
-                <RadioButton
-                    android:id="@+id/radioSeparated"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_marginTop="-145dp"
-                    android:layout_marginRight="10dp"
-                    android:text="@string/separated"
-                    android:textSize="14sp" />
 
             </LinearLayout>
         </LinearLayout>

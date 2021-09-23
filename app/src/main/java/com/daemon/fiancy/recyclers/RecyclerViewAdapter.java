@@ -89,7 +89,7 @@ public class RecyclerViewAdapter extends
         holder.religion.setText(advertisements.getReligion());
         holder.profession.setText(advertisements.getProfession());
 
-        // single post documet key
+        // single post document key
         String key = advertisements.getDocumentKey();
 
         // see one post at home

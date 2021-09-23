@@ -131,6 +131,7 @@
     <string name="welcome_to_fiancy">Welcome to Fiancy</string>
     <string name="freemium_account">Freemium Account</string>
     <string name="SPreligion">Religion</string>
+    <string name="declaration">Created by SCNC Daemon Demons for MAD project</string>
 
     <!--    String array for min education level-->
     <string-array name="CI_MinEducation">

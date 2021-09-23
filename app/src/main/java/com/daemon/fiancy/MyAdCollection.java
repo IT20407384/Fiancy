@@ -7,6 +7,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -56,5 +57,13 @@ public class MyAdCollection extends AppCompatActivity {
         emailShared = sharedpreferences.getString(EMAIL_KEY, null);
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(MyAdCollection.this, Home.class);
+        startActivity(intent);
+        finish();
     }
 }

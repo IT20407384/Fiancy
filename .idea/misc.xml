@@ -21,6 +21,7 @@
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_match_finder.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_my_ad_collection.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_nav_drawer.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_post_ad.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_premiumlog.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_profile.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/activity_profile_review.xml" value="0.20416666666666666" />
@@ -41,7 +42,7 @@
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/home_nav_drawer.xml" value="0.25" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/nav_drawer.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/profile_recycle.xml" value="0.18645833333333334" />
-        <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/recycler_matchfinder.xml" value="0.18645833333333334" />
+        <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/recycler_matchfinder.xml" value="0.33" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/recycler_pending.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/recycler_reported.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/recycleview_favorites.xml" value="0.25" />
@@ -50,6 +51,8 @@
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/toolbar_home.xml" value="0.33" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/layout/toolbar_profile.xml" value="0.33" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/menu/options_menu.xml" value="0.18645833333333334" />
+        <entry key="..\:/Users/Suvin/AppData/Local/Android/Sdk/platforms/android-30/data/res/layout/simple_spinner_dropdown_item.xml" value="0.18645833333333334" />
+        <entry key="..\:/Users/Suvin/AppData/Local/Android/Sdk/platforms/android-30/data/res/layout/simple_spinner_item.xml" value="0.18645833333333334" />
       </map>
     </option>
   </component>

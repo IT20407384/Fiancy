@@ -26,14 +26,15 @@ public class MatchLogic {
 
     public double matchCalculation() {
         double matchPercentage = 0;
+        int ageDiff = 0;
 
         boolean genderUser = false;     //male = true, female = false
         boolean genderOther = false;
         int ageGroupUser = 0, ageGroupOther = 0;    //18 - 30 = 1       //45 - 60 = 3
-                                            //30 - 45 = 2       //60 > x = 4
+                                                    //30 - 45 = 2       //60 > x = 4
 
         int religionUser = 0, religionOther = 0;    //Buddhist = 1      //Catholic = 2
-                                            //Cristian = 3      //Islam = 4         //Hinduism = 5
+                                                    //Cristian = 3      //Islam = 4         //Hinduism = 5
 
         int maxEduLevelUser, maxEduLevelOther;      // O level = 1      // A level = 2
                                                     //Diploma = 3       //Prof. Qualify. = 4
@@ -242,8 +243,12 @@ public class MatchLogic {
         if(religionUser == religionOther)
             matchPercentage += 25.0;
 
-//        if(genderUser)
-//            int ageDiff = ()
+        ageDiff = (ageGroupUser-ageGroupOther);
+        //if(genderUser && (ageDiff>=0))
+
+
+
+
 
         return matchPercentage;
     }

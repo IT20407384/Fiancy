@@ -60,7 +60,8 @@ public class AdConfirmActivity extends AppCompatActivity {
     TextView advertID, adFee, adDiscount, adTotFee;
     CheckBox TandC;
     ProgressDialog progressDialog;
-    Button imageUpload;
+    ProgressDialog progressDialogIMG;
+    Button imageUpload, adConfirm;
 
     Boolean uploadBtnClicked = false;
 
@@ -134,12 +135,6 @@ public class AdConfirmActivity extends AppCompatActivity {
 
         // setting up data functions
         setData();
-
-        //disable upload image button when no photos to add
-        if (filePath1 != null || filePath2 != null || filePath3 != null) {
-            imageUpload.setEnabled(true);
-        }
-
     }
 
     private void getData() {
@@ -186,6 +181,7 @@ public class AdConfirmActivity extends AppCompatActivity {
         img02 = findViewById(R.id.img02);
         img03 = findViewById(R.id.img03);
         imageUpload = findViewById(R.id.imageUpload);
+        adConfirm = findViewById(R.id.adConfirm);
     }
 
     // set data for textViews
@@ -222,10 +218,10 @@ public class AdConfirmActivity extends AppCompatActivity {
 
     // upload images to firebase
     private void uploadImages() {
-        progressDialog = new ProgressDialog(AdConfirmActivity.this);
-        progressDialog.show();
-        progressDialog.setContentView(R.layout.progress_dialog);
-        progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        progressDialogIMG = new ProgressDialog(AdConfirmActivity.this);
+        progressDialogIMG.show();
+        progressDialogIMG.setContentView(R.layout.progress_dialog);
+        progressDialogIMG.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
         // check images is null
         if (filePath1 != null) {
@@ -238,7 +234,7 @@ public class AdConfirmActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Uri uri) {
                             downloadUrl1 = uri.toString();
-                            progressDialog.dismiss();
+                            progressDialogIMG.dismiss();
                             Toast.makeText(AdConfirmActivity.this, "Images successfully uploaded.", Toast.LENGTH_SHORT).show();
                         }
                     });
@@ -246,7 +242,7 @@ public class AdConfirmActivity extends AppCompatActivity {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull @NotNull Exception e) {
-                    progressDialog.dismiss();
+                    progressDialogIMG.dismiss();
                     Toast.makeText(AdConfirmActivity.this, "Image 01 upload failed!", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -261,7 +257,7 @@ public class AdConfirmActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Uri uri) {
                             downloadUrl2 = uri.toString();
-                            progressDialog.dismiss();
+                            progressDialogIMG.dismiss();
                             Toast.makeText(AdConfirmActivity.this, "Images successfully uploaded.", Toast.LENGTH_SHORT).show();
                         }
                     });
@@ -269,7 +265,7 @@ public class AdConfirmActivity extends AppCompatActivity {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull @NotNull Exception e) {
-                    progressDialog.dismiss();
+                    progressDialogIMG.dismiss();
                     Toast.makeText(AdConfirmActivity.this, "Image 02 upload failed!", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -284,7 +280,7 @@ public class AdConfirmActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Uri uri) {
                             downloadUrl3 = uri.toString();
-                            progressDialog.dismiss();
+                            progressDialogIMG.dismiss();
                             Toast.makeText(AdConfirmActivity.this, "Images successfully uploaded.", Toast.LENGTH_SHORT).show();
                         }
                     });
@@ -292,7 +288,7 @@ public class AdConfirmActivity extends AppCompatActivity {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull @NotNull Exception e) {
-                    progressDialog.dismiss();
+                    progressDialogIMG.dismiss();
                     Toast.makeText(AdConfirmActivity.this, "Image 03 upload failed!", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -332,12 +328,8 @@ public class AdConfirmActivity extends AppCompatActivity {
         myRef.push().setValue(advertisements).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-
-                progressDialog.dismiss();
-
                 View adconfirmlayout = findViewById(R.id.adconfirmlayout);
-                Snackbar snackbar = Snackbar
-                        .make(adconfirmlayout, "Your advertisement posting as pending", Snackbar.LENGTH_LONG);
+                Snackbar snackbar = Snackbar.make(adconfirmlayout, "Your advertisement posting as pending", Snackbar.LENGTH_LONG);
                 snackbar.show();
             }
         });
@@ -350,9 +342,14 @@ public class AdConfirmActivity extends AppCompatActivity {
 
     // upload images
     public void btnUpload(View view) {
-        uploadImages();
-        uploadBtnClicked = true;
-        imageUpload.setEnabled(false);
+        if(TandC.isChecked()) {
+            uploadImages();
+            uploadBtnClicked = true;
+            imageUpload.setEnabled(false);
+            adConfirm.setEnabled(true);
+        } else {
+            Toast.makeText(this, "Agree to the T & C", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void adConfirmation(View view) {
@@ -381,12 +378,13 @@ public class AdConfirmActivity extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        progressDialog.dismiss();
                         uploadBtnClicked = false;
                         Intent intent = new Intent(getApplicationContext(), Home.class);
                         startActivity(intent);
                         finish();
                     }
-                }, 4000);
+                }, 2500);
             } else {
                 Toast.makeText(this, "Agree to the T & C", Toast.LENGTH_SHORT).show();
             }
@@ -403,15 +401,31 @@ public class AdConfirmActivity extends AppCompatActivity {
     }
 
     // back with back button
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        if (uploadBtnClicked) {
+//            Toast.makeText(this, "You can't cancel after upload the photos", Toast.LENGTH_SHORT).show();
+//        } else {
+//            Intent intent = new Intent(getApplicationContext(), Home.class);
+//            startActivity(intent);
+//        }
+//    }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        if (uploadBtnClicked) {
-            Toast.makeText(this, "You can't cancel after upload the photos", Toast.LENGTH_SHORT).show();
+    public void getCheckedtand(View view) {
+        if(TandC.isChecked()) {
+            adConfirm.setEnabled(true);
+        }else {
+            adConfirm.setEnabled(false);
+        }
+        if(filePath1!=null || filePath2!=null || filePath3!=null) {
+            if(TandC.isChecked()) {
+                imageUpload.setEnabled(true);
+            }else {
+                imageUpload.setEnabled(false);
+            }
         } else {
-            Intent intent = new Intent(getApplicationContext(), Home.class);
-            startActivity(intent);
+            imageUpload.setEnabled(false);
         }
     }
 }

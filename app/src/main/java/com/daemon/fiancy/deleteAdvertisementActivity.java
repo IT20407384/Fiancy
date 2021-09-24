@@ -5,10 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 public class deleteAdvertisementActivity extends AppCompatActivity {
+    // initialization
     ImageView back;
+
+    CheckBox res1, res2, res3;
+    EditText otherRes, resConf;
 
     String documentKey;
 
@@ -30,8 +36,27 @@ public class deleteAdvertisementActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        
+        //get instances
+        getInstances();
+    }
+
+    private void getInstances() {
+    }
+
+
+    // buttons
+    // permanatly delete
+    public void permanantDelete(View view) {
+        
+    }
+    
     public void cancelDelete(View view) {
         Intent intent = new Intent(deleteAdvertisementActivity.this, ManageAdvertisementActiviy.class);
+        intent.putExtra("DocumentKey", documentKey);
         startActivity(intent);
     }
 

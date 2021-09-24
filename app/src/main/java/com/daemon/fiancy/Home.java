@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 
 import com.daemon.fiancy.models.Advertisements;
 import com.daemon.fiancy.recyclers.RecyclerViewAdapter;
@@ -30,12 +31,13 @@ import com.google.firebase.database.ValueEventListener;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Home extends AppCompatActivity {
     DatabaseReference databaseReference;
     RecyclerViewAdapter adapter;
-    ArrayList<Advertisements> list;
-    EditText Search;
+    List<Advertisements> list = new ArrayList<>();
+    SearchView search;
 
     private static final String TAG = "MainActivity";
     public static final String SHARED_PREFS = "shared_prefs";
@@ -51,8 +53,11 @@ public class Home extends AppCompatActivity {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Advertisements");
 
+        getAdvertisementDetailsFromDBAndSet();
         initRecyclerView();
-        searchView();
+        initSearch();
+
+        // search View off
 
         sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
         email = sharedpreferences.getString(EMAIL_KEY, null);
@@ -76,27 +81,6 @@ public class Home extends AppCompatActivity {
         });
     }
 
-    private void searchView() {
-        Search = findViewById(R.id.Search);
-        //Search function
-        Search.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                adapter.filter(s);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-    }
-
     private static void openDrawer(DrawerLayout drawerLayout) {
         drawerLayout.openDrawer(GravityCompat.START);
     }
@@ -107,15 +91,7 @@ public class Home extends AppCompatActivity {
         }
     }
 
-    private void initRecyclerView() {
-        Log.d(TAG, "initRecyclerView: started");
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        list = new ArrayList<>();
-        adapter = new RecyclerViewAdapter(this, list);
-        recyclerView.setAdapter(adapter);
-
+    private void getAdvertisementDetailsFromDBAndSet() {
         //get & set data from firebase
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -127,12 +103,40 @@ public class Home extends AppCompatActivity {
                     assert advertisements != null;
                     advertisements.setDocumentKey(dataSnapshot.getKey());
                     list.add(advertisements);
+
                 }
                 adapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NotNull DatabaseError error) {}
+        });
+    }
+
+    private void initRecyclerView() {
+        Log.d(TAG, "initRecyclerView: started");
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        list = new ArrayList<>();
+        adapter = new RecyclerViewAdapter(this, list);
+        recyclerView.setAdapter(adapter);
+    }
+    // search View
+    private void initSearch() {
+        search = findViewById(R.id.homeSearch);
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                String searchStr = newText;
+                adapter.getFilter().filter(newText);
+                return false;
+            }
         });
     }
 

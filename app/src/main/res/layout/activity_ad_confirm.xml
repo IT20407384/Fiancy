@@ -149,7 +149,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="-8dp"
                             android:text="@string/agree_state"
-                            android:textSize="12sp" />
+                            android:textSize="12sp"
+                            android:onClick="getCheckedtand"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -217,12 +218,13 @@
                         android:text="cancel" />
 
                     <Button
-                        android:id="@+id/adConferm"
+                        android:id="@+id/adConfirm"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="15dp"
                         android:layout_weight="1"
+                        android:enabled="false"
                         android:onClick="adConfirmation"
                         android:text="confirm" />
 

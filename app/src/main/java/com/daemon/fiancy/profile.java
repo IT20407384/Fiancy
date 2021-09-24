@@ -137,6 +137,7 @@ public class profile extends AppCompatActivity {
         religion.setText(singleAdvertisement.getReligion());
         minEducation.setText(singleAdvertisement.getMinEducatuinLevel());
         description.setText(singleAdvertisement.getDescription());
+        profession.setText(singleAdvertisement.getProfession());
     }
 
     // go to report ad activty

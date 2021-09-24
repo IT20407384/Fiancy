@@ -48,18 +48,22 @@
                 android:orientation="vertical">
 
                 <CheckBox
+                    android:id="@+id/res1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Did you find a partner from our app."/>
                 <CheckBox
+                    android:id="@+id/res2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Did you find a partner from our app."/>
                 <CheckBox
+                    android:id="@+id/res3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Did you find a partner from our app."/>
                 <EditText
+                    android:id="@+id/otherRes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Other reason"
@@ -74,6 +78,7 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"/>
             <EditText
+                android:id="@+id/resConf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Type YES or NO"
@@ -92,9 +97,11 @@
                     android:text="@string/cancel"
                     android:onClick="cancelDelete"/>
                 <Button
+                    android:id="@+id/parmDelBtn"
                     android:layout_width="140dp"
                     android:layout_height="wrap_content"
                     android:text="@string/delete"
+                    android:onClick="permanantDelete"
                     android:layout_marginLeft="10dp"/>
 
             </LinearLayout>

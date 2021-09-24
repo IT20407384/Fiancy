@@ -14,7 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.daemon.fiancy.R;
 import com.daemon.fiancy.models.Advertisements;
+import com.daemon.fiancy.models.MatchLogic;
 import com.daemon.fiancy.profile;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -46,6 +52,10 @@ public class RecyclerViewForMatchFinder extends RecyclerView.Adapter<ViewHolderF
 
         Advertisements advertisement = dbAdList.get(position);
 
+        MatchLogic matchLogic = new MatchLogic();
+        matchLogic.setAdvertisementOther(advertisement);
+        matchLogic.setAdvertisementUser(getUserPostedAdvertisement());
+
         if(advertisement.getImage1() != null) {
             Glide.with(mContext)
                     .asBitmap().load(advertisement.getImage1())
@@ -72,7 +82,7 @@ public class RecyclerViewForMatchFinder extends RecyclerView.Adapter<ViewHolderF
         holder.religion.setText(advertisement.getReligion());
         holder.profession.setText(advertisement.getProfession());
 
-        holder.matchPercentage.setText(advertisement.getAge() + "%");
+        holder.matchPercentage.setText(matchLogic.matchCalculation() + "%");
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +97,17 @@ public class RecyclerViewForMatchFinder extends RecyclerView.Adapter<ViewHolderF
     @Override
     public int getItemCount() {
         return dbAdList.size();
+    }
+
+    public Advertisements getUserPostedAdvertisement() {
+
+        Advertisements userAdForMatch = new Advertisements();
+
+        for(Advertisements myAd : dbAdList){
+            if(myAd.getOwner().equalsIgnoreCase(user))
+                userAdForMatch = myAd;
+        }
+        return userAdForMatch;
     }
 }
 

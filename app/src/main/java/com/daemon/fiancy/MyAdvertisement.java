@@ -37,6 +37,20 @@ public class MyAdvertisement extends Fragment implements View.OnClickListener {
     String emailShared;
     String documentKey;
 
+    boolean paymentNeed = false;
+    boolean liveAdvertise = false;
+    boolean adHasPosted = false;
+    boolean adHasRejected = false;
+
+    TextView nameHead ;
+    TextView adState ;
+    TextView accState ;
+    TextView payState ;
+
+    Button matchfinder;
+    Button editAdvertise;
+    Button payForAdvertise;
+
     public MyAdvertisement() {}
 
     @Override
@@ -51,19 +65,19 @@ public class MyAdvertisement extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_my_advertisement, container, false);
 
-        Button matchfinder = view.findViewById(R.id.SMmatchfinderbtn);
+        matchfinder = view.findViewById(R.id.SMmatchfinderbtn);
         matchfinder.setOnClickListener(this);
 
-        Button editAdvertise = view.findViewById(R.id.SMeditadbtn);
+        editAdvertise = view.findViewById(R.id.SMeditadbtn);
         editAdvertise.setOnClickListener(this);
 
-        Button payForAdvertise = view.findViewById(R.id.SMpayforad);
+        payForAdvertise = view.findViewById(R.id.SMpayforad);
         payForAdvertise.setOnClickListener(this);
 
-        TextView nameHead = view.findViewById(R.id.SMnameinaccount);
-        TextView adState = view.findViewById(R.id.SMadstatus);
-        TextView accState = view.findViewById(R.id.SMaccountstatus);
-        TextView payState = view.findViewById(R.id.SMpaymentstatus);
+        nameHead = view.findViewById(R.id.SMnameinaccount);
+        adState = view.findViewById(R.id.SMadstatus);
+        accState = view.findViewById(R.id.SMaccountstatus);
+        payState = view.findViewById(R.id.SMpaymentstatus);
 
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("AppUser");
         dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -87,7 +101,7 @@ public class MyAdvertisement extends Fragment implements View.OnClickListener {
                 nameHead.setText(userPrime.getFullName());
                 if(prime) accState.setText("Premium Account");
 
-                Glide.with(getContext()).load("https://img.traveltriangle.com/blog/wp-content/tr:w-700,h400/uploads/2015/06/Demodara-Nine-Arch-Bridge.jpg").into((ImageView) view.findViewById(R.id.SMaccimage));
+                Glide.with(getContext()).load("https://st2.depositphotos.com/5142301/8014/v/950/depositphotos_80144862-stock-illustration-d-letter-logo-with-blue.jpg").into((ImageView) view.findViewById(R.id.SMaccimage));
             }
 
             @Override
@@ -105,13 +119,16 @@ public class MyAdvertisement extends Fragment implements View.OnClickListener {
                     assert advertisements != null;
                     if(advertisements.getOwner().equalsIgnoreCase(emailShared))
                         documentKey = mySnap.getKey();
-
                 }
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });
+
+        setPaymentTextAndButton();
+        setAdStateTextAndEditBtn();
 
         return view;
     }
@@ -130,8 +147,113 @@ public class MyAdvertisement extends Fragment implements View.OnClickListener {
                 startActivity(intent1);
                 break;
             case R.id.SMpayforad:
-                Toast.makeText(getContext(), "pay for ad", Toast.LENGTH_SHORT).show();
+                Intent intent2 = new Intent(getActivity(), PaypalUI.class);
+                startActivity(intent2);
                 break;
         }
+    }
+
+    public void setPaymentTextAndButton() {
+
+        try{
+            DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("Advertisements");
+            dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    Advertisements advertisements = new Advertisements();
+
+                    boolean paymentNeeded = false;
+                    boolean liveAdvertisement = false;
+
+                    for(DataSnapshot mySnap : snapshot.getChildren()) {
+                        advertisements = mySnap.getValue(Advertisements.class);
+                        assert advertisements != null;
+                        if(advertisements.getOwner().equalsIgnoreCase(emailShared)) {
+                            paymentNeeded = advertisements.getPaymentNeeded();
+                            liveAdvertisement = advertisements.getLiveAdvertisement();
+                        }
+                    }
+
+                    if(paymentNeeded) {
+                        payForAdvertise.setEnabled(true);
+                        payForAdvertise.setTextColor(Color.BLACK);
+                        payState.setText("Payment Needed");
+                    }else {
+                        payForAdvertise.setEnabled(false);
+                    }
+
+                    if(liveAdvertisement) {
+                        payState.setText("Payment Successfull");
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {}
+            });
+        }catch(Exception e){
+            Log.d("Error with DB : ", e.toString());
+        }
+    }
+
+    public void setAdStateTextAndEditBtn() {
+        try{
+            DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("Advertisements");
+            dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    Advertisements advertisements = new Advertisements();
+
+                    for(DataSnapshot mySnap : snapshot.getChildren()) {
+                        advertisements = mySnap.getValue(Advertisements.class);
+                        assert advertisements != null;
+                        if(advertisements.getOwner().equalsIgnoreCase(emailShared)) {
+                            paymentNeed = advertisements.getPaymentNeeded();
+                            liveAdvertise = advertisements.getLiveAdvertisement();
+                            adHasPosted = true;
+                        }
+                    }
+                    DatabaseReference dbRef2 = FirebaseDatabase.getInstance().getReference().child("RejectAds");
+                    dbRef2.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.hasChild(emailShared))
+                                adHasRejected = true;
+
+                            if(!adHasPosted) {
+                                adState.setText("Status : Haven't posted any Ads");
+                                matchfinder.setEnabled(false);
+                                matchfinder.setTextColor(Color.parseColor("#B8B8B8"));
+                            }
+                            else if(!paymentNeed && !liveAdvertise)
+                                adState.setText("Status : Ad is in pending for approval");
+                            else if(paymentNeed && !liveAdvertise)
+                                adState.setText("Status : Advertisement approved");
+                            else {
+                                adState.setText("Status : Advertise is now live.");
+                                editAdvertise.setEnabled(true);
+                                editAdvertise.setTextColor(Color.BLACK);
+                            }
+                            if(adHasRejected && !adHasPosted) {
+                                adState.setText("Status : Ad has been rejected ! \nReason : " + snapshot.child(emailShared).child("reason").getValue().toString());
+                                adState.setTextColor(Color.RED);
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) { }
+                    });
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {}
+            });
+        }catch(Exception e){
+            Log.d("Error with DB : ", e.toString());
+        }
+
     }
 }

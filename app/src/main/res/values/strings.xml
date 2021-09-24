@@ -110,7 +110,7 @@
     <string name="primeDesc2">Unlock Match Finder.</string>
     <string name="primeDesc3">Cost : Rs.5000/=</string>
     <string name="buyprime">Buy Fiancy Premium</string>
-    <string name="ADLive">Status : Advertisement is Now Live</string>
+    <string name="ADLive">Status : No Ads Posted.</string>
     <string name="primeaccount">Premium Account</string>
     <string name="successPayment">Advertisement Payment Successful</string>
     <string name="matchFinder">Match Finder</string>
@@ -134,6 +134,7 @@
     <string name="declaration">Created by SCNC Daemon Demons for MAD project</string>
     <string name="Accept_Report_add">Accept rejection</string>
     <string name="Discard_reject_ad">Discard rejection</string>
+    <string name="pending_payment_state">Pending Payment State</string>
 
     <!--    String array for min education level-->
     <string-array name="CI_MinEducation">

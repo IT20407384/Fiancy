@@ -36,6 +36,7 @@ public class MyAdvertisement extends Fragment implements View.OnClickListener {
     SharedPreferences sharedpreferences;
     String emailShared;
     String documentKey;
+    String paymentForAd;
 
     boolean paymentNeed = false;
     boolean liveAdvertise = false;
@@ -117,10 +118,11 @@ public class MyAdvertisement extends Fragment implements View.OnClickListener {
                 for(DataSnapshot mySnap : snapshot.getChildren()) {
                     advertisements = mySnap.getValue(Advertisements.class);
                     assert advertisements != null;
-                    if(advertisements.getOwner().equalsIgnoreCase(emailShared))
+                    if(advertisements.getOwner().equalsIgnoreCase(emailShared)) {
                         documentKey = mySnap.getKey();
+                        paymentForAd = advertisements.getTotatlFee();
+                    }
                 }
-
             }
 
             @Override
@@ -148,6 +150,7 @@ public class MyAdvertisement extends Fragment implements View.OnClickListener {
                 break;
             case R.id.SMpayforad:
                 Intent intent2 = new Intent(getActivity(), PaypalUI.class);
+                intent2.putExtra("PaymentGateway", paymentForAd);
                 startActivity(intent2);
                 break;
         }

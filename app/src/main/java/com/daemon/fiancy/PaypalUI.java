@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
@@ -18,6 +20,7 @@ import com.paypal.android.sdk.payments.PaymentActivity;
 import java.math.BigDecimal;
 
 public class PaypalUI extends AppCompatActivity {
+    DatabaseReference adDb;
 
     private  int PAYPAL_REQ_CODE = 12;
 
@@ -60,6 +63,9 @@ public class PaypalUI extends AppCompatActivity {
         if(requestcode == PAYPAL_REQ_CODE){
             if(resultcode == Activity.RESULT_OK){
                 Toast.makeText(getApplicationContext(),"Payment made successfully",Toast.LENGTH_LONG).show();
+//                adDb = FirebaseDatabase.getInstance().getReference().child("Advertisements").child();
+//                adDb.child("paymentNeeded").setValue(true);
+
             }else{
                 Toast.makeText(getApplicationContext(),"Payment is unsuccessful",Toast.LENGTH_SHORT).show();
             }

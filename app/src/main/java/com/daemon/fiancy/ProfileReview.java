@@ -103,9 +103,13 @@ public class ProfileReview extends AppCompatActivity {
         RejectedAds rejectedAds;
         rejectedAds = new RejectedAds();
         rejectedAds.setReason(data);
-        dbref.child(owner).setValue(rejectedAds);
+        if(data==null){
+            Toast.makeText(getApplicationContext(),"Enter reason to reject",Toast.LENGTH_LONG).show();
+        }else {
+            dbref.child(owner).setValue(rejectedAds);
 
-        Toast.makeText(getApplicationContext(), "Data successfully inserted", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Data successfully inserted", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void showAlertDialogButtonClicked(View view)

@@ -30,23 +30,23 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RecyclerViewAdapter extends
-        RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+        RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> implements Filterable{
     private static final String TAG = "test.sliit.recyclerview.RecyclerViewAdapter";
 
-    public ArrayList<Advertisements> list;
-    public ArrayList<Advertisements> arrayListCopy;
+    public List<Advertisements> list = new ArrayList<>();
+    public List<Advertisements> getAdvertisementFilter = new ArrayList<>();
     private Context mContext;
 
 
-    public RecyclerViewAdapter(Context mContext, ArrayList<Advertisements> list) {
+    public RecyclerViewAdapter(Context mContext, List<Advertisements> list) {
         this.mContext = mContext;
         this.list = list;
-        this.arrayListCopy = new ArrayList<>();
-        arrayListCopy.addAll(list);
+        this.getAdvertisementFilter = list;
     }
 
     @NonNull
@@ -108,6 +108,39 @@ public class RecyclerViewAdapter extends
         return list.size();
     }
 
+    @Override
+    public Filter getFilter() {
+        Filter filter = new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                FilterResults filterResults = new FilterResults();
+                if(constraint == null || constraint.length() == 0) {
+                    filterResults.values = getAdvertisementFilter;
+                    filterResults.count = getAdvertisementFilter.size();
+                } else {
+                    String searchStr = constraint.toString().toLowerCase();
+                    List<Advertisements> adverts = new ArrayList<>();
+                    for(Advertisements advert : getAdvertisementFilter) {
+                        if(advert.getFullname().toLowerCase().contains(searchStr)) {
+                            adverts.add(advert);
+                        }
+                    }
+                    filterResults.values = adverts;
+                    filterResults.count = adverts.size();
+                }
+                return filterResults;
+            }
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                list = (List<Advertisements>) results.values;
+                notifyDataSetChanged();
+            }
+        };
+        return filter;
+    }
+
+
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         CircleImageView image;
@@ -129,26 +162,7 @@ public class RecyclerViewAdapter extends
         }
     }
 
-    //Search Filter
-    public void filter(CharSequence charSequence) {
-        ArrayList<Advertisements> tempArrayList = new ArrayList<>();
-        if (!TextUtils.isEmpty(charSequence)) {
-            for (Advertisements advertisements : list) {
-                if (advertisements.getFullname().toLowerCase().contains(charSequence)) {
-                    tempArrayList.add(advertisements);
 
-                }
-            }
-        } else {
-            tempArrayList.addAll(arrayListCopy);
-        }
-
-        list.clear();
-        list.addAll(tempArrayList);
-        notifyDataSetChanged();
-        tempArrayList.clear();
-
-    }
 
 
 }

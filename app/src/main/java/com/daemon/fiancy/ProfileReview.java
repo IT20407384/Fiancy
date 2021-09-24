@@ -1,18 +1,20 @@
 package com.daemon.fiancy;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -20,15 +22,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.daemon.fiancy.models.Advertisements;
+import com.daemon.fiancy.models.RejectedAds;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Objects;
+import org.jetbrains.annotations.NotNull;
 
 public class ProfileReview extends AppCompatActivity {
+    EditText reason ;
+    DatabaseReference dbref;
+    String selectedAdId;
+    DatabaseReference adDb;
+    String owner;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +55,11 @@ public class ProfileReview extends AppCompatActivity {
         TextView address = findViewById(R.id.textView22);
         TextView description = findViewById(R.id.textView23);
 
-        Intent intent = getIntent();
-        String selectedAdId = intent.getStringExtra("SelectedAD");
 
-        DatabaseReference adDb = FirebaseDatabase.getInstance().getReference().child("Advertisements").child(selectedAdId);
+        Intent intent = getIntent();
+       selectedAdId = intent.getStringExtra("SelectedAD");
+
+        adDb = FirebaseDatabase.getInstance().getReference().child("Advertisements").child(selectedAdId);
 
         adDb.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -67,42 +79,89 @@ public class ProfileReview extends AppCompatActivity {
                     profession.setText(snapshot.child("profession").getValue().toString());
                     address.setText(snapshot.child("address").getValue().toString());
                     description.setText(snapshot.child("description").getValue().toString());
+                    owner = snapshot.child("owner").getValue().toString();
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }
 
-    public void onButtonShowPopupWindowClick(View view) {
+    public void buttonaccept(View view){
+        adDb = FirebaseDatabase.getInstance().getReference().child("Advertisements").child(selectedAdId);
+        adDb.child("paymentNeeded").setValue(true);
 
-        // inflate the layout of the popup window
-        LayoutInflater inflater = (LayoutInflater)
-                getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.activity_reject_reason, null);
-
-        // create the popup window
-        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        boolean focusable = true; // lets taps outside the popup also dismiss it
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-
-        // show the popup window
-        // which view you pass in doesn't matter, it is only used for the window tolken
-        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-
-
-
-        // dismiss the popup window when touched
-        popupView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                popupWindow.setFocusable(true);
-                return true;
-            }
-        });
+        Toast.makeText(getApplicationContext(),"Now advertisment diaplay in the home page",Toast.LENGTH_SHORT).show();
 
     }
+
+    public void buttonsave(String data){
+
+        dbref = FirebaseDatabase.getInstance().getReference().child("RejectAds");
+        RejectedAds rejectedAds;
+        rejectedAds = new RejectedAds();
+        rejectedAds.setReason(data);
+        dbref.child(owner).setValue(rejectedAds);
+
+        Toast.makeText(getApplicationContext(), "Data successfully inserted", Toast.LENGTH_SHORT).show();
+    }
+
+    public void showAlertDialogButtonClicked(View view)
+    {
+
+        // Create an alert builder
+        AlertDialog.Builder builder
+                = new AlertDialog.Builder(this);
+        builder.setTitle("Reason");
+
+        // set the custom layout
+        final View customLayout
+                = getLayoutInflater()
+                .inflate(
+                        R.layout.custom_layout,
+                        null);
+        builder.setView(customLayout);
+
+        // add a button
+        builder
+                .setPositiveButton(
+                        "OK",
+                        new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(
+                                    DialogInterface dialog,
+                                    int which)
+                            {
+
+                                // send data from the
+                                // AlertDialog to the Activity
+                                EditText editText
+                                        = customLayout
+                                        .findViewById(
+                                                R.id.editText);
+                                sendDialogDataToActivity(
+                                        editText
+                                                .getText()
+                                                .toString());
+                            }
+                        });
+
+        // create and show
+        // the alert dialog
+        AlertDialog dialog
+                = builder.create();
+        dialog.show();
+    }
+
+    // Do something with the data
+    // coming from the AlertDialog
+    private void sendDialogDataToActivity(String data)
+    {
+        buttonsave(data);
+
+    }
+
 }

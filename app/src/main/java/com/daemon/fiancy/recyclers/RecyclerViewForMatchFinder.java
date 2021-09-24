@@ -2,9 +2,11 @@ package com.daemon.fiancy.recyclers;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,17 +14,28 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.daemon.fiancy.R;
 import com.daemon.fiancy.models.Advertisements;
+import com.daemon.fiancy.models.MatchLogic;
+import com.daemon.fiancy.profile;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class RecyclerViewForMatchFinder extends RecyclerView.Adapter<ViewHolderForMatchFinder> {
 
     private ArrayList<Advertisements> dbAdList = new ArrayList<>();
+    private ArrayList<String> adKeys = new ArrayList<>();
     private Context mContext;
+    String user;
 
-    public RecyclerViewForMatchFinder(ArrayList<Advertisements> dbAdList, Context mContext) {
+    public RecyclerViewForMatchFinder(ArrayList<Advertisements> dbAdList, ArrayList<String> adKeys, String user, Context mContext ) {
         this.dbAdList = dbAdList;
+        this.adKeys = adKeys;
         this.mContext = mContext;
+        this.user = user;
     }
 
     @NonNull
@@ -38,6 +51,10 @@ public class RecyclerViewForMatchFinder extends RecyclerView.Adapter<ViewHolderF
     public void onBindViewHolder(@NonNull ViewHolderForMatchFinder holder, final int position) {
 
         Advertisements advertisement = dbAdList.get(position);
+
+        MatchLogic matchLogic = new MatchLogic();
+        matchLogic.setAdvertisementOther(advertisement);
+        matchLogic.setAdvertisementUser(getUserPostedAdvertisement());
 
         if(advertisement.getImage1() != null) {
             Glide.with(mContext)
@@ -64,11 +81,33 @@ public class RecyclerViewForMatchFinder extends RecyclerView.Adapter<ViewHolderF
         holder.gender.setText(advertisement.getGender());
         holder.religion.setText(advertisement.getReligion());
         holder.profession.setText(advertisement.getProfession());
+
+        holder.matchPercentage.setText(matchLogic.matchCalculation() + "%");
+
+        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, profile.class);
+                intent.putExtra("documetKey", adKeys.get(position));
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return dbAdList.size();
+    }
+
+    public Advertisements getUserPostedAdvertisement() {
+
+        Advertisements userAdForMatch = new Advertisements();
+
+        for(Advertisements myAd : dbAdList){
+            if(myAd.getOwner().equalsIgnoreCase(user))
+                userAdForMatch = myAd;
+        }
+        return userAdForMatch;
     }
 }
 

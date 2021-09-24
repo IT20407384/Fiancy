@@ -1,6 +1,7 @@
 package com.daemon.fiancy.recyclers;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -15,6 +16,7 @@ public class ViewHolderForFavorites extends RecyclerView.ViewHolder {
 
     CircleImageView image;
     TextView imageName, location, age, gender, religion, profession;
+    Button favDeleteBtn;
     RelativeLayout parentLayout;
 
     public ViewHolderForFavorites(@NonNull View itemView) {
@@ -26,7 +28,12 @@ public class ViewHolderForFavorites extends RecyclerView.ViewHolder {
         gender = itemView.findViewById(R.id.SMfavoritesgender);
         religion = itemView.findViewById(R.id.SMfavoritesreligion);
         profession = itemView.findViewById(R.id.SMfavoriteprofession);
+        favDeleteBtn = itemView.findViewById(R.id.SMfavdeletebtn);
         parentLayout = itemView.findViewById(R.id.SMfavoritesparent);
+    }
+
+    public Button getFavDeleteBtn() {
+        return favDeleteBtn;
     }
 
     public CircleImageView getImage() {

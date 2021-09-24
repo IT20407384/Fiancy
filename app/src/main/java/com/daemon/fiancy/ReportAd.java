@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,11 +22,14 @@ import org.jetbrains.annotations.NotNull;
 
 public class ReportAd extends AppCompatActivity {
 
-    EditText NPEmail,NPMessage,etReason;
+    EditText NPEmail, NPMessage, etReason;
     Button NPReportAD;
 
     DatabaseReference ReportReason;
     String reportedAdKey;
+
+    String email, message, reason;
+    ReportedADModel reportedADModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,25 +45,16 @@ public class ReportAd extends AppCompatActivity {
         NPReportAD = findViewById(R.id.NPReportAD);
 
         ReportReason = FirebaseDatabase.getInstance().getReference().child("ReportedAdvertisements");
+    }
 
-    }
-    //ReportedAd button click event
-    public void ReportAdvertisements(View view) {
-        InsertReportAd();
-    }
     //Sent reportAd details to database
     private void InsertReportAd() {
-        String email = NPEmail.getText().toString();
-        String message = NPMessage.getText().toString();
-        String reason = etReason.getText().toString();
-
-        ReportedADModel reportedADModel = new ReportedADModel(reportedAdKey,email,message,reason);
 
         ReportReason.push().setValue(reportedADModel).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 Toast.makeText(ReportAd.this, "Report Sent", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent (ReportAd.this,Home.class);
+                Intent intent = new Intent(ReportAd.this, Home.class);
                 startActivity(intent);
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -68,7 +63,21 @@ public class ReportAd extends AppCompatActivity {
                 Toast.makeText(ReportAd.this, "Report Failed", Toast.LENGTH_SHORT).show();
             }
         });
+    }
 
+    //ReportedAd button click event
+    public void ReportAdvertisements(View view) {
+        email = NPEmail.getText().toString();
+        message = NPMessage.getText().toString();
+        reason = etReason.getText().toString();
+
+        reportedADModel = new ReportedADModel(reportedAdKey, email, message, reason);
+
+        if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(message) &&!TextUtils.isEmpty(reason)) {
+            InsertReportAd();
+        } else {
+            Toast.makeText(ReportAd.this, "Please provide a reason for report this advertisement!", Toast.LENGTH_SHORT).show();
+        }
 
     }
 }

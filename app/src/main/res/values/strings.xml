@@ -135,6 +135,7 @@
     <string name="Accept_Report_add">Accept rejection</string>
     <string name="Discard_reject_ad">Discard rejection</string>
     <string name="pending_payment_state">Pending Payment State</string>
+    <string name="Payment">Proceed Payment</string>
 
     <!--    String array for min education level-->
     <string-array name="CI_MinEducation">

@@ -128,5 +128,6 @@
     <string name="declaration">Created by SCNC Daemon Demons for MAD project</string>
     <string name="Accept_Report_add">Accept rejection</string>
     <string name="Discard_reject_ad">Discard rejection</string>
+    <string name="Payment">Proceed Payment</string>
     <string name="pending_payment_state">Pending Payment State</string>
 </resources>

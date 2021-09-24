@@ -63,6 +63,15 @@ public class profile extends AppCompatActivity {
 
         //get Instance()
         getInstance();
+
+        ImageView back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(profile.this, Home.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void getInstance() {

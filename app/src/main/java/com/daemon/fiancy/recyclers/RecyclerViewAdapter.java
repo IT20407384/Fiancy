@@ -121,7 +121,12 @@ public class RecyclerViewAdapter extends
                     String searchStr = constraint.toString().toLowerCase();
                     List<Advertisements> adverts = new ArrayList<>();
                     for(Advertisements advert : getAdvertisementFilter) {
-                        if(advert.getFullname().toLowerCase().contains(searchStr)) {
+                        if(advert.getFullname().toLowerCase().contains(searchStr) ||
+                                advert.getAge().toLowerCase().contains(searchStr) ||
+                                advert.getAddress().toLowerCase().contains(searchStr) ||
+                                advert.getReligion().toLowerCase().contains(searchStr) ||
+                                advert.getHobbiesList().toString().toLowerCase().contains(searchStr) ||
+                                advert.getProfession().toLowerCase().contains(searchStr)) {
                             adverts.add(advert);
                         }
                     }

@@ -89,7 +89,6 @@ public class Home extends AppCompatActivity {
             }
             @Override
             public boolean onQueryTextChange(String newText) {
-                String searchStr = newText;
                 adapter.getFilter().filter(newText);
                 return false;
             }

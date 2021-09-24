@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.daemon.fiancy.models.ReportedADModel;
@@ -45,6 +46,16 @@ public class ReportAd extends AppCompatActivity {
         NPReportAD = findViewById(R.id.NPReportAD);
 
         ReportReason = FirebaseDatabase.getInstance().getReference().child("ReportedAdvertisements");
+
+        ImageView back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ReportAd.this, profile.class);
+                intent.putExtra("documetKey", reportedAdKey);
+                startActivity(intent);
+            }
+        });
     }
 
     //Sent reportAd details to database

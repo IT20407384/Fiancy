@@ -4,10 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TabHost;
 
 public class MatchFinder extends AppCompatActivity {
+
+    public static final String SHARED_PREFS = "shared_prefs";
+    public static final String EMAIL_KEY = "email_key";
+    SharedPreferences sharedpreferences;
+    String emailShared;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +36,9 @@ public class MatchFinder extends AppCompatActivity {
 
         // adding the tab to tabhost
         tabhost.addTab(spec);
+
+        sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        emailShared = sharedpreferences.getString(EMAIL_KEY, null);
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main3);
     }

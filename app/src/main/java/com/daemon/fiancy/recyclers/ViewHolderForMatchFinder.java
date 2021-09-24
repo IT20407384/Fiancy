@@ -14,7 +14,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ViewHolderForMatchFinder extends RecyclerView.ViewHolder {
 
     CircleImageView image;
-    TextView imageName, location, age, gender, religion, profession;
+    TextView imageName, location, age, gender, religion, profession, matchPercentage;
     RelativeLayout parentLayout;
 
     public ViewHolderForMatchFinder(@NonNull View itemView) {
@@ -26,7 +26,12 @@ public class ViewHolderForMatchFinder extends RecyclerView.ViewHolder {
         gender = itemView.findViewById(R.id.SMmatchgender);
         religion = itemView.findViewById(R.id.SMmatchreligion);
         profession = itemView.findViewById(R.id.SMmatchprofession);
+        matchPercentage = itemView.findViewById(R.id.SMmatchpercentage);
         parentLayout = itemView.findViewById(R.id.SMMatchfinderParent);
+    }
+
+    public TextView getMatchPercentage() {
+        return matchPercentage;
     }
 
     public CircleImageView getImage() {

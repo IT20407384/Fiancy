@@ -24,38 +24,25 @@
 
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/NPage"
+                android:layout_width="283dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="70dp"
-                android:text="@string/pr_age"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:layout_marginTop="30dp"
+                android:text=" Age"
+                android:layout_marginBottom="10dp"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"/>
 
-            <LinearLayout
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginRight="75dp"
-                android:background="@drawable/drop_down"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="100dp"
-                    android:text="18"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_arrow" />
-            </LinearLayout>
+            <EditText
+                android:id="@+id/etage"
+                android:layout_width="340dp"
+                android:layout_height="30dp"
+                android:hint="  Age"
+                android:textSize="12dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/et_box"
+                android:layout_gravity="center"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -63,8 +50,9 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:text="@string/pr_gen"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
+
                 android:layout_marginBottom="10dp"/>
             <RadioGroup
                 android:id="@+id/radioGroupGender"
@@ -77,7 +65,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Male"
-                    android:textSize="16sp"
+                    android:textSize="10sp"
                     android:layout_marginLeft="65dp"
                     android:layout_marginRight="25dp"/>
                 <RadioButton
@@ -85,103 +73,63 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Female"
-                    android:textSize="16sp"/>
+                    android:textSize="10sp"/>
             </RadioGroup>
 
-            <LinearLayout
-                android:layout_width="200dp"
+            <TextView
+                android:id="@+id/NP_Religion"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginRight="75dp"
-                android:background="@drawable/drop_down"
-                android:orientation="horizontal">
+                android:layout_marginLeft="10dp"
+                android:paddingTop="25dp"
+                android:text="Religion"
+                android:textStyle="bold"
+                android:textSize="15sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="100dp"
-                    android:text="@string/religion"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_arrow" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="350dp"
+            <Spinner
+                android:id="@+id/SP_Religion"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="25dp"
-                android:background="@drawable/drop_down"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="100dp"
-                    android:text="@string/educational_qualification"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_arrow" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="250dp"
+                android:textColor="@color/red_pink"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/NP_minEducationLevel"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="50dp"
-                android:background="@drawable/drop_down"
-                android:orientation="horizontal">
+                android:paddingTop="25dp"
+                android:text="Min Education Level"
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold"
+                android:textSize="15sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="100dp"
-                    android:text="@string/profession"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_arrow" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="250dp"
+            <Spinner
+                android:id="@+id/SP_MinEducationLevel"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="50dp"
-                android:background="@drawable/drop_down"
-                android:orientation="horizontal">
+                android:textColor="@color/red_pink"
+                android:textSize="16sp"
+                android:layout_marginBottom="10dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="50dp"
-                    android:text="@string/nationality"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+            <TextView
+                android:id="@+id/NP_Profession"
+                android:layout_width="283dp"
+                android:layout_height="wrap_content"
+                android:text=" Profession"
+                android:layout_marginBottom="10dp"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"/>
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_arrow" />
-            </LinearLayout>
+            <EditText
+                android:id="@+id/et_Profession"
+                android:layout_width="340dp"
+                android:layout_height="30dp"
+                android:hint="  Profession"
+                android:textSize="12dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/et_box"
+                android:layout_gravity="center"/>
+
 
 
             <TextView
@@ -190,7 +138,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="25dp"
                 android:text="@string/status"
-                android:textSize="25sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
             <RadioGroup
                 android:id="@+id/radioGroupStatus"
@@ -203,7 +151,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/unmarried"
-                    android:textSize="14sp"
+                    android:textSize="10sp"
                     android:layout_marginLeft="65dp"
                     android:layout_marginRight="15dp"/>
                 <RadioButton
@@ -211,23 +159,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/married"
-                    android:textSize="14sp"/>
+                    android:textSize="10sp"/>
 
                 <RadioButton
                     android:id="@+id/widow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Widow"
-                    android:textSize="14sp"/>
+                    android:textSize="10sp"/>
             </RadioGroup>
 
             <Button
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="1dp"
+                android:layout_marginTop="40dp"
                 android:text="@android:string/ok"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+              />
 
             <RadioGroup
                 android:layout_width="match_parent"

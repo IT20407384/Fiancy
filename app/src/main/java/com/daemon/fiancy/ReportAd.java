@@ -42,10 +42,6 @@ public class ReportAd extends AppCompatActivity {
 
         ReportReason = FirebaseDatabase.getInstance().getReference().child("ReportedAdvertisements");
 
-
-
-
-
     }
     //ReportedAd button click event
     public void ReportAdvertisements(View view) {

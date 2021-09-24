@@ -58,7 +58,7 @@ public class MyFavorites extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
-        adapter = new RecyclerViewAdapterForFavorites(DBadList, adKey, view.getContext());
+        adapter = new RecyclerViewAdapterForFavorites(DBadList, adKey, emailShared, view.getContext());
         recyclerView.setAdapter(adapter);
 
         dbFavRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -76,20 +76,19 @@ public class MyFavorites extends Fragment {
                         dbAdRef.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                advertisements = snapshot.child(adID).getValue(Advertisements.class);
-                                DBadList.add(advertisements);
-                                adKey.add(adID);
+                                if(snapshot.hasChild(adID)) {
+                                    advertisements = snapshot.child(adID).getValue(Advertisements.class);
+                                    DBadList.add(advertisements);
+                                    adKey.add(adID);
+                                }
                             }
 
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) { }
                         });
                     }
+                    adapter.notifyDataSetChanged();
                 }
-                else
-                    Toast.makeText(getContext(), "Currently you don't have any favorites.", Toast.LENGTH_SHORT).show();
-
-                adapter.notifyDataSetChanged();
             }
 
             @Override

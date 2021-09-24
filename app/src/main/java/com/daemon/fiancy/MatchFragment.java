@@ -1,5 +1,7 @@
 package com.daemon.fiancy;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,11 +30,23 @@ public class MatchFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private ArrayList<Advertisements> DBadList = new ArrayList<>();
+    private ArrayList<String> adKey = new ArrayList<>();
     DatabaseReference dbAdRef;
     RecyclerViewForMatchFinder adapter;
 
+    public static final String SHARED_PREFS = "shared_prefs";
+    public static final String EMAIL_KEY = "email_key";
+    SharedPreferences sharedpreferences;
+    String emailShared;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        try {sharedpreferences = this.getActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE); }
+        catch (NullPointerException e) { Log.d("Share Error", e.toString()); }
+
+        emailShared = sharedpreferences.getString(EMAIL_KEY, null);
+
         View view = inflater.inflate(R.layout.fragment_match, container,false);
 
         dbAdRef = FirebaseDatabase.getInstance().getReference().child("Advertisements");
@@ -40,7 +55,7 @@ public class MatchFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
-        adapter = new RecyclerViewForMatchFinder(DBadList, view.getContext());
+        adapter = new RecyclerViewForMatchFinder(DBadList, adKey, emailShared, view.getContext());
         recyclerView.setAdapter(adapter);
 
         dbAdRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -49,7 +64,11 @@ public class MatchFragment extends Fragment {
                 DBadList.clear();
                 for(DataSnapshot mySnap : snapshot.getChildren()) {
                     Advertisements advertisement = mySnap.getValue(Advertisements.class);
-                    DBadList.add(advertisement);
+                    assert advertisement != null;
+                    if(advertisement.getLiveAdvertisement()) {
+                        DBadList.add(advertisement);
+                        adKey.add(mySnap.getKey());
+                    }
                 }
                 adapter.notifyDataSetChanged();
             }

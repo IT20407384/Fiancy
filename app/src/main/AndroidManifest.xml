@@ -41,7 +41,7 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".PremiumLog" />
         <activity android:name=".AdminPanel" />
-        <activity android:name=".MyAdCollection" />
+        <activity android:name=".MyAdCollection" android:noHistory="true" />
         <activity android:name=".ManageAdvertisementActiviy"/>
         <activity android:name=".deleteAdvertisementActivity"/>
 

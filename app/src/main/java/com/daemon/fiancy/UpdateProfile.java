@@ -17,6 +17,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.daemon.fiancy.models.Advertisements;
+import com.daemon.fiancy.models.Favorites;
 import com.daemon.fiancy.models.UserModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -45,6 +47,7 @@ public class UpdateProfile extends AppCompatActivity {
     Button updateProfile;
 
     String oldPasswordHolder, key;
+    boolean primeState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +85,7 @@ public class UpdateProfile extends AppCompatActivity {
                         updateEmail.setText(userModel.getEmail());
                         oldPasswordHolder = userModel.getPassword();
                         key = mySnap.getKey();
+                        primeState = userModel.isuPremium();
                         break;
                     }
                 }
@@ -115,6 +119,7 @@ public class UpdateProfile extends AppCompatActivity {
                             updatedUser.setFullName(updateName.getText().toString());
                             updatedUser.setPhoneNumber(updatePhone.getText().toString());
                             updatedUser.setEmail(updateEmail.getText().toString());
+                            updatedUser.setuPremium(primeState);
 
                             if(oldPasswordHolder.equals(oldPassword.getText().toString())) {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(UpdateProfile.this);
@@ -127,6 +132,8 @@ public class UpdateProfile extends AppCompatActivity {
                                     public void onClick(DialogInterface dialog, int which) {
                                         updatedUser.setPassword(oldPasswordHolder);
                                         updateRef.setValue(updatedUser);
+                                        updateUserFavoritesCollection();
+                                        updateUserPostedAdvertise();
 
                                         SharedPreferences.Editor editor = sharedpreferences.edit();
                                         editor.putString(EMAIL_KEY, updatedUser.getEmail());
@@ -167,6 +174,7 @@ public class UpdateProfile extends AppCompatActivity {
                             updatedUser.setFullName(updateName.getText().toString());
                             updatedUser.setPhoneNumber(updatePhone.getText().toString());
                             updatedUser.setEmail(updateEmail.getText().toString());
+                            updatedUser.setuPremium(primeState);
 
                             if(oldPasswordHolder.equals(oldPassword.getText().toString())) {
 
@@ -180,6 +188,8 @@ public class UpdateProfile extends AppCompatActivity {
                                     public void onClick(DialogInterface dialog, int which) {
                                         updatedUser.setPassword(newPassword.getText().toString());
                                         updateRef.setValue(updatedUser);
+                                        updateUserFavoritesCollection();
+                                        updateUserPostedAdvertise();
 
                                         SharedPreferences.Editor editor = sharedpreferences.edit();
                                         editor.putString(EMAIL_KEY, updatedUser.getEmail());
@@ -209,6 +219,46 @@ public class UpdateProfile extends AppCompatActivity {
                         public void onCancelled(@NonNull DatabaseError error) {}
                     });
                 }
+            }
+        });
+    }
+
+    public void updateUserFavoritesCollection() {
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("Favorites");
+        dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Favorites favorites = snapshot.child(emailShared).getValue(Favorites.class);
+                dbRef.child(emailShared).removeValue();
+
+                dbRef.child(updateEmail.getText().toString()).setValue(favorites);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    public void updateUserPostedAdvertise() {
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("Advertisements");
+
+        dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Advertisements advertisement;
+                for(DataSnapshot mySnap : snapshot.getChildren()) {
+                    advertisement = mySnap.getValue(Advertisements.class);
+
+                    if(advertisement.getOwner().equalsIgnoreCase(emailShared))
+                        dbRef.child(mySnap.getKey()).child("owner").setValue(updateEmail.getText().toString());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }

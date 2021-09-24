@@ -14,20 +14,39 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ViewHolderReported extends RecyclerView.ViewHolder{
 
         CircleImageView image;
-        TextView imageName;
+        TextView imageName, location, age, gender, religion, profession;
         RelativeLayout parentLayout;
 
-public ViewHolderReported(@NonNull View itemView){
+        public ViewHolderReported(@NonNull View itemView){
         super(itemView);
-        image=itemView.findViewById(R.id.CSprofileimagehome);
-        imageName=itemView.findViewById(R.id.CSprofileuser_name);
-        parentLayout=itemView.findViewById(R.id.recycler_viewCS2);
+        image = itemView.findViewById(R.id.CSprofileimagehome);
+        imageName = itemView.findViewById(R.id.CSprofileuser_name);
+        location = itemView.findViewById(R.id.CSreportlocation);
+        age = itemView.findViewById(R.id.CSreportyear);
+        gender = itemView.findViewById(R.id.CSreportgender);
+        religion = itemView.findViewById(R.id.CSreportedreligion);
+        profession = itemView.findViewById(R.id.CSreportedproffesion);
+        parentLayout = itemView.findViewById(R.id.CSRecyclerViewreported);
         }
 
-public CircleImageView getImage(){
+        public CircleImageView getImage(){
         return image;
         }
-public TextView getImageName(){
+
+        public TextView getImageName(){
         return imageName;
         }
+
+        public TextView getLocation() { return location; }
+
+        public TextView getAge() { return age; }
+
+        public TextView getGender() { return gender; }
+
+        public TextView getReligion() { return religion; }
+
+        public TextView getProfession() { return profession; }
+
+        public RelativeLayout getParentLayout() { return parentLayout; }
+
 }

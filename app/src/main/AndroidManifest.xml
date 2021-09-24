@@ -30,17 +30,19 @@
         <activity android:name=".profile" />
         <activity android:name=".Home" />
         <activity android:name=".MatchFinder" />
-        <activity android:name=".PaypalUI" />
+        <activity android:name=".PaypalUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".AdConfirmActivity" />
         <activity android:name=".PostAdActivity" />
         <activity android:name=".UpdateProfile" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".PremiumLog" />
         <activity android:name=".AdminPanel" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
 
         </activity>
         <activity android:name=".MyAdCollection" />

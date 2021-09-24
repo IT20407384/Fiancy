@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.daemon.fiancy.models.Advertisements;
 import com.daemon.fiancy.models.RejectedAds;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,6 +37,8 @@ public class ProfileReview extends AppCompatActivity {
     DatabaseReference dbref;
     String selectedAdId;
     DatabaseReference adDb;
+    String owner;
+
 
 
     @Override
@@ -76,21 +79,21 @@ public class ProfileReview extends AppCompatActivity {
                     profession.setText(snapshot.child("profession").getValue().toString());
                     address.setText(snapshot.child("address").getValue().toString());
                     description.setText(snapshot.child("description").getValue().toString());
+                    owner = snapshot.child("owner").getValue().toString();
 
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
-
-
         });
-
-
     }
-    public void buttonaccept(){
-        //adDb= FirebaseDatabase.getInstance().getReference().child("Advertisements").child(selectedAdId);
+
+    public void buttonaccept(View view){
+        adDb = FirebaseDatabase.getInstance().getReference().child("Advertisements").child(selectedAdId);
+        adDb.child("paymentNeeded").setValue(true);
+
+        Toast.makeText(getApplicationContext(),"Now advertisment diaplay in the home page",Toast.LENGTH_SHORT).show();
 
     }
 
@@ -100,14 +103,9 @@ public class ProfileReview extends AppCompatActivity {
         RejectedAds rejectedAds;
         rejectedAds = new RejectedAds();
         rejectedAds.setReason(data);
-        rejectedAds.setId(selectedAdId);
-        dbref.push().setValue(rejectedAds);
+        dbref.child(owner).setValue(rejectedAds);
 
         Toast.makeText(getApplicationContext(), "Data successfully inserted", Toast.LENGTH_SHORT).show();
-
-        adDb= FirebaseDatabase.getInstance().getReference().child("Advertisements").child(selectedAdId);
-        adDb.removeValue();
-
     }
 
     public void showAlertDialogButtonClicked(View view)

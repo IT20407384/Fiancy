@@ -45,25 +45,24 @@
 
                     <TextView
                         android:id="@+id/SMprofilematchname"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="210dp"
+                        android:layout_height="match_parent"
                         android:paddingLeft="15dp"
                         android:text="@string/name_1"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
-                    <Button
-                        android:id="@+id/buttonadcd4"
+                    <TextView
+                        android:id="@+id/SMmatchpercentage"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_weight="1"
-                        android:stateListAnimator="@null"
-                        app:backgroundTint="@color/white"
-                        app:backgroundTintMode="add"
-                        app:icon="@drawable/ic_adprofile"
-                        app:iconGravity="end"
-                        app:iconSize="30dp"
-                        app:iconTint="@color/black" />
+                        android:gravity="end"
+                        android:textColor="@color/PayPal_Blue"
+                        android:paddingRight="10dp"
+                        android:text="0.0%"
+                        android:textSize="22dp"
+                        android:textStyle="bold|italic" />
 
                 </LinearLayout>
 

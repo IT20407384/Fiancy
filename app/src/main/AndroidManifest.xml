@@ -22,31 +22,26 @@
         <activity android:name=".MainActivity"
             android:noHistory="true"
             android:exported="true">
-
-        </activity>
-
-        <activity android:name=".ProfileReview" />
-        <activity android:name=".ReportAd" />
-        <activity android:name=".profile" />
-        <activity android:name=".Home" />
-        <activity android:name=".MatchFinder" />
-        <activity android:name=".PaypalUI">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".Reject_Reason" />
+        <activity android:name=".ProfileReview" />
+        <activity android:name=".ReportAd" />
+        <activity android:name=".profile" />
+        <activity android:name=".Home" />
+        <activity android:name=".MatchFinder" />
+        <activity android:name=".PaypalUI" />
         <activity android:name=".AdConfirmActivity" />
         <activity android:name=".PostAdActivity" />
         <activity android:name=".UpdateProfile" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".PremiumLog" />
-        <activity android:name=".AdminPanel" >
-
-
-        </activity>
-        <activity android:name=".MyAdCollection" />
-        <activity android:name=".Report_Ad_Check"/>
+        <activity android:name=".AdminPanel" />
+        <activity android:name=".MyAdCollection" android:noHistory="true" />
         <activity android:name=".ManageAdvertisementActiviy"/>
         <activity android:name=".deleteAdvertisementActivity"/>
 

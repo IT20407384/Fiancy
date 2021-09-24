@@ -28,12 +28,16 @@ public class PaypalUI extends AppCompatActivity {
             .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX)
             .clientId(PaypalConfigID.CONFIG_CLIENT_ID);
 
-
+    double paymentForAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paypal_ui);
+
+        Intent intent2 = getIntent();
+        paymentForAd = Double.parseDouble(intent2.getStringExtra("PaymentGateway"));
+        Toast.makeText(getApplicationContext(), intent2.getStringExtra("PaymentGateway"), Toast.LENGTH_SHORT).show();
 
         Button paybutton = findViewById(R.id.CSbutton7);
 

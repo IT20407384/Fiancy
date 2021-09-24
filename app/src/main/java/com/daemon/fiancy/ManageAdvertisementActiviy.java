@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -31,6 +32,7 @@ import com.github.drjacky.imagepicker.ImagePicker;
 import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,6 +45,8 @@ import com.google.firebase.storage.UploadTask;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import kotlin.Unit;
@@ -177,8 +181,20 @@ public class ManageAdvertisementActiviy extends AppCompatActivity {
         dbRef.child(documentKey).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot dataSnapshot) {
-                singleEditableAd = dataSnapshot.getValue(Advertisements.class);
-                setPreviousFilledDataTothisActivity();
+                if(dataSnapshot.hasChild("fullname")){
+                    singleEditableAd = dataSnapshot.getValue(Advertisements.class);
+                    setPreviousFilledDataTothisActivity();
+                } else {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent intent = new Intent(ManageAdvertisementActiviy.this, Home.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }, 1500);
+                }
+
             }
 
             @Override
@@ -692,5 +708,6 @@ public class ManageAdvertisementActiviy extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), deleteAdvertisementActivity.class);
         intent.putExtra("DocumentKey", documentKey);
         startActivity(intent);
+        finish();
     }
 }

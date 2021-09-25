@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 
 import com.daemon.fiancy.models.Advertisements;
 import com.daemon.fiancy.recyclers.RecyclerViewAdapter;
@@ -30,12 +31,13 @@ import com.google.firebase.database.ValueEventListener;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Home extends AppCompatActivity {
     DatabaseReference databaseReference;
     RecyclerViewAdapter adapter;
-    ArrayList<Advertisements> list;
-    EditText Search;
+    List<Advertisements> list = new ArrayList<>();
+    SearchView search;
 
     private static final String TAG = "MainActivity";
     public static final String SHARED_PREFS = "shared_prefs";
@@ -51,6 +53,7 @@ public class Home extends AppCompatActivity {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Advertisements");
 
+        getAdvertisementDetailsFromDBAndSet();
         initRecyclerView();
         searchView();
 
@@ -76,23 +79,18 @@ public class Home extends AppCompatActivity {
         });
     }
 
+    // search View
     private void searchView() {
-        Search = findViewById(R.id.Search);
-        //Search function
-        Search.addTextChangedListener(new TextWatcher() {
+        search = findViewById(R.id.homeSearch);
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+            public boolean onQueryTextSubmit(String query) {
+                return false;
             }
-
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                adapter.filter(s);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
             }
         });
     }
@@ -106,6 +104,24 @@ public class Home extends AppCompatActivity {
             drawerLayout.closeDrawer(GravityCompat.START);
         }
     }
+    private void getAdvertisementDetailsFromDBAndSet() {
+        //get & set data from firebase
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NotNull DataSnapshot snapshot) {
+                list.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Advertisements advertisements = dataSnapshot.getValue(Advertisements.class);
+                    assert advertisements != null;
+                    advertisements.setDocumentKey(dataSnapshot.getKey());
+                    list.add(advertisements);
+                }
+                adapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NotNull DatabaseError error) {}
+        });
+    }
 
     private void initRecyclerView() {
         Log.d(TAG, "initRecyclerView: started");
@@ -115,25 +131,6 @@ public class Home extends AppCompatActivity {
         list = new ArrayList<>();
         adapter = new RecyclerViewAdapter(this, list);
         recyclerView.setAdapter(adapter);
-
-        //get & set data from firebase
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NotNull DataSnapshot snapshot) {
-                list.clear();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-
-                    Advertisements advertisements = dataSnapshot.getValue(Advertisements.class);
-                    assert advertisements != null;
-                    advertisements.setDocumentKey(dataSnapshot.getKey());
-                    list.add(advertisements);
-                }
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NotNull DatabaseError error) {}
-        });
     }
 
     public void clickedMyProfile(View view) {

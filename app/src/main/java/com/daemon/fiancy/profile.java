@@ -11,7 +11,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +33,7 @@ import com.google.firebase.database.ValueEventListener;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class profile extends AppCompatActivity {
     // firebase
@@ -40,9 +43,10 @@ public class profile extends AppCompatActivity {
     // initializations
     ImageView profileimageinAd, Gender, heartFav;
     TextView location, fullname, age, profession, religion, minEducation,
-    description;
+    description, contact, hobbieListView;
 
     String documentKey;
+    List<String> hobbieList;
 
     public static final String SHARED_PREFS = "shared_prefs";
     public static final String EMAIL_KEY = "email_key";
@@ -59,6 +63,15 @@ public class profile extends AppCompatActivity {
 
         //get Instance()
         getInstance();
+
+        ImageView back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(profile.this, Home.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void getInstance() {
@@ -71,6 +84,8 @@ public class profile extends AppCompatActivity {
         religion = findViewById(R.id.NPReligion);
         minEducation = findViewById(R.id.NPMinEducationLevel);
         description = findViewById(R.id.NPDescription);
+        contact = findViewById(R.id.NPContact);
+        hobbieListView = findViewById(R.id.NPhobieList);
         heartFav = findViewById(R.id.user_profileHeart);
     }
 
@@ -137,7 +152,21 @@ public class profile extends AppCompatActivity {
         religion.setText(singleAdvertisement.getReligion());
         minEducation.setText(singleAdvertisement.getMinEducatuinLevel());
         description.setText(singleAdvertisement.getDescription());
-        profession.setText(singleAdvertisement.getProfession());
+        contact.setText(singleAdvertisement.getPhone());
+
+        // set hobbielist to list array
+        hobbieList = singleAdvertisement.getHobbiesList();
+        sethobbiestoListView();
+    }
+
+    // set hobbies list to list view
+    private void sethobbiestoListView() {
+        StringBuilder str = new StringBuilder();
+        for (int i = 0; i<hobbieList.size(); i++) {
+            str.append(hobbieList.get(i)+", ");
+        }
+
+        hobbieListView.setText(str);
     }
 
     // go to report ad activty

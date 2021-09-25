@@ -55,9 +55,7 @@ public class Home extends AppCompatActivity {
 
         getAdvertisementDetailsFromDBAndSet();
         initRecyclerView();
-        initSearch();
-
-        // search View off
+        searchView();
 
         sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
         email = sharedpreferences.getString(EMAIL_KEY, null);
@@ -81,6 +79,22 @@ public class Home extends AppCompatActivity {
         });
     }
 
+    // search View
+    private void searchView() {
+        search = findViewById(R.id.homeSearch);
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+    }
+
     private static void openDrawer(DrawerLayout drawerLayout) {
         drawerLayout.openDrawer(GravityCompat.START);
     }
@@ -90,7 +104,6 @@ public class Home extends AppCompatActivity {
             drawerLayout.closeDrawer(GravityCompat.START);
         }
     }
-
     private void getAdvertisementDetailsFromDBAndSet() {
         //get & set data from firebase
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -98,16 +111,13 @@ public class Home extends AppCompatActivity {
             public void onDataChange(@NotNull DataSnapshot snapshot) {
                 list.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-
                     Advertisements advertisements = dataSnapshot.getValue(Advertisements.class);
                     assert advertisements != null;
                     advertisements.setDocumentKey(dataSnapshot.getKey());
                     list.add(advertisements);
-
                 }
                 adapter.notifyDataSetChanged();
             }
-
             @Override
             public void onCancelled(@NotNull DatabaseError error) {}
         });
@@ -121,23 +131,6 @@ public class Home extends AppCompatActivity {
         list = new ArrayList<>();
         adapter = new RecyclerViewAdapter(this, list);
         recyclerView.setAdapter(adapter);
-    }
-    // search View
-    private void initSearch() {
-        search = findViewById(R.id.homeSearch);
-        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                String searchStr = newText;
-                adapter.getFilter().filter(newText);
-                return false;
-            }
-        });
     }
 
     public void clickedMyProfile(View view) {

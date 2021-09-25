@@ -29,18 +29,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> implements Filterable {
+public class RecyclerViewAdapter extends
+        RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> implements Filterable{
     private static final String TAG = "test.sliit.recyclerview.RecyclerViewAdapter";
 
     public List<Advertisements> list = new ArrayList<>();
     public List<Advertisements> getAdvertisementFilter = new ArrayList<>();
-    public Context mContext;
+    private Context mContext;
 
 
     public RecyclerViewAdapter(Context mContext, List<Advertisements> list) {
@@ -121,26 +121,30 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     String searchStr = constraint.toString().toLowerCase();
                     List<Advertisements> adverts = new ArrayList<>();
                     for(Advertisements advert : getAdvertisementFilter) {
-                        if(advert.getFullname().toLowerCase().contains(searchStr)) {
+                        if(advert.getFullname().toLowerCase().contains(searchStr) ||
+                                advert.getAge().toLowerCase().contains(searchStr) ||
+                                advert.getAddress().toLowerCase().contains(searchStr) ||
+                                advert.getReligion().toLowerCase().contains(searchStr) ||
+                                advert.getHobbiesList().toString().toLowerCase().contains(searchStr) ||
+                                advert.getProfession().toLowerCase().contains(searchStr)) {
                             adverts.add(advert);
                         }
                     }
-
                     filterResults.values = adverts;
                     filterResults.count = adverts.size();
                 }
                 return filterResults;
             }
-
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
                 list = (List<Advertisements>) results.values;
                 notifyDataSetChanged();
             }
         };
-
         return filter;
     }
+
+
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -162,4 +166,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             parentLayout = itemView.findViewById(R.id.parent_layout);
         }
     }
+
+
+
+
 }

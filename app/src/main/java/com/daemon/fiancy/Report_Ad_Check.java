@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -36,7 +37,10 @@ public class Report_Ad_Check extends AppCompatActivity {
     ReportedADModel reportedAdvertisements;
     String reportedAdKey;
 
+    String downloadUrl1, downloadUrl2, downloadUrl3;
+
     DatabaseReference adref;
+    DatabaseReference dbRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,19 +66,89 @@ public class Report_Ad_Check extends AppCompatActivity {
                     description.setText(snapshot.child("message").getValue().toString());
                     reportedAdKey = snapshot.child("reportedAdKey").getValue().toString();
 
-
+                    getDownloadUrl();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
-
         });
+    }
 
+    // get image download url in reported ad for delete
+    private void getDownloadUrl() {
+        dbRef = FirebaseDatabase.getInstance().getReference();
+        dbRef.child("Advertisements").child(reportedAdKey).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot dataSnapshot) {
+
+                if(dataSnapshot.hasChild("image1")){
+                    downloadUrl1 = dataSnapshot.child("image1").getValue().toString();
+                }
+                if(dataSnapshot.hasChild("image2")){
+                    downloadUrl2 = dataSnapshot.child("image2").getValue().toString();
+                }
+                if(dataSnapshot.hasChild("image3")){
+                    downloadUrl3 = dataSnapshot.child("image3").getValue().toString();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    // delete the reported photos
+    private void deletePhotos() {
+        if(!TextUtils.isEmpty(downloadUrl1)) {
+            StorageReference storageRef = FirebaseStorage.getInstance().getReferenceFromUrl(downloadUrl1);
+            storageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    Log.d("downloadURL", "Image deleted successful1");
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull @NotNull Exception e) {
+                }
+            });
+        }
+        if(!TextUtils.isEmpty(downloadUrl2)) {
+            StorageReference storageRef = FirebaseStorage.getInstance().getReferenceFromUrl(downloadUrl2);
+            storageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    Log.d("downloadURL", "Image deleted successful2");
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull @NotNull Exception e) {
+                }
+            });
+        }
+        if(!TextUtils.isEmpty(downloadUrl3)) {
+            StorageReference storageRef = FirebaseStorage.getInstance().getReferenceFromUrl(downloadUrl3);
+            storageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    Log.d("downloadURL", "Image deleted successful3");
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull @NotNull Exception e) {
+                }
+            });
+        }
     }
 
     public  void buttondacceptrejection(View view){
 
+        // first delete reported photos
+        deletePhotos();
+
+        // delete advertisement after the delete photos
         reportadreferrence = FirebaseDatabase.getInstance().getReference().child("ReportedAdvertisements").child(reportadid);
         adref = FirebaseDatabase.getInstance().getReference().child("Advertisements").child(reportedAdKey);
 

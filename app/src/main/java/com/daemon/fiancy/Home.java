@@ -113,8 +113,10 @@ public class Home extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Advertisements advertisements = dataSnapshot.getValue(Advertisements.class);
                     assert advertisements != null;
-                    advertisements.setDocumentKey(dataSnapshot.getKey());
-                    list.add(advertisements);
+                    if(advertisements.getLiveAdvertisement()) {
+                        advertisements.setDocumentKey(dataSnapshot.getKey());
+                        list.add(advertisements);
+                    }
                 }
                 adapter.notifyDataSetChanged();
             }

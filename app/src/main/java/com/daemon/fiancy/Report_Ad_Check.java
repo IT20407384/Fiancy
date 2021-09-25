@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,7 +55,7 @@ public class Report_Ad_Check extends AppCompatActivity {
         Intent intent = getIntent();
         reportadid = intent.getStringExtra("SelectedRAD");
 
-
+        ImageView backBtn = findViewById(R.id.back);
 
         reportadreferrence = FirebaseDatabase.getInstance().getReference().child("ReportedAdvertisements").child(reportadid);
 
@@ -73,6 +74,15 @@ public class Report_Ad_Check extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Report_Ad_Check.this, AdminPanel.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     // get image download url in reported ad for delete

@@ -15,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.daemon.fiancy.models.Advertisements;
@@ -45,6 +46,7 @@ public class UpdateProfile extends AppCompatActivity {
     EditText oldPassword;
     EditText newPassword;
     Button updateProfile;
+    ImageView backBtn;
 
     String oldPasswordHolder, key;
     boolean primeState;
@@ -61,6 +63,7 @@ public class UpdateProfile extends AppCompatActivity {
         oldPassword = findViewById(R.id.SMupdatecurrentpassword);
         newPassword = findViewById(R.id.SMupdatenewpassword);
         updateProfile = findViewById(R.id.SMupdateprofilebtn);
+        backBtn = findViewById(R.id.back);
 
         // initializing our shared preferences.
         sharedpreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
@@ -221,6 +224,15 @@ public class UpdateProfile extends AppCompatActivity {
                 }
             }
         });
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UpdateProfile.this, Home.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     public void updateUserFavoritesCollection() {

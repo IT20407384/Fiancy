@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -64,6 +65,15 @@ public class PaypalUI extends AppCompatActivity {
                 paypalpaymentmethod();
             }
 
+        });
+
+        ImageView backBtn = findViewById(R.id.back);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PaypalUI.this, Home.class);
+                startActivity(intent);
+            }
         });
     }
     private void paypalpaymentmethod() {

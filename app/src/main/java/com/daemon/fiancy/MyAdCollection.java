@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.Toast;
 
@@ -57,6 +58,16 @@ public class MyAdCollection extends AppCompatActivity {
         emailShared = sharedpreferences.getString(EMAIL_KEY, null);
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+
+        ImageView backBtn = findViewById(R.id.back);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyAdCollection.this, Home.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override

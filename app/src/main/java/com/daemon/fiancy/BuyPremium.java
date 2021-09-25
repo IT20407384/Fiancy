@@ -12,11 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.Objects;
 
-public class BuyPremium extends Fragment implements View.OnClickListener {
+public class BuyPremium extends Fragment{
 
     public static final String SHARED_PREFS = "shared_prefs";
     public static final String EMAIL_KEY = "email_key";
@@ -34,6 +35,7 @@ public class BuyPremium extends Fragment implements View.OnClickListener {
 
         View view = inflater.inflate(R.layout.fragment_buy_premium, container, false);
         Button button = (Button) view.findViewById(R.id.SMbuyprime);
+
         button.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -47,10 +49,5 @@ public class BuyPremium extends Fragment implements View.OnClickListener {
         });
 
         return view;
-    }
-
-    @Override
-    public void onClick(View v) {
-
     }
 }

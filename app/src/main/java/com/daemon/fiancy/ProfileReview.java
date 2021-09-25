@@ -55,7 +55,7 @@ public class ProfileReview extends AppCompatActivity {
         TextView profession = findViewById(R.id.CStextproffesion);
         TextView address = findViewById(R.id.textView22);
         TextView description = findViewById(R.id.textView23);
-
+        ImageView backBtn = findViewById(R.id.back);
 
         Intent intent = getIntent();
        selectedAdId = intent.getStringExtra("SelectedAD");
@@ -88,6 +88,15 @@ public class ProfileReview extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileReview.this, AdminPanel.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     public void buttonaccept(View view){

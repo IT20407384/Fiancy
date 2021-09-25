@@ -2,7 +2,10 @@ package com.daemon.fiancy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TabHost;
 
 public class PremiumLog extends AppCompatActivity {
@@ -27,5 +30,15 @@ public class PremiumLog extends AppCompatActivity {
 
         // adding the tab to tabhost
         tabhost.addTab(spec);
+
+
+        ImageView backBtn = findViewById(R.id.back);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PremiumLog.this, Home.class);
+                startActivity(intent);
+            }
+        });
     }
 }

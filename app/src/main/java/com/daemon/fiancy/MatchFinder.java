@@ -5,8 +5,11 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TabHost;
 
 public class MatchFinder extends AppCompatActivity {
@@ -41,5 +44,15 @@ public class MatchFinder extends AppCompatActivity {
         emailShared = sharedpreferences.getString(EMAIL_KEY, null);
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main3);
+
+        ImageView backBtn = findViewById(R.id.back);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MatchFinder.this, MyAdCollection.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

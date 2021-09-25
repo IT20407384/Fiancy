@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.daemon.fiancy.models.Advertisements;
 import com.daemon.fiancy.models.RejectedAds;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -91,10 +92,14 @@ public class ProfileReview extends AppCompatActivity {
 
     public void buttonaccept(View view){
         adDb = FirebaseDatabase.getInstance().getReference().child("Advertisements").child(selectedAdId);
-        adDb.child("paymentNeeded").setValue(true);
-
-        Toast.makeText(getApplicationContext(),"Now advertisment diaplay in the home page",Toast.LENGTH_SHORT).show();
-
+        adDb.child("paymentNeeded").setValue(true).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Toast.makeText(getApplicationContext(),"Now advertisment diaplay in the home page",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ProfileReview.this, AdminPanel.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void buttonsave(String data){

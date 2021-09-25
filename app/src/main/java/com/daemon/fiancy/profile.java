@@ -80,7 +80,7 @@ public class profile extends AppCompatActivity {
         fullname = findViewById(R.id.NPfullname);
         location = findViewById(R.id.NPlocation);
         age = findViewById(R.id.NPAge);
-        profession = findViewById(R.id.NPProfession);
+        profession = findViewById(R.id.NPProfession1);
         religion = findViewById(R.id.NPReligion);
         minEducation = findViewById(R.id.NPMinEducationLevel);
         description = findViewById(R.id.NPDescription);
@@ -152,6 +152,7 @@ public class profile extends AppCompatActivity {
         religion.setText(singleAdvertisement.getReligion());
         minEducation.setText(singleAdvertisement.getMinEducatuinLevel());
         description.setText(singleAdvertisement.getDescription());
+        profession.setText(singleAdvertisement.getProfession());
         contact.setText(singleAdvertisement.getPhone());
 
         // set hobbielist to list array

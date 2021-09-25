@@ -22,7 +22,7 @@ public class Advertisements {
     private String fee;
     private String discount;
     private String totatlFee;
-    private Boolean liveAdvertisement = true;
+    private Boolean liveAdvertisement = false;
     private Boolean paymentNeeded = false;
 
     public Advertisements() {

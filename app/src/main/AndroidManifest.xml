@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Reject_Reason" />
+        <activity android:name=".Report_Ad_Check"/>
         <activity android:name=".ProfileReview" />
         <activity android:name=".ReportAd" />
         <activity android:name=".profile" />

@@ -24,11 +24,11 @@
 
             <TextView
                 android:id="@+id/SMnameinaccount"
-                android:layout_width="115dp"
-                android:layout_height="40dp"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
-                android:layout_marginEnd="96dp"
-                android:layout_marginRight="96dp"
+                android:layout_marginEnd="70dp"
+                android:layout_marginRight="70dp"
                 android:text="@string/full_name"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"

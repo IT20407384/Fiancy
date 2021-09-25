@@ -27,6 +27,7 @@ public class MatchLogic {
     public double matchCalculation() {
         double matchPercentage = 0;
         int ageDiff = 0;
+        int eduLevelDiff = 0;
 
         boolean genderUser = false;     //male = true, female = false
         boolean genderOther = false;
@@ -36,10 +37,10 @@ public class MatchLogic {
         int religionUser = 0, religionOther = 0;    //Buddhist = 1      //Catholic = 2
                                                     //Cristian = 3      //Islam = 4         //Hinduism = 5
 
-        int maxEduLevelUser, maxEduLevelOther;      // O level = 1      // A level = 2
-                                                    //Diploma = 3       //Prof. Qualify. = 4
-                                                    //  UG = 5          // Batchelor = 6
-                                                    // Post grad. = 7   // Masters = 8      //pHd = 9
+        int maxEduLevelUser = 0, maxEduLevelOther = 0;      // O level = 1      // A level = 2
+                                                            //Diploma = 3       //Prof. Qualify. = 4
+                                                            //  UG = 5          // Batchelor = 6
+                                                            // Post grad. = 7   // Masters = 8      //pHd = 9
 
         boolean [] hobbiesUser = new boolean[12];
         for(int i=0; i<12; i++)
@@ -64,8 +65,8 @@ public class MatchLogic {
             dancing = 11 th index
          */
 
-        int statusUser, statusOther;        //married = 1         //widowed = 3
-                                            //never married = 2       //divorced = 4        //other = 5
+        int statusUser = 0, statusOther = 0;        //married = 1               //widowed = 3
+                                                    //never married = 2       //divorced = 4        //other = 5
 
         String professionUser;
         String professionOther;
@@ -237,14 +238,130 @@ public class MatchLogic {
                 hobbiesOther[11] = true;
         }
 
+        /*
+                Starting of the Match percentage calculation.
+
+                NOTE :
+                    The values I have used here and conditions I have evaluated are based on
+                    the popular social convention in Sri Lanka.
+                    Please be aware - I'm not denying, promoting, or agreeing with any on those.
+                    Assigned values from below are just for the demonstration purposes.
+         */
+
+
         if(genderUser != genderOther)
             matchPercentage += 40.0;
 
         if(religionUser == religionOther)
             matchPercentage += 25.0;
 
-        ageDiff = (ageGroupUser-ageGroupOther);
-        //if(genderUser && (ageDiff>=0))
+        ageDiff = ageGroupUser-ageGroupOther;
+        eduLevelDiff = maxEduLevelUser - maxEduLevelOther;
+
+
+        //if user is male
+        if (genderUser) {
+
+            // age difference calculation
+            if(ageDiff == 0)
+                matchPercentage += (10 + (0.25*(Integer.parseInt(advertisementUser.getAge())-Integer.parseInt(advertisementOther.getAge()))));
+
+            else if(ageDiff == 1)
+                matchPercentage += (5 + (0.25*(Integer.parseInt(advertisementUser.getAge())-Integer.parseInt(advertisementOther.getAge()))));
+
+            else if(ageDiff == 2)
+                matchPercentage += (0 + (0.25*(Integer.parseInt(advertisementUser.getAge())-Integer.parseInt(advertisementOther.getAge()))));
+
+            else if(ageDiff == 3)
+                matchPercentage += (-5 + (0.25*(Integer.parseInt(advertisementUser.getAge())-Integer.parseInt(advertisementOther.getAge()))));
+
+            else
+                matchPercentage += (-10 + (0.25*(Integer.parseInt(advertisementUser.getAge())-Integer.parseInt(advertisementOther.getAge()))));
+
+
+            //Education level-vise match calculation
+            if(eduLevelDiff == 0 || eduLevelDiff == 1)
+                matchPercentage += 8.0;
+
+            else if(eduLevelDiff < 9 && eduLevelDiff > 1)
+                matchPercentage += 7 - (eduLevelDiff*0.5);
+
+            else
+                matchPercentage += (eduLevelDiff*0.7);
+
+        }
+
+        //if user is female
+        else {
+
+            // age difference calculation
+            if(ageDiff == 0)
+                matchPercentage += (10 + (0.25*(Integer.parseInt(advertisementUser.getAge())-Integer.parseInt(advertisementOther.getAge()))));
+
+            else if(ageDiff == -1)
+                matchPercentage += (5 + (0.25*(Integer.parseInt(advertisementUser.getAge())-Integer.parseInt(advertisementOther.getAge()))));
+
+            else if(ageDiff == -2)
+                matchPercentage += (0 + (0.25*(Integer.parseInt(advertisementUser.getAge())-Integer.parseInt(advertisementOther.getAge()))));
+
+            else if(ageDiff == -3)
+                matchPercentage += (-5 + (0.25*(Integer.parseInt(advertisementUser.getAge())-Integer.parseInt(advertisementOther.getAge()))));
+
+            else
+                matchPercentage += (-15 + (0.25*(Integer.parseInt(advertisementUser.getAge())-Integer.parseInt(advertisementOther.getAge()))));
+
+
+            //Education level-vise match calculation
+            if(eduLevelDiff == 0 || eduLevelDiff == -1)
+                matchPercentage += 8.0;
+
+            else if(eduLevelDiff > -9 && eduLevelDiff < -1)
+                matchPercentage += 7 + (eduLevelDiff*0.5);
+
+            else
+                matchPercentage -= (eduLevelDiff*0.7);
+
+        }
+
+
+        // Calculating match percentage with marital status
+        if(statusUser == statusOther)
+            matchPercentage += 11.0;
+
+        else if(statusUser == 2)
+            matchPercentage -= 6.0;
+
+        else
+            matchPercentage += 11.0;
+
+
+        // search for a word inside a string to check
+        // user and other have the save profession
+
+        String[] dividedUserProf = professionUser.split("\\s");
+        String[] dividedOtherProf = professionOther.split("\\s");
+        int count = 0;
+
+        for(String temp : dividedUserProf) {
+            int index = professionOther.toLowerCase().indexOf(temp.toLowerCase());
+            if(index>=0)
+                count++;
+        }
+        if(count == 0){
+            for(String temp : dividedOtherProf) {
+                int index = professionUser.toLowerCase().indexOf(temp.toLowerCase());
+                if(index>=0)
+                    count++;
+            }
+        }
+
+        if(count>0)
+            matchPercentage += 3.0;
+
+
+        //percentage calculation according to hobbies and interests
+        int userHobbieLen = 0;
+        int otherhobbieLen = 0;
 
 
 

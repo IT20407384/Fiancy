@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
@@ -18,6 +20,11 @@ import com.paypal.android.sdk.payments.PaymentActivity;
 import java.math.BigDecimal;
 
 public class PaypalUI extends AppCompatActivity {
+    DatabaseReference adDb,apuser;
+    PayPalPayment payPalPayment;
+    String payment;
+    String userid;
+    String adkey;
 
     private  int PAYPAL_REQ_CODE = 12;
 
@@ -33,8 +40,17 @@ public class PaypalUI extends AppCompatActivity {
         setContentView(R.layout.activity_paypal_ui);
 
         Intent intent2 = getIntent();
-        paymentForAd = Double.parseDouble(intent2.getStringExtra("PaymentGateway"));
-        Toast.makeText(getApplicationContext(), intent2.getStringExtra("PaymentGateway"), Toast.LENGTH_SHORT).show();
+        payment = intent2.getStringExtra("PaymentGateway");
+        if(payment.equals("Premium")){
+            paymentForAd = 5000.0;
+           userid = intent2.getStringExtra("UserID");
+
+        }else{
+            paymentForAd = Double.parseDouble(payment);
+            adkey = intent2.getStringExtra("AdvertisementId");
+        }
+
+
 
         Button paybutton = findViewById(R.id.CSbutton7);
 
@@ -51,7 +67,7 @@ public class PaypalUI extends AppCompatActivity {
         });
     }
     private void paypalpaymentmethod() {
-        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(100),"USD","Test_Payment",PayPalPayment.PAYMENT_INTENT_SALE);
+        payPalPayment = new PayPalPayment(new BigDecimal(paymentForAd), "USD", "Test_Payment", PayPalPayment.PAYMENT_INTENT_SALE);
         Intent intent = new Intent(PaypalUI.this,PaymentActivity.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION,paypalconfig);
         intent.putExtra(PaymentActivity.EXTRA_PAYMENT,payPalPayment);
@@ -64,6 +80,16 @@ public class PaypalUI extends AppCompatActivity {
         if(requestcode == PAYPAL_REQ_CODE){
             if(resultcode == Activity.RESULT_OK){
                 Toast.makeText(getApplicationContext(),"Payment made successfully",Toast.LENGTH_LONG).show();
+                if(paymentForAd ==5000.0){
+                    apuser = FirebaseDatabase.getInstance().getReference().child("AppUser").child(userid);
+                    apuser.child("uPremium").setValue(true);
+                }else if(paymentForAd == Double.parseDouble(payment)){
+
+                    adDb = FirebaseDatabase.getInstance().getReference().child("Advertisements").child(userid);
+                    adDb.child("liveAdvertisement").setValue(true);
+                }
+
+
             }else{
                 Toast.makeText(getApplicationContext(),"Payment is unsuccessful",Toast.LENGTH_SHORT).show();
             }

@@ -151,6 +151,7 @@ public class MyAdvertisement extends Fragment implements View.OnClickListener {
             case R.id.SMpayforad:
                 Intent intent2 = new Intent(getActivity(), PaypalUI.class);
                 intent2.putExtra("PaymentGateway", paymentForAd);
+                intent2.putExtra("AdvertisementId",documentKey );
                 startActivity(intent2);
                 break;
         }

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">F I A N C Y</string>
     <string name="SignIn">Sign In</string>
@@ -18,7 +17,7 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="nevermarried">Never Married</string>
-    <string name="widowed">Widowed</string>
+    <string name="married">Married</string>
     <string name="address">Address</string>
     <string name="contact_details">Contact details</string>
     <string name="add_photos">Add Photos</string>
@@ -45,7 +44,7 @@
     <string name="select_reason">Select Reason</string>
     <string name="your_email">Your Email</string>
     <string name="wrong_ad">report</string>
-    <string name="reason">Is there something wrong with this ad ?</string>
+    <string name="reason"> Is there something wrong with this ad ?</string>
     <string name="report_reason">Select reason</string>
     <string name="email">Your Emali</string>
     <string name="button">SENT</string>
@@ -56,7 +55,6 @@
     <string name="ok">ok</string>
     <string name="religion">Religion</string>
     <string name="educational_qualification">Educational Qualification</string>
-    <string name="profession">Profession</string>
     <string name="nationality">Nationality</string>
     <string name="message">Message</string>
     <string name="pr_email">email</string>
@@ -102,14 +100,17 @@
     <string name="reli_7">Buddhist</string>
     <string name="Accept_Ad">Accept</string>
     <string name="Reject_Ad">Reject</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Reject_Reason">Reason to Reject</string>
     <string name="Reason">Reason</string>
+    <string name="Discard_Rejection">Discard</string>
+    <string name="Reason_report">Reason</string>
     <string name="Submit">Submit</string>
     <string name="primeDesc1">10% discount on the advertisement.</string>
     <string name="primeDesc2">Unlock Match Finder.</string>
     <string name="primeDesc3">Cost : Rs.5000/=</string>
     <string name="buyprime">Buy Fiancy Premium</string>
-    <string name="ADLive">Status : Advertisement is Now Live</string>
+    <string name="ADLive">Status : No Ads Posted.</string>
     <string name="primeaccount">Premium Account</string>
     <string name="successPayment">Advertisement Payment Successful</string>
     <string name="matchFinder">Match Finder</string>
@@ -118,16 +119,47 @@
     <string name="foundedMatches">Possible Matches</string>
     <string name="devorced">Devorced</string>
     <string name="separated">Separated</string>
+    <string name="unmarried">Unmarried</string>
+    <string name="widowed">Widowed</string>
+    <string name="profession">Profession</string>
     <string name="min_education_level">Min Education Level</string>
     <string name="hobbies">Hobbies</string>
     <string name="my_profile">My Profile</string>
+    <string name="my_advertisements">My Advertisements</string>
     <string name="become_premium">Become Premium</string>
     <string name="log_out">Log Out</string>
-    <string name="SPreligion">Religion</string>
+    <string name="welcome_to_fiancy">Welcome to Fiancy</string>
     <string name="freemium_account">Freemium Account</string>
+    <string name="SPreligion">Religion</string>
+    <string name="reson">Reson</string>
     <string name="declaration">Created by SCNC Daemon Demons for MAD project</string>
     <string name="Accept_Report_add">Accept rejection</string>
     <string name="Discard_reject_ad">Discard rejection</string>
-    <string name="Payment">Proceed Payment</string>
     <string name="pending_payment_state">Pending Payment State</string>
+    <string name="Payment">Proceed Payment</string>
+
+    <!--    String array for min education level-->
+    <string-array name="CI_MinEducation">
+        <item>Up to GCE O/L</item>
+        <item>Up to GCE A/L</item>
+        <item>Diploma</item>
+        <item>Professional Qualification</item>
+        <item>Undergraduate</item>
+        <item>Bachelor\'s Degree or Equivalent</item>
+        <item>Post Graduate Diploma</item>
+        <item>Master\'s Degree or Equivalent</item>
+        <item>Phd or Post Doctoral</item>
+    </string-array>
+
+    <!--    String array for religions-->
+    <string-array name="CI_Religions">
+        <item>Buddhist</item>
+        <item>Catholic</item>
+        <item>Cristian</item>
+        <item>Islam</item>
+        <item>Hinduism</item>
+    </string-array>
+
+
 </resources>
+

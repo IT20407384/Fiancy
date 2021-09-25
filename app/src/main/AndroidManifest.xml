@@ -28,8 +28,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Reject_Reason" />
         <activity android:name=".ProfileReview" />
+        <activity android:name=".Report_Ad_Check"/>
         <activity android:name=".ReportAd" />
         <activity android:name=".profile" />
         <activity android:name=".Home" />

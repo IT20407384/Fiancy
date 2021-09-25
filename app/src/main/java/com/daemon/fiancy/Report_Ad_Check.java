@@ -46,14 +46,10 @@ public class Report_Ad_Check extends AppCompatActivity {
         TextView rejecttext = findViewById(R.id.CStextView26);
         TextView description = findViewById(R.id.CStextView28);
 
-
         Intent intent = getIntent();
         reportadid = intent.getStringExtra("SelectedRAD");
 
-
-
         reportadreferrence = FirebaseDatabase.getInstance().getReference().child("ReportedAdvertisements").child(reportadid);
-
 
         reportadreferrence.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -61,18 +57,12 @@ public class Report_Ad_Check extends AppCompatActivity {
                     rejecttext.setText(snapshot.child("reason").getValue().toString());
                     description.setText(snapshot.child("message").getValue().toString());
                     reportedAdKey = snapshot.child("reportedAdKey").getValue().toString();
-
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
-
         });
-
     }
-
     public  void buttondacceptrejection(View view){
 
         reportadreferrence = FirebaseDatabase.getInstance().getReference().child("ReportedAdvertisements").child(reportadid);
@@ -92,9 +82,7 @@ public class Report_Ad_Check extends AppCompatActivity {
                 });
             }
         });
-
     }
-
     public void buttondiscardrejection(View view){
         reportadreferrence = FirebaseDatabase.getInstance().getReference().child("ReportedAdvertisements").child(reportadid);
         reportadreferrence.removeValue();

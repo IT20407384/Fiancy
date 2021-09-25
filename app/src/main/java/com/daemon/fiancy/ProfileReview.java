@@ -103,12 +103,17 @@ public class ProfileReview extends AppCompatActivity {
         RejectedAds rejectedAds;
         rejectedAds = new RejectedAds();
         rejectedAds.setReason(data);
-        if(data==null){
+        if(TextUtils.isEmpty(data)){
             Toast.makeText(getApplicationContext(),"Enter reason to reject",Toast.LENGTH_LONG).show();
         }else {
             dbref.child(owner).setValue(rejectedAds);
 
             Toast.makeText(getApplicationContext(), "Data successfully inserted", Toast.LENGTH_SHORT).show();
+            adDb = FirebaseDatabase.getInstance().getReference().child("Advertisements").child(selectedAdId);
+            adDb.removeValue();
+
+            Intent intent = new Intent(this,AdminPanel.class);
+            startActivity(intent);
         }
     }
 

@@ -20,11 +20,12 @@ import com.paypal.android.sdk.payments.PaymentActivity;
 import java.math.BigDecimal;
 
 public class PaypalUI extends AppCompatActivity {
-    DatabaseReference adDb;
+    DatabaseReference adDb,apuser;
     PayPalPayment payPalPayment;
     String payment;
     String userid;
     String adkey;
+    String key;
 
     private  int PAYPAL_REQ_CODE = 12;
 
@@ -80,8 +81,15 @@ public class PaypalUI extends AppCompatActivity {
         if(requestcode == PAYPAL_REQ_CODE){
             if(resultcode == Activity.RESULT_OK){
                 Toast.makeText(getApplicationContext(),"Payment made successfully",Toast.LENGTH_LONG).show();
-                adDb = FirebaseDatabase.getInstance().getReference().child("Advertisements").child("Documentkey");
-                adDb.child("paymentNeeded").setValue(true);
+                if(key == userid){
+                    apuser = FirebaseDatabase.getInstance().getReference().child("AppUser").child(userid);
+                    apuser.child("uPremium").setValue(true);
+                }else{
+
+                    adDb = FirebaseDatabase.getInstance().getReference().child("Advertisements").child(userid);
+                    adDb.child("liveAdvertisement").setValue(true);
+                }
+
 
             }else{
                 Toast.makeText(getApplicationContext(),"Payment is unsuccessful",Toast.LENGTH_SHORT).show();

@@ -31,7 +31,7 @@
             android:layout_height="41dp"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="92dp"
+            android:layout_marginTop="36dp"
             android:text="@string/Reject_Reason"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -67,8 +67,8 @@
 
         <TextView
             android:id="@+id/CStextView28"
-            android:layout_width="292dp"
-            android:layout_height="97dp"
+            android:layout_width="297dp"
+            android:layout_height="113dp"
             android:layout_marginTop="4dp"
             android:text="@string/Description"
             app:layout_constraintEnd_toEndOf="parent"

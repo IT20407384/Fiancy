@@ -25,7 +25,6 @@ public class PaypalUI extends AppCompatActivity {
     String payment;
     String userid;
     String adkey;
-    String key;
 
     private  int PAYPAL_REQ_CODE = 12;
 
@@ -81,10 +80,10 @@ public class PaypalUI extends AppCompatActivity {
         if(requestcode == PAYPAL_REQ_CODE){
             if(resultcode == Activity.RESULT_OK){
                 Toast.makeText(getApplicationContext(),"Payment made successfully",Toast.LENGTH_LONG).show();
-                if(key == userid){
+                if(paymentForAd ==5000.0){
                     apuser = FirebaseDatabase.getInstance().getReference().child("AppUser").child(userid);
                     apuser.child("uPremium").setValue(true);
-                }else{
+                }else if(paymentForAd == Double.parseDouble(payment)){
 
                     adDb = FirebaseDatabase.getInstance().getReference().child("Advertisements").child(userid);
                     adDb.child("liveAdvertisement").setValue(true);

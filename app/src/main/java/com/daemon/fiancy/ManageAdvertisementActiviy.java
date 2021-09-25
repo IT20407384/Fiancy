@@ -11,13 +11,16 @@ import android.content.Intent;
 import android.net.Uri;
 import android.nfc.Tag;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.PersistableBundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -29,6 +32,7 @@ import com.github.drjacky.imagepicker.ImagePicker;
 import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,6 +45,8 @@ import com.google.firebase.storage.UploadTask;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import kotlin.Unit;
@@ -89,7 +95,6 @@ public class ManageAdvertisementActiviy extends AppCompatActivity {
     // firebase
     DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("Advertisements");
     StorageReference imageFolder = FirebaseStorage.getInstance().getReference().child("Images");
-
 
 
     @Override
@@ -153,7 +158,6 @@ public class ManageAdvertisementActiviy extends AppCompatActivity {
 
 
         // functions
-        getCheckBoxesValues();
         if (!getData) {
             getAdvertisementFilleddetails();
         }
@@ -163,7 +167,7 @@ public class ManageAdvertisementActiviy extends AppCompatActivity {
             imageUpdate.setEnabled(true);
         }
 
-        if(filePath1 != null || filePath2 != null || filePath3 != null) {
+        if (filePath1 != null || filePath2 != null || filePath3 != null) {
             advertUpdateBtn.setEnabled(false);
         }
 
@@ -177,8 +181,20 @@ public class ManageAdvertisementActiviy extends AppCompatActivity {
         dbRef.child(documentKey).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot dataSnapshot) {
-                singleEditableAd = dataSnapshot.getValue(Advertisements.class);
-                setPreviousFilledDataTothisActivity();
+                if(dataSnapshot.hasChild("fullname")){
+                    singleEditableAd = dataSnapshot.getValue(Advertisements.class);
+                    setPreviousFilledDataTothisActivity();
+                } else {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent intent = new Intent(ManageAdvertisementActiviy.this, Home.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }, 1500);
+                }
+
             }
 
             @Override
@@ -249,36 +265,38 @@ public class ManageAdvertisementActiviy extends AppCompatActivity {
         upReligion.setText(singleEditableAd.getReligion());
 
         // set hobbie list
-        hobbieList = singleEditableAd.getHobbiesList();
-        for (int i = 0; i < hobbieList.size(); i++) {
+        if(!singleEditableAd.getHobbiesList().isEmpty()) {
+            hobbieList = singleEditableAd.getHobbiesList();
 
-
-            if (cbReading.getText().equals(hobbieList.get(i))) {
-                cbReading.setChecked(true);
-            } else if (cbCollecting.getText().equals(hobbieList.get(i))) {
-                cbCollecting.setChecked(true);
-            } else if (cbDancing.getText().equals(hobbieList.get(i))) {
-                cbDancing.setChecked(true);
-            } else if (cbEatingOut.getText().equals(hobbieList.get(i))) {
-                cbEatingOut.setChecked(true);
-            } else if (cbFishing.getText().equals(hobbieList.get(i))) {
-                cbFishing.setChecked(true);
-            } else if (cbGames.getText().equals(hobbieList.get(i))) {
-                cbGames.setChecked(true);
-            } else if (cbGardening.getText().equals(hobbieList.get(i))) {
-                cbGardening.setChecked(true);
-            } else if (cbMusic.getText().equals(hobbieList.get(i))) {
-                cbMusic.setChecked(true);
-            } else if (cbShopping.getText().equals(hobbieList.get(i))) {
-                cbShopping.setChecked(true);
-            } else if (cbTraveling.getText().equals(hobbieList.get(i))) {
-                cbTraveling.setChecked(true);
-            } else if (cbWalking.getText().equals(hobbieList.get(i))) {
-                cbWalking.setChecked(true);
-            } else if (cbWatchingSports.getText().equals(hobbieList.get(i))) {
-                cbWatchingSports.setChecked(true);
+            for (int i = 0; i < hobbieList.size(); i++) {
+                if (cbReading.getText().equals(hobbieList.get(i))) {
+                    cbReading.setChecked(true);
+                } else if (cbCollecting.getText().equals(hobbieList.get(i))) {
+                    cbCollecting.setChecked(true);
+                } else if (cbDancing.getText().equals(hobbieList.get(i))) {
+                    cbDancing.setChecked(true);
+                } else if (cbEatingOut.getText().equals(hobbieList.get(i))) {
+                    cbEatingOut.setChecked(true);
+                } else if (cbFishing.getText().equals(hobbieList.get(i))) {
+                    cbFishing.setChecked(true);
+                } else if (cbGames.getText().equals(hobbieList.get(i))) {
+                    cbGames.setChecked(true);
+                } else if (cbGardening.getText().equals(hobbieList.get(i))) {
+                    cbGardening.setChecked(true);
+                } else if (cbMusic.getText().equals(hobbieList.get(i))) {
+                    cbMusic.setChecked(true);
+                } else if (cbShopping.getText().equals(hobbieList.get(i))) {
+                    cbShopping.setChecked(true);
+                } else if (cbTraveling.getText().equals(hobbieList.get(i))) {
+                    cbTraveling.setChecked(true);
+                } else if (cbWalking.getText().equals(hobbieList.get(i))) {
+                    cbWalking.setChecked(true);
+                } else if (cbWatchingSports.getText().equals(hobbieList.get(i))) {
+                    cbWatchingSports.setChecked(true);
+                }
             }
         }
+
 
         // set dropdown value
         if (singleEditableAd.getMinEducatuinLevel().equals("Up to GCE O/L")) {
@@ -619,8 +637,10 @@ public class ManageAdvertisementActiviy extends AppCompatActivity {
 
         boolean isNull = updateAdvertisementDetails();
         Log.d("TAG1", String.valueOf(isNull));
-
-        if (!isNull) {
+        hobbieList.clear();
+        getCheckBoxesValues();
+        Log.d("Hobbies", "hobbielist 1 "+hobbieList.toString());
+        if (!isNull && !hobbieList.isEmpty()) {
             if (clickedUploadImageBtn) {
                 // delete current image
                 if (d1 == 1) {
@@ -644,16 +664,31 @@ public class ManageAdvertisementActiviy extends AppCompatActivity {
                 }
             }
             hobbieList.clear();
-            getCheckBoxesValues();
             String status = getStatus();
             singleEditableAd.setStatus(status);
+            getCheckBoxesValues();
             singleEditableAd.setHobbiesList(hobbieList);
+            Log.d("Hobbies", "hobbielist 2 "+hobbieList.toString());
+
+            progressDialog = new ProgressDialog(ManageAdvertisementActiviy.this);
+            progressDialog.show();
+            progressDialog.setContentView(R.layout.progress_dialog);
+            progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
             DatabaseReference updateRef = dbRef.child(documentKey);
             updateRef.setValue(singleEditableAd).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void unused) {
                     Toast.makeText(ManageAdvertisementActiviy.this, "Advertisement update successful", Toast.LENGTH_SHORT).show();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressDialog.dismiss();
+                            Intent intent = new Intent(getApplicationContext(), Home.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }, 2500);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -670,9 +705,9 @@ public class ManageAdvertisementActiviy extends AppCompatActivity {
 
     // delete button
     public void deleteAd(View view) {
-
         Intent intent = new Intent(getApplicationContext(), deleteAdvertisementActivity.class);
         intent.putExtra("DocumentKey", documentKey);
         startActivity(intent);
+        finish();
     }
 }

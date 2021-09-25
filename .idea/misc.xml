@@ -3,10 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Application projects/Fiancy/app/src/main/res/drawable/ad_view_background.xml" value="0.29615384615384616" />
         <entry key="..\:/Application projects/Fiancy/app/src/main/res/layout/activity_ad_confirm.xml" value="0.27932489451476794" />
         <entry key="..\:/Application projects/Fiancy/app/src/main/res/layout/activity_delete_advertisement.xml" value="0.33" />
         <entry key="..\:/Application projects/Fiancy/app/src/main/res/layout/activity_post_ad.xml" value="0.27932489451476794" />
         <entry key="..\:/Application projects/Fiancy/app/src/main/res/layout/activity_profile.xml" value="0.5" />
+        <entry key="..\:/Application projects/Fiancy/app/src/main/res/layout/activity_profile_review.xml" value="0.2829059829059829" />
+        <entry key="..\:/Application projects/Fiancy/app/src/main/res/layout/activity_report_ad.xml" value="0.2829059829059829" />
+        <entry key="..\:/Application projects/Fiancy/app/src/main/res/layout/activity_report_ad_check.xml" value="0.33" />
+        <entry key="..\:/Application projects/Fiancy/app/src/main/res/layout/fragment_reported.xml" value="0.2829059829059829" />
+        <entry key="..\:/Application projects/Fiancy/app/src/main/res/layout/progress_dialog.xml" value="0.2829059829059829" />
+        <entry key="..\:/Application projects/Fiancy/app/src/main/res/layout/recycler_matchfinder.xml" value="0.2829059829059829" />
+        <entry key="..\:/Application projects/Fiancy/app/src/main/res/layout/recycler_pending.xml" value="0.2829059829059829" />
+        <entry key="..\:/Application projects/Fiancy/app/src/main/res/layout/recycler_reported.xml" value="0.2829059829059829" />
+        <entry key="..\:/Application projects/Fiancy/app/src/main/res/layout/recycleview_favorites.xml" value="0.2829059829059829" />
+        <entry key="..\:/Application projects/Fiancy/app/src/main/res/layout/recycleview_profile.xml" value="0.2829059829059829" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/drawable/box.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/drawable/ic_adprofile.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/Suvin/AndroidStudioProjects/Fiancy/app/src/main/res/drawable/ic_baseline_event_available_24.xml" value="0.10052083333333334" />

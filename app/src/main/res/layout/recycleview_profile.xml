@@ -60,10 +60,10 @@
                         android:id="@+id/NPlocation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/loc"
-                        android:textSize="15sp"
+                        android:paddingLeft="10dp"
                         android:paddingTop="8dp"
-                        android:paddingLeft="10dp"/>
+                        android:text="@string/loc"
+                        android:textSize="15sp" />
                 </LinearLayout>
 
                 <LinearLayout

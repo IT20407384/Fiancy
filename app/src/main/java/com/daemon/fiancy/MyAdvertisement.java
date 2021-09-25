@@ -47,6 +47,7 @@ public class MyAdvertisement extends Fragment implements View.OnClickListener {
     TextView adState ;
     TextView accState ;
     TextView payState ;
+    TextView btnState;
 
     Button matchfinder;
     Button editAdvertise;
@@ -79,6 +80,7 @@ public class MyAdvertisement extends Fragment implements View.OnClickListener {
         adState = view.findViewById(R.id.SMadstatus);
         accState = view.findViewById(R.id.SMaccountstatus);
         payState = view.findViewById(R.id.SMpaymentstatus);
+        btnState = view.findViewById(R.id.SMdetailsmatchbtn);
 
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("AppUser");
         dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -97,12 +99,15 @@ public class MyAdvertisement extends Fragment implements View.OnClickListener {
                     }
                 }
                 matchfinder.setEnabled(prime);
-                if(!prime) matchfinder.setTextColor(Color.parseColor("#B8B8B8"));
+                if(!prime) {
+                    matchfinder.setTextColor(Color.parseColor("#B8B8B8"));
+                    btnState.setText("Go to Buy Premium to unlock this.");
+                }
 
                 nameHead.setText(userPrime.getFullName());
                 if(prime) accState.setText("Premium Account");
 
-                Glide.with(getContext()).load("https://st2.depositphotos.com/5142301/8014/v/950/depositphotos_80144862-stock-illustration-d-letter-logo-with-blue.jpg").into((ImageView) view.findViewById(R.id.SMaccimage));
+                Glide.with(getContext()).load("https://image.shutterstock.com/z/stock-vector-f-letter-logo-with-blue-water-splash-and-drops-creative-vector-design-template-elements-for-your-301100789.jpg").into((ImageView) view.findViewById(R.id.SMaccimage));
             }
 
             @Override
@@ -229,10 +234,16 @@ public class MyAdvertisement extends Fragment implements View.OnClickListener {
                                 matchfinder.setEnabled(false);
                                 matchfinder.setTextColor(Color.parseColor("#B8B8B8"));
                             }
-                            else if(!paymentNeed && !liveAdvertise)
+                            else if(!paymentNeed && !liveAdvertise) {
                                 adState.setText("Status : Ad is in pending for approval");
-                            else if(paymentNeed && !liveAdvertise)
+                                matchfinder.setEnabled(false);
+                                matchfinder.setTextColor(Color.parseColor("#B8B8B8"));
+                            }
+                            else if(paymentNeed && !liveAdvertise) {
                                 adState.setText("Status : Advertisement approved");
+                                matchfinder.setEnabled(false);
+                                matchfinder.setTextColor(Color.parseColor("#B8B8B8"));
+                            }
                             else {
                                 adState.setText("Status : Advertise is now live.");
                                 editAdvertise.setEnabled(true);

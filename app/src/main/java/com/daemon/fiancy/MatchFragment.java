@@ -33,6 +33,7 @@ public class MatchFragment extends Fragment {
     private ArrayList<String> adKey = new ArrayList<>();
     DatabaseReference dbAdRef;
     RecyclerViewForMatchFinder adapter;
+    Advertisements userAd;
 
     public static final String SHARED_PREFS = "shared_prefs";
     public static final String EMAIL_KEY = "email_key";
@@ -61,15 +62,30 @@ public class MatchFragment extends Fragment {
         dbAdRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for( DataSnapshot mySnap : snapshot.getChildren()) {
+                    Advertisements adForGendercmp = mySnap.getValue(Advertisements.class);
+                    if(adForGendercmp.getOwner().equalsIgnoreCase(emailShared))
+                        userAd = adForGendercmp;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) { }
+        });
+
+        dbAdRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 DBadList.clear();
                 for(DataSnapshot mySnap : snapshot.getChildren()) {
                     Advertisements advertisement = mySnap.getValue(Advertisements.class);
                     assert advertisement != null;
-                    if(advertisement.getLiveAdvertisement()) {
+                    if(advertisement.getLiveAdvertisement() && !advertisement.getGender().equalsIgnoreCase(userAd.getGender())) {
                         DBadList.add(advertisement);
                         adKey.add(mySnap.getKey());
                     }
                 }
+                DBadList.add(userAd);
                 adapter.notifyDataSetChanged();
             }
 

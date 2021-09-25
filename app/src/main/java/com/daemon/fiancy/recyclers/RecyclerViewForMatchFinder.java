@@ -96,7 +96,7 @@ public class RecyclerViewForMatchFinder extends RecyclerView.Adapter<ViewHolderF
 
     @Override
     public int getItemCount() {
-        return dbAdList.size();
+        return dbAdList.size()-1;
     }
 
     public Advertisements getUserPostedAdvertisement() {
@@ -110,4 +110,3 @@ public class RecyclerViewForMatchFinder extends RecyclerView.Adapter<ViewHolderF
         return userAdForMatch;
     }
 }
-

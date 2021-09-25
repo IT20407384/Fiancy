@@ -123,16 +123,16 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginLeft="32dp"
                 android:layout_marginTop="44dp"
-                android:textColor="@color/black"
                 android:text="@string/pending_payment_state"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toEndOf="@+id/imageView8"
                 app:layout_constraintTop_toBottomOf="@+id/SMaccountstatus" />
 
             <Button
                 android:id="@+id/SMmatchfinderbtn"
-                android:layout_width="175dp"
+                android:layout_width="wrap_content"
                 android:layout_height="55dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="36dp"
                 android:fontFamily="@font/pacifico"
                 android:includeFontPadding="false"
                 android:text="@string/matchFinder"
@@ -153,11 +153,11 @@
                 android:id="@+id/SMpayforad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="48dp"
+                android:enabled="false"
                 android:stateListAnimator="@null"
                 android:text="@string/payForAd"
                 android:textAllCaps="false"
-                android:enabled="false"
                 app:backgroundTint="@color/white"
                 app:icon="@drawable/ic_baseline_payment_24"
                 app:iconTint="@color/black"
@@ -170,8 +170,8 @@
                 android:id="@+id/SMeditadbtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:stateListAnimator="@null"
                 android:enabled="false"
+                android:stateListAnimator="@null"
                 android:text="@string/editAd"
                 android:textAllCaps="false"
                 app:backgroundTint="@color/white"
@@ -187,9 +187,20 @@
                 style="@style/Divider"
                 android:layout_width="1dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="44dp"
                 app:layout_constraintEnd_toStartOf="@+id/SMeditadbtn"
+                app:layout_constraintHorizontal_bias="0.481"
                 app:layout_constraintStart_toEndOf="@+id/SMpayforad"
+                app:layout_constraintTop_toBottomOf="@+id/SMmatchfinderbtn" />
+
+            <TextView
+                android:id="@+id/SMdetailsmatchbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/SMmatchfinderbtn" />
 
 

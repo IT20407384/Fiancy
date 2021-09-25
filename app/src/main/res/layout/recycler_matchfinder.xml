@@ -46,7 +46,7 @@
                     <TextView
                         android:id="@+id/SMprofilematchname"
                         android:layout_width="210dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="29dp"
                         android:paddingLeft="15dp"
                         android:text="@string/name_1"
                         android:textSize="20sp"

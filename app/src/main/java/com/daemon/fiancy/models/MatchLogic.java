@@ -1,5 +1,8 @@
 package com.daemon.fiancy.models;
 
+import android.util.Log;
+
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class MatchLogic {
@@ -28,6 +31,7 @@ public class MatchLogic {
         double matchPercentage = 0;
         int ageDiff = 0;
         int eduLevelDiff = 0;
+        DecimalFormat decimalF = new DecimalFormat("##.##");
 
         boolean genderUser = false;     //male = true, female = false
         boolean genderOther = false;
@@ -250,7 +254,7 @@ public class MatchLogic {
 
 
         if(genderUser != genderOther)
-            matchPercentage += 40.0;
+            matchPercentage += 35.0;
 
         if(religionUser == religionOther)
             matchPercentage += 25.0;
@@ -326,13 +330,13 @@ public class MatchLogic {
 
         // Calculating match percentage with marital status
         if(statusUser == statusOther)
-            matchPercentage += 11.0;
+            matchPercentage += 9.0;
 
         else if(statusUser == 2)
             matchPercentage -= 6.0;
 
         else
-            matchPercentage += 11.0;
+            matchPercentage += 9.0;
 
 
         // search for a word inside a string to check
@@ -340,33 +344,51 @@ public class MatchLogic {
 
         String[] dividedUserProf = professionUser.split("\\s");
         String[] dividedOtherProf = professionOther.split("\\s");
-        int count = 0;
+        int count1 = 0;
 
         for(String temp : dividedUserProf) {
             int index = professionOther.toLowerCase().indexOf(temp.toLowerCase());
             if(index>=0)
-                count++;
+                count1++;
         }
-        if(count == 0){
+        if(count1 == 0){
             for(String temp : dividedOtherProf) {
                 int index = professionUser.toLowerCase().indexOf(temp.toLowerCase());
                 if(index>=0)
-                    count++;
+                    count1++;
             }
         }
 
-        if(count>0)
+        if(count1>0)
             matchPercentage += 3.0;
 
 
         //percentage calculation according to hobbies and interests
-        int userHobbieLen = 0;
-        int otherhobbieLen = 0;
+        int userHobbieLen = advertisementUser.getHobbiesList().size();
+        int otherhobbieLen = advertisementOther.getHobbiesList().size();
+        int count2 = 0;
+
+        for(int i = 0; i < 12; i++) {
+            if(hobbiesUser[i] && hobbiesOther[i]) {
+                count2 ++;
+            }
+        }
+
+        try {
+            if(count2 == otherhobbieLen)
+                matchPercentage += 9.0;
+
+            else if(userHobbieLen<otherhobbieLen)
+                matchPercentage += 0.8*(count2*((double)(1/(otherhobbieLen-userHobbieLen))));
+
+            else
+                matchPercentage += 0.8*(count2*((double)(1/(userHobbieLen-otherhobbieLen))));
+        }
+        catch(ArithmeticException ar) {
+            Log.d("Match Logic : ", "Some ads doesn't match with hobbies.");
+        }
 
 
-
-
-
-        return matchPercentage;
+        return Double.parseDouble(decimalF.format(matchPercentage));
     }
 }

@@ -120,6 +120,7 @@ public class ProfileReview extends AppCompatActivity {
         if(TextUtils.isEmpty(data)){
             Toast.makeText(getApplicationContext(),"Enter reason to reject",Toast.LENGTH_LONG).show();
         }else {
+            // save reason to database
             dbref.child(owner).setValue(rejectedAds);
 
             Toast.makeText(getApplicationContext(), "Data successfully inserted", Toast.LENGTH_SHORT).show();

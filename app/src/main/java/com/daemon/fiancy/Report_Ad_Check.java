@@ -162,7 +162,6 @@ public class Report_Ad_Check extends AppCompatActivity {
         reportadreferrence = FirebaseDatabase.getInstance().getReference().child("ReportedAdvertisements").child(reportadid);
         adref = FirebaseDatabase.getInstance().getReference().child("Advertisements").child(reportedAdKey);
 
-
         adref.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {

@@ -44,6 +44,7 @@ public class Pending extends Fragment {
         adapter = new RecycleViewAdapterforPending(dbAdList, adKey, view.getContext());
         recyclerView.setAdapter(adapter);
 
+        // retrive data from firebase
         dbadvertisementRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

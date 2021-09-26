@@ -392,8 +392,4 @@ public class MatchLogic {
 
         return Double.parseDouble(decimalF.format(matchPercentage));
     }
-
-    public int add(int x, int y) {
-        return (x + y);
-    }
 }

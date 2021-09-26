@@ -301,19 +301,19 @@ public class MatchLogic {
 
             // age difference calculation
             if(ageDiff == 0)
-                matchPercentage += (10 + (0.25*(Integer.parseInt(advertisementUser.getAge())-Integer.parseInt(advertisementOther.getAge()))));
+                matchPercentage += (10 - (0.25*(Integer.parseInt(advertisementUser.getAge())-Integer.parseInt(advertisementOther.getAge()))));
 
             else if(ageDiff == -1)
-                matchPercentage += (5 + (0.25*(Integer.parseInt(advertisementUser.getAge())-Integer.parseInt(advertisementOther.getAge()))));
+                matchPercentage += (5 - (0.25*(Integer.parseInt(advertisementUser.getAge())-Integer.parseInt(advertisementOther.getAge()))));
 
             else if(ageDiff == -2)
-                matchPercentage += (0 + (0.25*(Integer.parseInt(advertisementUser.getAge())-Integer.parseInt(advertisementOther.getAge()))));
+                matchPercentage += (0 - (0.25*(Integer.parseInt(advertisementUser.getAge())-Integer.parseInt(advertisementOther.getAge()))));
 
             else if(ageDiff == -3)
-                matchPercentage += (-5 + (0.25*(Integer.parseInt(advertisementUser.getAge())-Integer.parseInt(advertisementOther.getAge()))));
+                matchPercentage += (-5 - (0.25*(Integer.parseInt(advertisementUser.getAge())-Integer.parseInt(advertisementOther.getAge()))));
 
             else
-                matchPercentage += (-15 + (0.25*(Integer.parseInt(advertisementUser.getAge())-Integer.parseInt(advertisementOther.getAge()))));
+                matchPercentage += (-15 - (0.25*(Integer.parseInt(advertisementUser.getAge())-Integer.parseInt(advertisementOther.getAge()))));
 
 
             //Education level-vise match calculation

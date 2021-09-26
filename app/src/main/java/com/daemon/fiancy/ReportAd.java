@@ -59,21 +59,26 @@ public class ReportAd extends AppCompatActivity {
     }
 
     //Sent reportAd details to database
-    private void InsertReportAd() {
+    public Boolean InsertReportAd(ReportedADModel model) {
+        final Boolean[] success = new Boolean[1];
 
-        ReportReason.push().setValue(reportedADModel).addOnSuccessListener(new OnSuccessListener<Void>() {
+        ReportReason.push().setValue(model).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 Toast.makeText(ReportAd.this, "Report Sent", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(ReportAd.this, Home.class);
                 startActivity(intent);
+                success[0] = true;
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull @NotNull Exception e) {
                 Toast.makeText(ReportAd.this, "Report Failed", Toast.LENGTH_SHORT).show();
+                success[0] = false;
             }
         });
+
+        return success[0];
     }
 
     //ReportedAd button click event
@@ -85,7 +90,7 @@ public class ReportAd extends AppCompatActivity {
         reportedADModel = new ReportedADModel(reportedAdKey, email, message, reason);
 
         if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(message) &&!TextUtils.isEmpty(reason)) {
-            InsertReportAd();
+            InsertReportAd(reportedADModel);
         } else {
             Toast.makeText(ReportAd.this, "Please provide a reason for report this advertisement!", Toast.LENGTH_SHORT).show();
         }

@@ -201,7 +201,7 @@ public class AdConfirmActivity extends AppCompatActivity {
     }
 
     // calculate total fee
-    private double calculateAdFee(int wordCount) {
+    public double calculateAdFee(int wordCount) {
         int fixedFee = 2500;
         double feePerWord = 15.50;
         double countFeeForWord = feePerWord * wordCount;

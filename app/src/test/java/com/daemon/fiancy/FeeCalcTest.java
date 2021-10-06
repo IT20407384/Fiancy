@@ -2,8 +2,6 @@ package com.daemon.fiancy;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.daemon.fiancy.models.MatchLogic;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
